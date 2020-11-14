@@ -25,7 +25,7 @@ MKDIR 		:= mkdir -p
 SRC 		:= src
 OBJ 		:= obj
 LIBDIR 		:= lib
-IrrlichtHome:= /home/alex/Escritorio/lib/irrlicht/src
+IrrlichtHome	:= lib/irrlicht/src
 LIBS 		:= lib/irrlicht/irrlicht.a -lX11 -lXext -lIrrlicht ##esta es con la de X11 hay que usar la de irrlicht ls /usr/lib | grep Irrlicht en la terminal
 INCDIRS		:= -I$(SRC) -I$(LIBDIR) -I$(IrrlichtHome)/include -L$(IrrlichtHome)/lib/$(SYSTEM) -lIrrlicht
 
