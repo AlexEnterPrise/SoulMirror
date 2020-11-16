@@ -13,8 +13,8 @@ int main(){
     }
     
     bool cube = rgraphics.getCube();
-    //bool node = rgraphics.getNode();
-    if(cube){
+    bool node = rgraphics.getNode();
+    if(cube && node){
         rgraphics.NodeLoadMaterial();
     }
     rgraphics.addCamera();

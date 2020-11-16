@@ -10,8 +10,8 @@ RavenGraphics::RavenGraphics(){
     	driver = device->getVideoDriver();
     	smgr = device->getSceneManager();
     	guienv = device->getGUIEnvironment();
-    	//mesh = smgr->getMesh("media/sydney.md2");
-		//node = smgr->addAnimatedMeshSceneNode( mesh );
+    	mesh = smgr->getMesh("media/cofre.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
 		cube = smgr->addCubeSceneNode();
     }
 }
