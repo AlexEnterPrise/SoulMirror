@@ -15,7 +15,7 @@ define C2H
 $(patsubst %.c,%.h,$(patsubst %.cpp,%.hpp,$(1)))
 endef
 
-
+#
 APP 		:= irrlitch
 CCFLAGS		:= -Wall -pedantic
 CFLAGS 		:= $(CCFLAGS)
