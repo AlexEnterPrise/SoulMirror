@@ -16,7 +16,7 @@ $(patsubst %.c,%.h,$(patsubst %.cpp,%.hpp,$(1)))
 endef
 
 #
-APP 		:= irrlitch
+APP 		:= soulMirror
 CCFLAGS		:= -Wall -pedantic
 CFLAGS 		:= $(CCFLAGS)
 CC 			:= g++
