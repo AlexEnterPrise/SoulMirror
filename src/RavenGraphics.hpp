@@ -25,6 +25,8 @@ private:
 	IAnimatedMesh *mesh;
 	IAnimatedMeshSceneNode *node;
 	ISceneNode *cube;
+	ISceneNode *cube_second;
+	ICameraSceneNode *scamera;
 	MyEventReceiver receiver;
 
 public:
@@ -38,6 +40,7 @@ public:
 	void endScene();
 	void NodeLoadMaterial();
 	void addCamera();
+	bool collision(ISceneNode* sn1, ISceneNode* sn2);
 	IrrlichtDevice* getDevice();
 	IAnimatedMesh* getMesh();
 	IAnimatedMeshSceneNode* getNode();

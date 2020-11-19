@@ -13,6 +13,10 @@ RavenGraphics::RavenGraphics(){
     	mesh = smgr->getMesh("media/cofre.stl");
 		node = smgr->addAnimatedMeshSceneNode( mesh );
 		cube = smgr->addCubeSceneNode();
+        cube_second = smgr->addCubeSceneNode();
+        vector3df posCube = vector3df(20,0,20);
+        cube_second->setPosition(posCube);
+
     }
 }
 
@@ -30,7 +34,7 @@ void RavenGraphics::run(){
 		const u32 now = device->getTimer()->getTime();
         const f32 frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
         then = now;
-		 core::vector3df cubePosition = cube->getPosition();
+		core::vector3df cubePosition = cube->getPosition();
 
         if(receiver.IsKeyDown(irr::KEY_KEY_W))
             cubePosition.Z += MOVEMENT_SPEED * frameDeltaTime;
@@ -45,7 +49,12 @@ void RavenGraphics::run(){
         cube->setPosition(cubePosition);
         
 		driver->beginScene(true, true, SColor(100,20,101,140));
-
+        if(collision(cube,cube_second) == true){
+            //Colisionan
+            cube_second->setPosition(core::vector3df(10,0,0));
+            cube_second->setMaterialTexture(0, driver->getTexture("media/wall.bmp"));
+            cube_second->setMaterialFlag(video::EMF_LIGHTING, false);
+        }
         smgr->drawAll();
         guienv->drawAll();
 
@@ -63,6 +72,17 @@ void RavenGraphics::run(){
             lastFPS = fps;
         }
     }
+}
+
+bool RavenGraphics::collision(ISceneNode* one, ISceneNode* two){
+   aabbox3d<f32> b1, b2;
+
+   b1 = one->getBoundingBox ();
+   b2 = two->getBoundingBox ();
+
+   one->getRelativeTransformation().transformBoxEx( b1 );
+   two->getRelativeTransformation().transformBoxEx( b2 );
+   return b1.intersectsWithBox( b2 );
 }
 
 void RavenGraphics::drop(){
@@ -97,7 +117,7 @@ void RavenGraphics::NodeLoadMaterial(){
 }
 
 void RavenGraphics::addCamera(){
-	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
+    scamera = smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 }
 
 IrrlichtDevice* RavenGraphics::getDevice(){
