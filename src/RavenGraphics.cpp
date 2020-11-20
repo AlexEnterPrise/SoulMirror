@@ -45,7 +45,7 @@ void RavenGraphics::run(){
 
 		 vector3df cubePosition = cube->getPosition();
 
-		core::vector3df cubePosition = cube->getPosition();
+		//core::vector3df cubePosition = cube->getPosition();
 
 
         if(receiver.IsKeyDown(irr::KEY_KEY_W))

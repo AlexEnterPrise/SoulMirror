@@ -27,12 +27,12 @@ private:
 	IAnimatedMeshSceneNode *node;
 	ISceneNode *map;
 	ISceneNode *cube;
-<<<<<<< HEAD
+
 	ICameraSceneNode *camera;
-=======
+
 	ISceneNode *cube_second;
 	ICameraSceneNode *scamera;
->>>>>>> 71dbc5389b39db357c11a087ba42b51ae42bf487
+
 	MyEventReceiver receiver;
 	bool SwitchCam;
 
