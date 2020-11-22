@@ -2,7 +2,12 @@
 #define RavenGraphics_hpp_
 
 #include <irrlicht.h>
-#include "MyEventReceiver.hpp"
+#include <iostream>
+#include "sys/collision.hpp"
+#include "sys/Input.hpp"
+#include "sys/Render.hpp"
+
+
 using namespace irr;
 using namespace core;
 using namespace scene;
@@ -24,8 +29,20 @@ private:
 	IGUIEnvironment *guienv;
 	IAnimatedMesh *mesh;
 	IAnimatedMeshSceneNode *node;
+	ISceneNode *map;
 	ISceneNode *cube;
-	MyEventReceiver receiver;
+	ISceneNode *wall;
+	ISceneNode* one;
+	ISceneNode* two;
+	ICameraSceneNode *camera;
+
+	ISceneNode *cube_second;
+	ICameraSceneNode *scamera;
+
+	Render render;
+	collision collider;
+	Input input;
+	bool SwitchCam;
 
 public:
 	RavenGraphics();

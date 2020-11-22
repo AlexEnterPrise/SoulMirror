@@ -17,7 +17,7 @@ int main(){
     if(cube && node){
         rgraphics.NodeLoadMaterial();
     }
-    rgraphics.addCamera();
+    //rgraphics.addCamera();
     rgraphics.run();
     rgraphics.drop();
     return 0;
