@@ -32,6 +32,7 @@ private:
 	ISceneNode *map;
 	ISceneNode *cube;
 	ISceneNode *wall;
+	ISceneNode *wall_2;
 	ISceneNode* one;
 	ISceneNode* two;
 	ICameraSceneNode *camera;

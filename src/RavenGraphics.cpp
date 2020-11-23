@@ -17,15 +17,16 @@ RavenGraphics::RavenGraphics(){
     	mesh = smgr->getMesh("media/cofre.stl");
 		node = smgr->addAnimatedMeshSceneNode( mesh );
 		cube = smgr->addCubeSceneNode();
+        cube->setPosition(vector3df(15,0,-10));
 		wall = smgr->addCubeSceneNode();
- 
+        wall->setScale(vector3df(1.0f,1.0f,3.0f));
+        wall_2 = smgr->addCubeSceneNode();
+        wall_2->setScale(vector3df(1.0f,1.0f,3.0f));
+        wall_2->setPosition(vector3df(30,0,0));
         camera = smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
-
         cube_second = smgr->addCubeSceneNode();
-        vector3df posCube = vector3df(20,0,20);
+        vector3df posCube = vector3df(15,0,20);
         cube_second->setPosition(posCube);
-
-        
     }
 }
 
@@ -50,6 +51,8 @@ void RavenGraphics::run(){
 
        
         cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube, wall);
+        cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube, wall_2);
+
         SwitchCam = input.moveCam(SwitchCam, map);
         cube->setPosition(cubePosition);
         
@@ -59,10 +62,11 @@ void RavenGraphics::run(){
 
         if(collider.checkCollision(cube,cube_second) == true){
         //Colisionan
-        cube_second->setPosition(core::vector3df(10,0,0));
+        cube->setPosition(vector3df(15,0,-10));
+        cube_second->setPosition(core::vector3df(-20,0,0));
         cube_second->setMaterialTexture(0, driver->getTexture("media/wall.bmp"));
         cube_second->setMaterialFlag(video::EMF_LIGHTING, false);
-        drawMap();
+       
         }
 
         render.draw(smgr, guienv);
@@ -116,7 +120,6 @@ void RavenGraphics::NodeLoadMaterial(){
     //if (map)
       //  map->setPosition(core::vector3df(-1300,-144,-1249));
 
-	cube->setPosition(core::vector3df(10,0,0));
     cube->setMaterialTexture(0, driver->getTexture("media/wall.bmp"));
     cube->setMaterialFlag(video::EMF_LIGHTING, false);
 }
@@ -145,16 +148,7 @@ void RavenGraphics::addCamera(){
 
 }
 
-void RavenGraphics::drawMap(){
-    if(device)
-        device->getFileSystem()->addFileArchive("media/map-20kdm2.pk3");
 
-    mesh = smgr->getMesh("20kdm2.bsp");
-    if(mesh)
-        map = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
-    if (map)
-        map->setPosition(core::vector3df(-1300,-144,-1249));
-}
 
 IrrlichtDevice* RavenGraphics::getDevice(){
 	return device;
