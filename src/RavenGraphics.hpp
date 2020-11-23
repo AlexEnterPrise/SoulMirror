@@ -3,7 +3,7 @@
 
 #include <irrlicht.h>
 #include <iostream>
-#include "sys/collision.hpp"
+#include "sys/Collision.hpp"
 #include "sys/Input.hpp"
 #include "sys/Render.hpp"
 
@@ -40,7 +40,7 @@ private:
 	ICameraSceneNode *scamera;
 
 	Render render;
-	collision collider;
+	Collision collider;
 	Input input;
 	bool SwitchCam;
 

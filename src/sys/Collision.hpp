@@ -1,15 +1,15 @@
 
-#ifndef collision_hpp_
-#define collision_hpp_
+#ifndef Collision_hpp_
+#define Collision_hpp_
 
 #include <irrlicht.h>
 using namespace irr;
 using namespace core;
 
-class collision{
+class Collision{
 private: 
 public:
-    collision();
+    Collision();
     bool checkCollision(irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
 
 };

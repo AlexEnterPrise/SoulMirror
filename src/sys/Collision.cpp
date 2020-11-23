@@ -1,10 +1,10 @@
-#include "collision.hpp"
+#include "Collision.hpp"
 
-collision::collision(){
+Collision::Collision(){
 
 }
 
-bool collision::checkCollision(scene::ISceneNode* one, scene::ISceneNode* two){
+bool Collision::checkCollision(scene::ISceneNode* one, scene::ISceneNode* two){
    aabbox3d<f32> b1, b2;
 
    b1 = one->getBoundingBox ();

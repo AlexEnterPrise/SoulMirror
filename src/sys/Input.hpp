@@ -5,7 +5,7 @@
 #endif
 
 #include <irrlicht.h>
-#include "collision.hpp"
+#include "Collision.hpp"
 using namespace irr;
 
 
@@ -25,5 +25,5 @@ public:
 private:
     // We use this array to store the current state of each key
     bool KeyIsDown[KEY_KEY_CODES_COUNT];
-    collision col;
+    Collision col;
 };
