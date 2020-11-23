@@ -62,6 +62,7 @@ void RavenGraphics::run(){
         cube_second->setPosition(core::vector3df(10,0,0));
         cube_second->setMaterialTexture(0, driver->getTexture("media/wall.bmp"));
         cube_second->setMaterialFlag(video::EMF_LIGHTING, false);
+        drawMap();
         }
 
         render.draw(smgr, guienv);
@@ -125,9 +126,9 @@ void RavenGraphics::addCamera(){
 	//smgr->addCameraSceneNode(0, vector3df(0,30,-40), cube->getPosition());
     //ICameraSceneNode *camera = smgr->getActiveCamera();
     vector3df camaraPosition;
-    camaraPosition.X = 0;
+    camaraPosition.X = cube->getPosition().X;
     camaraPosition.Y = 30;
-    camaraPosition.Z = -40;
+    camaraPosition.Z = cube->getPosition().Z - 40;
     
     if(!SwitchCam){
         camera->setPosition(camaraPosition);
@@ -142,6 +143,17 @@ void RavenGraphics::addCamera(){
 
     //scamera = smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 
+}
+
+void RavenGraphics::drawMap(){
+    if(device)
+        device->getFileSystem()->addFileArchive("media/map-20kdm2.pk3");
+
+    mesh = smgr->getMesh("20kdm2.bsp");
+    if(mesh)
+        map = smgr->addOctreeSceneNode(mesh->getMesh(0), 0, -1, 1024);
+    if (map)
+        map->setPosition(core::vector3df(-1300,-144,-1249));
 }
 
 IrrlichtDevice* RavenGraphics::getDevice(){

@@ -55,6 +55,7 @@ public:
 	void endScene();
 	void NodeLoadMaterial();
 	void addCamera();
+	void drawMap();
 	IrrlichtDevice* getDevice();
 	IAnimatedMesh* getMesh();
 	IAnimatedMeshSceneNode* getNode();
