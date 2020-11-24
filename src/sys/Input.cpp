@@ -21,7 +21,9 @@ bool Input::IsKeyDown(EKEY_CODE keyCode) const {
 
 
 core::vector3df Input::comproveMovement(core::vector3df cubePosition, f32 MOVEMENT_SPEED, f32 frameDeltaTime, scene::ISceneNode* one, scene::ISceneNode* two ){
-    if(col.checkCollision(one, two)){
+    if(IsKeyDown(irr::KEY_LSHIFT)){
+        MOVEMENT_SPEED = 30.f;
+        if(col.checkCollision(one, two)){
         if(IsKeyDown(irr::KEY_KEY_W))
         cubePosition.Z += MOVEMENT_SPEED * frameDeltaTime - 0.5;
     else if(IsKeyDown(irr::KEY_KEY_S))
@@ -42,6 +44,31 @@ core::vector3df Input::comproveMovement(core::vector3df cubePosition, f32 MOVEME
     else if(IsKeyDown(irr::KEY_KEY_D))
         cubePosition.X += MOVEMENT_SPEED * frameDeltaTime;
     }
+
+    }else{
+        if(col.checkCollision(one, two)){
+            if(IsKeyDown(irr::KEY_KEY_W))
+            cubePosition.Z += MOVEMENT_SPEED * frameDeltaTime - 0.5;
+        else if(IsKeyDown(irr::KEY_KEY_S))
+            cubePosition.Z -= MOVEMENT_SPEED * frameDeltaTime - 0.5;
+
+        if(IsKeyDown(irr::KEY_KEY_A))
+            cubePosition.X -= MOVEMENT_SPEED * frameDeltaTime - 0.5;
+        else if(IsKeyDown(irr::KEY_KEY_D))
+            cubePosition.X += MOVEMENT_SPEED * frameDeltaTime - 0.5;
+        }else{
+            if(IsKeyDown(irr::KEY_KEY_W))
+            cubePosition.Z += MOVEMENT_SPEED * frameDeltaTime;
+        else if(IsKeyDown(irr::KEY_KEY_S))
+            cubePosition.Z -= MOVEMENT_SPEED * frameDeltaTime;
+
+        if(IsKeyDown(irr::KEY_KEY_A))
+            cubePosition.X -= MOVEMENT_SPEED * frameDeltaTime;
+        else if(IsKeyDown(irr::KEY_KEY_D))
+            cubePosition.X += MOVEMENT_SPEED * frameDeltaTime;
+        }
+    }
+    
     return cubePosition;
 }
 
