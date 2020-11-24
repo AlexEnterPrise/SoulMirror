@@ -3,7 +3,11 @@
 
 #include <irrlicht.h>
 #include <iostream>
-#include "MyEventReceiver.hpp"
+#include "sys/Collision.hpp"
+#include "sys/Input.hpp"
+#include "sys/Render.hpp"
+
+
 using namespace irr;
 using namespace core;
 using namespace scene;
@@ -27,13 +31,18 @@ private:
 	IAnimatedMeshSceneNode *node;
 	ISceneNode *map;
 	ISceneNode *cube;
-
+	ISceneNode *wall;
+	ISceneNode *wall_2;
+	ISceneNode* one;
+	ISceneNode* two;
 	ICameraSceneNode *camera;
 
 	ISceneNode *cube_second;
 	ICameraSceneNode *scamera;
 
-	MyEventReceiver receiver;
+	Render render;
+	Collision collider;
+	Input input;
 	bool SwitchCam;
 
 public:
@@ -47,7 +56,7 @@ public:
 	void endScene();
 	void NodeLoadMaterial();
 	void addCamera();
-	bool collision(ISceneNode* sn1, ISceneNode* sn2);
+	void drawMap();
 	IrrlichtDevice* getDevice();
 	IAnimatedMesh* getMesh();
 	IAnimatedMeshSceneNode* getNode();
