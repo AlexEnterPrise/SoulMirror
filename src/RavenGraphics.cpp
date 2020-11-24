@@ -14,8 +14,8 @@ RavenGraphics::RavenGraphics(){
     	smgr = device->getSceneManager();
     	guienv = device->getGUIEnvironment();
         device->getFileSystem()->addFileArchive("media/map-20kdm2.pk3");
-    	mesh = smgr->getMesh("media/cofre.stl");
-		node = smgr->addAnimatedMeshSceneNode( mesh );
+    	//mesh = smgr->getMesh("media/cofre.stl");
+		//node = smgr->addAnimatedMeshSceneNode( mesh );
 		cube = smgr->addCubeSceneNode();
         cube->setPosition(vector3df(15,0,-10));
 		wall = smgr->addCubeSceneNode();
