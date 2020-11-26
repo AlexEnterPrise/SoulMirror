@@ -2,14 +2,12 @@
 #define render_hpp_
 
 #include <irrlicht.h>
-using namespace irr;
-using namespace gui;
 
 
 class Render{
 private: 
 public:
-    void draw(scene::ISceneManager* smgr, IGUIEnvironment *guienv);
+    void draw(irr::scene::ISceneManager* smgr, irr::gui::IGUIEnvironment *guienv);
 
 };
 #endif

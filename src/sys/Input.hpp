@@ -6,24 +6,26 @@
 
 #include <irrlicht.h>
 #include "Collision.hpp"
+
 using namespace irr;
 
 
-class Input : public IEventReceiver
+class Input : public irr::IEventReceiver
 {
 public:
-    // This is the one method that we have to implement
-    virtual bool OnEvent(const SEvent& event);
-   
-    // This is used to check whether a key is being held down
-    virtual bool IsKeyDown(EKEY_CODE keyCode) const;
-    core::vector3df comproveMovement(core::vector3df pos, f32 speed, f32 frame, scene::ISceneNode* one, scene::ISceneNode* two);
-    bool moveCam(bool cam, scene::ISceneNode *map);
     Input();
+    // This is the one method that we have to implement
+    virtual bool OnEvent(const irr::SEvent& event);
+    // This is used to check whether a key is being held down
+    virtual bool IsKeyDown(irr::EKEY_CODE keyCode) const;
+    irr::core::vector3df comproveMovement(irr::core::vector3df pos, irr::f32 speed, irr::f32 frame, irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
+    bool moveCam(bool cam, irr::scene::ISceneNode *map);
+    //void printXYZ(scene::ISceneNode *);
     
+
 
 private:
     // We use this array to store the current state of each key
-    bool KeyIsDown[KEY_KEY_CODES_COUNT];
+    bool KeyIsDown[irr::KEY_KEY_CODES_COUNT];
     Collision col;
 };

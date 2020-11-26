@@ -4,8 +4,8 @@ Collision::Collision(){
 
 }
 
-bool Collision::checkCollision(scene::ISceneNode* one, scene::ISceneNode* two){
-   aabbox3d<f32> b1, b2;
+bool Collision::checkCollision(irr::scene::ISceneNode* one, irr::scene::ISceneNode* two){
+   irr::core::aabbox3d<irr::f32> b1, b2;
 
    b1 = one->getBoundingBox ();
    b2 = two->getBoundingBox ();

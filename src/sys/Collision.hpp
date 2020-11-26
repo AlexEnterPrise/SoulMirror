@@ -3,8 +3,6 @@
 #define Collision_hpp_
 
 #include <irrlicht.h>
-using namespace irr;
-using namespace core;
 
 class Collision{
 private: 

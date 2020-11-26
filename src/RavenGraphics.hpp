@@ -15,7 +15,7 @@
 class RavenGraphics {
 
 private:
-	IrrlichtDevice *device;
+	irr::IrrlichtDevice *device;
 	irr::video::IVideoDriver *driver;
 	irr::scene::ISceneManager *smgr;
 	irr::gui::IGUIEnvironment *guienv;
@@ -27,14 +27,17 @@ private:
 	irr::scene::ISceneNode *wall_2;
 	irr::scene::ISceneNode* one;
 	irr::scene::ISceneNode* two;
-	irr::scene::ICameraSceneNode *camera;
 
 	irr::scene::ISceneNode *cube_second;
+	irr::scene::ISceneNode *sphere;
+
+	irr::scene::ICameraSceneNode *camera;
 	irr::scene::ICameraSceneNode *scamera;
 
 	Render render;
 	Collision collider;
 	Input input;
+
 	bool SwitchCam;
 
 public:
@@ -49,7 +52,9 @@ public:
 	void NodeLoadMaterial();
 	void addCamera();
 	void drawMap();
-	IrrlichtDevice* getDevice();
+	void moveSphere(irr::f32, irr::f32);
+
+	irr::IrrlichtDevice* getDevice();
 	irr::scene::IAnimatedMesh* getMesh();
 	irr::scene::IAnimatedMeshSceneNode* getNode();
 	irr::scene::ISceneNode* getCube();
