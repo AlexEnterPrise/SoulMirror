@@ -6,7 +6,7 @@ int main(){
     
     bool dev = rgraphics.getDevice();
     //bool mes = rgraphics.getMesh();
-    rgraphics.addTextGUI();
+    //rgraphics.addTextGUI();
 
     if(!dev){
         return 1;

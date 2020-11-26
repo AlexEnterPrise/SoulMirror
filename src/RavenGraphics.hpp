@@ -7,14 +7,6 @@
 #include "sys/Input.hpp"
 #include "sys/Render.hpp"
 
-
-using namespace irr;
-using namespace core;
-using namespace scene;
-using namespace video;
-using namespace io;
-using namespace gui;
-using namespace std;
 #ifdef _IRR_WINDOWS_
 #pragma comment(lib, "Irrlicht.lib")
 #pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
@@ -24,21 +16,21 @@ class RavenGraphics {
 
 private:
 	IrrlichtDevice *device;
-	IVideoDriver *driver;
-	ISceneManager *smgr;
-	IGUIEnvironment *guienv;
-	IAnimatedMesh *mesh;
-	IAnimatedMeshSceneNode *node;
-	ISceneNode *map;
-	ISceneNode *cube;
-	ISceneNode *wall;
-	ISceneNode *wall_2;
-	ISceneNode* one;
-	ISceneNode* two;
-	ICameraSceneNode *camera;
+	irr::video::IVideoDriver *driver;
+	irr::scene::ISceneManager *smgr;
+	irr::gui::IGUIEnvironment *guienv;
+	irr::scene::IAnimatedMesh *mesh;
+	irr::scene::IAnimatedMeshSceneNode *node;
+	irr::scene::ISceneNode *map;
+	irr::scene::ISceneNode *cube;
+	irr::scene::ISceneNode *wall;
+	irr::scene::ISceneNode *wall_2;
+	irr::scene::ISceneNode* one;
+	irr::scene::ISceneNode* two;
+	irr::scene::ICameraSceneNode *camera;
 
-	ISceneNode *cube_second;
-	ICameraSceneNode *scamera;
+	irr::scene::ISceneNode *cube_second;
+	irr::scene::ICameraSceneNode *scamera;
 
 	Render render;
 	Collision collider;
@@ -58,9 +50,9 @@ public:
 	void addCamera();
 	void drawMap();
 	IrrlichtDevice* getDevice();
-	IAnimatedMesh* getMesh();
-	IAnimatedMeshSceneNode* getNode();
-	ISceneNode* getCube();
+	irr::scene::IAnimatedMesh* getMesh();
+	irr::scene::IAnimatedMeshSceneNode* getNode();
+	irr::scene::ISceneNode* getCube();
 };
 
 #endif

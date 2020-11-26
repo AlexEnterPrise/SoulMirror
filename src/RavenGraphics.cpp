@@ -56,7 +56,7 @@ void RavenGraphics::run(){
         SwitchCam = input.moveCam(SwitchCam, map);
         cube->setPosition(cubePosition);
         
-		driver->beginScene(true, true, SColor(100,20,101,140));
+		driver->beginScene(true, true, irr::video::SColor(100,20,101,140));
 
         addCamera();
 
@@ -154,14 +154,14 @@ IrrlichtDevice* RavenGraphics::getDevice(){
 	return device;
 }
 
-IAnimatedMesh* RavenGraphics::getMesh(){
+irr::scene::IAnimatedMesh* RavenGraphics::getMesh(){
 	return mesh;
 }
 
-IAnimatedMeshSceneNode* RavenGraphics::getNode(){
+irr::scene::IAnimatedMeshSceneNode* RavenGraphics::getNode(){
 	return node;
 }
 
-ISceneNode* RavenGraphics::getCube(){
+irr::scene::ISceneNode* RavenGraphics::getCube(){
 	return cube;
 }
