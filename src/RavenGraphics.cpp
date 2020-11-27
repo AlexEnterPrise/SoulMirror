@@ -16,14 +16,20 @@ RavenGraphics::RavenGraphics(){
         //device->getFileSystem()->addFileArchive("media/map-20kdm2.pk3");
     	//mesh = smgr->getMesh("media/cofre.stl");
 		//node = smgr->addAnimatedMeshSceneNode( mesh );
-		cube = smgr->addCubeSceneNode();
-        cube->setPosition(irr::core::vector3df(15,0,-10));
+		cube_player = smgr->addCubeSceneNode();
+        //cube_player->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
+        cube_player->setPosition(irr::core::vector3df(15,0,-40));
+
+        cube_enemy = smgr->addCubeSceneNode();
+        //cube_enemy->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
+        cube_enemy->setPosition(irr::core::vector3df(15,0,0));
         
         cube_second = smgr->addCubeSceneNode();
         //irr::core::vector3df posCube = irr::core::vector3df(15,0,20);
-        cube_second->setPosition(irr::core::vector3df(15,0,20));
+        cube_second->setPosition(irr::core::vector3df(15,0,30));
        
         sphere = smgr->addSphereSceneNode();
+        //sphere->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         sphere->setPosition(irr::core::vector3df(40,0,40));
 
 		wall = smgr->addCubeSceneNode();
@@ -45,7 +51,7 @@ void RavenGraphics::run(){
     // how long it was since the last frame
     irr::u32 then = device->getTimer()->getTime();
 
-    // This is the movemen speed in units per second.
+    // This is the movement speed in units per second.
     const irr::f32 MOVEMENT_SPEED = 15.f;
 	while(device->run())
     {
@@ -53,29 +59,36 @@ void RavenGraphics::run(){
         const irr::f32 frameDeltaTime = (irr::f32)(now - then) / 1000.f; // Time in seconds
         then = now;
 
-
-		irr::core::vector3df cubePosition = cube->getPosition();
-
-		//core::vector3df cubePosition = cube->getPosition();
+		irr::core::vector3df cubePosition = cube_player->getPosition();
        
-        cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube, wall);
-        cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube, wall_2);
-        if(collider.checkCollision(cube,sphere))
-            moveSphere(frameDeltaTime, MOVEMENT_SPEED);
+        cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall);
+        cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall_2);
+
 
         SwitchCam = input.moveCam(SwitchCam, map);
 
-        cube->setPosition(cubePosition);
+        cube_player->setPosition(cubePosition);
         
 		driver->beginScene(true, true, irr::video::SColor(100,20,101,140));
 
         addCamera();
 
-        if(collider.checkCollision(cube,cube_second)){
+        // Comprobamos si el cube_player (jugador) colisiona con la sphere (objeto) y así poder arrastrarlo si colisiona
+        if(collider.checkCollision(cube_player,sphere))
+            moveSphere(frameDeltaTime, MOVEMENT_SPEED);
+
+        // Comprobamos si el cube_player (jugador) colisiona con el cube_enemy (enemigo), si colisiona morirá
+        if(collider.checkCollision(cube_player,cube_enemy)){
         //Colisionan
-            cube->setPosition(irr::core::vector3df(15,0,-10));
+            cube_player->setPosition(irr::core::vector3df(15,0,-40));
+        }
+
+        // Comprobamos si el cube_player (jugador) colisiona con el cube_second (fin del nivel) y así poder pasar de nivel si colisiona
+        if(collider.checkCollision(cube_player,cube_second)){
+        //Colisionan
+            cube_player->setPosition(irr::core::vector3df(15,0,-40));
             cube_second->setPosition(irr::core::vector3df(-20,0,0));
-            cube_second->setMaterialTexture(0, driver->getTexture("media/color_jugador.jpg"));
+            cube_second->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
             cube_second->setMaterialFlag(irr::video::EMF_LIGHTING, false);
         }
 
@@ -130,30 +143,29 @@ void RavenGraphics::NodeLoadMaterial(){
     //if (map)
       //  map->setPosition(core::vector3df(-1300,-144,-1249));
 
-    cube->setMaterialTexture(0, driver->getTexture("media/color_jugador.jpg"));
-    cube->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+    cube_player->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
+    cube_player->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
-    //sphere->setMaterialTexture(0, driver->getTexture("media/wall.bmp"));
-    //sphere->setMaterialFlag(video::EMF_LIGHTING, false);
-
+    cube_enemy->setMaterialTexture(0, driver->getTexture("media/color_enemy.jpg"));
+    cube_enemy->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
 }
 
 void RavenGraphics::addCamera(){
 
-	//smgr->addCameraSceneNode(0, vector3df(0,30,-40), cube->getPosition());
+	//smgr->addCameraSceneNode(0, vector3df(0,30,-40), cube_player->getPosition());
     //ICameraSceneNode *camera = smgr->getActiveCamera();
     irr::core::vector3df camaraPosition;
-    camaraPosition.X = cube->getPosition().X;
+    camaraPosition.X = cube_player->getPosition().X;
     camaraPosition.Y = 30;
-    camaraPosition.Z = cube->getPosition().Z - 40;
+    camaraPosition.Z = cube_player->getPosition().Z - 40;
     
     if(!SwitchCam){
         camera->setPosition(camaraPosition);
-        camera->setTarget(cube->getPosition());
+        camera->setTarget(cube_player->getPosition());
     }
     else
-        camera->setPosition(cube->getPosition());
+        camera->setPosition(cube_player->getPosition());
     //camera->bindTargetAndRotation(true);
     //if(camera != NULL)
       //  cout<<"siuuu";
@@ -181,22 +193,22 @@ void RavenGraphics::moveSphere(irr::f32 time, irr::f32 speed){
     spherePosition.Y = sphere->getPosition().Y;
     spherePosition.Z = sphere->getPosition().Z;
     if(input.IsKeyDown(irr::KEY_KEY_W)){
-        if(cube->getPosition().Z < sphere->getPosition().Z)
+        if(cube_player->getPosition().Z < sphere->getPosition().Z)
             spherePosition.Z += speed * time + 0.5;    
     }
 
     else if(input.IsKeyDown(irr::KEY_KEY_S)){
-        if(cube->getPosition().Z > sphere->getPosition().Z)
+        if(cube_player->getPosition().Z > sphere->getPosition().Z)
             spherePosition.Z -= speed * time + 0.5;    
     }
 
     else if(input.IsKeyDown(irr::KEY_KEY_A)){
-        if(cube->getPosition().X > sphere->getPosition().X)
+        if(cube_player->getPosition().X > sphere->getPosition().X)
             spherePosition.X -= speed * time + 0.5;    
     }
 
     else if(input.IsKeyDown(irr::KEY_KEY_D)){
-        if(cube->getPosition().X < sphere->getPosition().X)
+        if(cube_player->getPosition().X < sphere->getPosition().X)
             spherePosition.X += speed * time + 0.5;    
     }
 
@@ -217,5 +229,5 @@ irr::scene::IAnimatedMeshSceneNode* RavenGraphics::getNode(){
 }
 
 irr::scene::ISceneNode* RavenGraphics::getCube(){
-	return cube;
+	return cube_player;
 }

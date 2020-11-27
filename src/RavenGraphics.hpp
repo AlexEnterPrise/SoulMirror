@@ -22,7 +22,8 @@ private:
 	irr::scene::IAnimatedMesh *mesh;
 	irr::scene::IAnimatedMeshSceneNode *node;
 	irr::scene::ISceneNode *map;
-	irr::scene::ISceneNode *cube;
+	irr::scene::ISceneNode *cube_player;
+	irr::scene::ISceneNode *cube_enemy;
 	irr::scene::ISceneNode *wall;
 	irr::scene::ISceneNode *wall_2;
 	irr::scene::ISceneNode* one;
