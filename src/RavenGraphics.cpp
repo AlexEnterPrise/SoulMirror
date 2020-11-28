@@ -1,6 +1,11 @@
 #include "RavenGraphics.hpp"
 
 
+enum{
+   ID_IsNotPickable        = 0,
+   IDFlag_IsPickable       = 1 << 0,
+   IDFlag_IsHighlightable  = 1 << 1
+};
 RavenGraphics::RavenGraphics(){
     //si es false significa que la camara es lejana, si es true pasamos a FP (primera persona)
     SwitchCam = false;
@@ -19,7 +24,7 @@ RavenGraphics::RavenGraphics(){
 		cube_player = smgr->addCubeSceneNode();
         //cube_player->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         cube_player->setPosition(irr::core::vector3df(15,0,-40));
-
+        cube_player->setID(IDFlag_IsPickable);
         cube_enemy = smgr->addCubeSceneNode();
         //cube_enemy->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         cube_enemy->setPosition(irr::core::vector3df(15,0,0));
@@ -33,6 +38,7 @@ RavenGraphics::RavenGraphics(){
         sphere->setPosition(irr::core::vector3df(40,0,40));
 
 		wall = smgr->addCubeSceneNode();
+        wall->setID(IDFlag_IsPickable);
         wall->setScale(irr::core::vector3df(1.0f,1.0f,3.0f));
         wall_2 = smgr->addCubeSceneNode();
         wall_2->setScale(irr::core::vector3df(1.0f,1.0f,3.0f));
@@ -44,6 +50,7 @@ RavenGraphics::RavenGraphics(){
     }
 }
 
+
 void RavenGraphics::run(){
 	 int lastFPS = -1;
 
@@ -53,6 +60,18 @@ void RavenGraphics::run(){
 
     // This is the movement speed in units per second.
     const irr::f32 MOVEMENT_SPEED = 15.f;
+    //irr::scene::ISceneCollisionManager* collMan = smgr->getSceneCollisionManager();
+    //scene::ITriangleSelector* selector = smgr->createTriangleSelectorFromBoundingBox(wall);
+    //wall->setTriangleSelector(selector);
+    //if(selector){
+    //    const irr::core::aabbox3d<irr::f32>& box = cube_player->getBoundingBox();
+    //    irr::core::vector3df radius = box.MaxEdge - box.getCenter();
+    //    irr::scene::ISceneNodeAnimator* anim = smgr->createCollisionResponseAnimator(selector,cube_player,radius,
+    //    irr::core::vector3df(0,0,0), irr::core::vector3df(0,30,0));
+    //    selector->drop(); 
+    //    cube_player->addAnimator(anim);
+    //    anim->drop();
+    //}
 	while(device->run())
     {
 		const irr::u32 now = device->getTimer()->getTime();
@@ -60,10 +79,30 @@ void RavenGraphics::run(){
         then = now;
 
 		irr::core::vector3df cubePosition = cube_player->getPosition();
+        //core::line3d<f32> ray;
+        //ray.start = camera->getPosition();
+        //ray.end = ray.start + (camera->getTarget() - ray.start).normalize() * 1000.0f;
+        //// Tracks the current intersection point with the level or a mesh
+        //core::vector3df intersection;
+        //// Used to show with triangle has been hit
+        //core::triangle3df hitTriangle;
+        //scene::ISceneNode * selectedSceneNode =
+        //    collMan->getSceneNodeAndCollisionPointFromRay(
+        //            ray,
+        //            intersection, // This will be the position of the collision
+        //            hitTriangle, // This will be the triangle hit in the collision
+        //            IDFlag_IsPickable, // This ensures that only nodes that we have
+        //                    // set up to be pickable are considered
+        //            0); 
+//
+        //if(selectedSceneNode){
+        //    std::cout << "colisiona" << std::endl;
+        //}else{
+        //    std::cout << "NO CCcolisiona" << std::endl;
+        //}
        
-        cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall);
-        cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall_2);
-
+        cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall);
+        //cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall_2);
 
         SwitchCam = input.moveCam(SwitchCam, map);
 
@@ -73,18 +112,18 @@ void RavenGraphics::run(){
 
         addCamera();
 
-        // Comprobamos si el cube_player (jugador) colisiona con la sphere (objeto) y así poder arrastrarlo si colisiona
-        if(collider.checkCollision(cube_player,sphere))
-            moveSphere(frameDeltaTime, MOVEMENT_SPEED);
+        //Comprobamos si el cube_player (jugador) colisiona con la sphere (objeto) y así poder arrastrarlo si colisiona
+        if(collider.checkCollision(smgr,cube_player,sphere))
+            input.moveSphere(frameDeltaTime, MOVEMENT_SPEED, cube_player,sphere);
 
         // Comprobamos si el cube_player (jugador) colisiona con el cube_enemy (enemigo), si colisiona morirá
-        if(collider.checkCollision(cube_player,cube_enemy)){
+        if(collider.checkCollision(smgr,cube_player,cube_enemy)){
         //Colisionan
             cube_player->setPosition(irr::core::vector3df(15,0,-40));
         }
 
         // Comprobamos si el cube_player (jugador) colisiona con el cube_second (fin del nivel) y así poder pasar de nivel si colisiona
-        if(collider.checkCollision(cube_player,cube_second)){
+        if(collider.checkCollision(smgr,cube_player,cube_second)){
         //Colisionan
             cube_player->setPosition(irr::core::vector3df(15,0,-40));
             cube_second->setPosition(irr::core::vector3df(-20,0,0));
@@ -109,7 +148,6 @@ void RavenGraphics::run(){
         }
     }
 }
-
 
 void RavenGraphics::drop(){
 	device->drop();
@@ -187,34 +225,7 @@ void RavenGraphics::drawMap(){
         map->setPosition(core::vector3df(-1300,-144,-1249));*/
 }
 
-void RavenGraphics::moveSphere(irr::f32 time, irr::f32 speed){
-    irr::core::vector3df spherePosition;
-    spherePosition.X = sphere->getPosition().X;
-    spherePosition.Y = sphere->getPosition().Y;
-    spherePosition.Z = sphere->getPosition().Z;
-    if(input.IsKeyDown(irr::KEY_KEY_W)){
-        if(cube_player->getPosition().Z < sphere->getPosition().Z)
-            spherePosition.Z += speed * time + 0.5;    
-    }
-
-    else if(input.IsKeyDown(irr::KEY_KEY_S)){
-        if(cube_player->getPosition().Z > sphere->getPosition().Z)
-            spherePosition.Z -= speed * time + 0.5;    
-    }
-
-    else if(input.IsKeyDown(irr::KEY_KEY_A)){
-        if(cube_player->getPosition().X > sphere->getPosition().X)
-            spherePosition.X -= speed * time + 0.5;    
-    }
-
-    else if(input.IsKeyDown(irr::KEY_KEY_D)){
-        if(cube_player->getPosition().X < sphere->getPosition().X)
-            spherePosition.X += speed * time + 0.5;    
-    }
-
-    sphere->setPosition(spherePosition);
-}
-
+//irr::core::vector3df spherePosition = input.moveSphere(time, MOVEMENT_SPEED, cube_player,sphere);
 
 irr::IrrlichtDevice* RavenGraphics::getDevice(){
 	return device;

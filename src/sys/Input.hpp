@@ -5,6 +5,7 @@
 #endif
 
 #include <irrlicht.h>
+#include <iostream>
 #include "Collision.hpp"
 
 using namespace irr;
@@ -18,8 +19,9 @@ public:
     virtual bool OnEvent(const irr::SEvent& event);
     // This is used to check whether a key is being held down
     virtual bool IsKeyDown(irr::EKEY_CODE keyCode) const;
-    irr::core::vector3df comproveMovement(irr::core::vector3df pos, irr::f32 speed, irr::f32 frame, irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
+    irr::core::vector3df comproveMovement(irr::scene::ISceneManager* smgr,irr::core::vector3df pos, irr::f32 speed, irr::f32 frame, irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
     bool moveCam(bool cam, irr::scene::ISceneNode *map);
+    void moveSphere(irr::f32 time, irr::f32 speed, irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* sphere);
     //void printXYZ(scene::ISceneNode *);
     
 

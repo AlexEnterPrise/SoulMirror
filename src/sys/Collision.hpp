@@ -8,8 +8,9 @@ class Collision{
 private: 
 public:
     Collision();
-    bool checkCollision(irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
-
+    bool checkCollision(irr::scene::ISceneManager* smgr,irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
+    void createCollisionMoving(irr::scene::ISceneManager* smgr,irr::scene::ISceneNode* one, irr::scene::ISceneNode* two);
+    bool collisionUpdate();
 };
 
 #endif 

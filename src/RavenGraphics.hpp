@@ -30,10 +30,10 @@ private:
 	irr::scene::ISceneNode* two;
 
 	irr::scene::ISceneNode *cube_second;
-	irr::scene::ISceneNode *sphere;
 
 	irr::scene::ICameraSceneNode *camera;
 	irr::scene::ICameraSceneNode *scamera;
+	irr::scene::ISceneNode *sphere;
 
 	Render render;
 	Collision collider;
@@ -53,7 +53,6 @@ public:
 	void NodeLoadMaterial();
 	void addCamera();
 	void drawMap();
-	void moveSphere(irr::f32, irr::f32);
 
 	irr::IrrlichtDevice* getDevice();
 	irr::scene::IAnimatedMesh* getMesh();
