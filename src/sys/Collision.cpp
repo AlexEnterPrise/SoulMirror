@@ -31,6 +31,26 @@ bool Collision::checkCollision(irr::scene::ISceneManager* smgr,irr::scene::IScen
    //return false;
 }
 
+
+bool Collision::checkCollisionWalls(irr::scene::ISceneManager* smgr,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> p){
+   irr::core::aabbox3d<irr::f32> b1, b2;
+   
+   b1 = one->getBoundingBox ();
+
+   //b2 = two->getBoundingBox ();
+
+   one->getRelativeTransformation().transformBoxEx( b1 );
+   //two->getRelativeTransformation().transformBoxEx( b2 );
+   for(unsigned int i = 0; i < p.size();i++){
+      b2 = p[i]->getBoundingBox();
+      p[i]->getRelativeTransformation().transformBoxEx(b2);
+      if(b1.intersectsWithBox(b2)){
+         return true;
+      }
+   }
+   return false;
+}
+
 void Collision::createCollisionMoving(irr::scene::ISceneManager* smgr,irr::scene::ISceneNode* one, irr::scene::ISceneNode* two){
     irr::scene::ITriangleSelector* selector = 0;
 

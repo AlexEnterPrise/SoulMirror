@@ -3,6 +3,7 @@
 
 #include <irrlicht.h>
 #include <iostream>
+#include <vector>
 #include "sys/Collision.hpp"
 #include "sys/Input.hpp"
 #include "sys/Render.hpp"
@@ -28,6 +29,7 @@ private:
 	irr::scene::ISceneNode *wall_2;
 	irr::scene::ISceneNode* one;
 	irr::scene::ISceneNode* two;
+	std::vector<irr::scene::ISceneNode*> walls;
 
 	irr::scene::ISceneNode *cube_second;
 
@@ -40,6 +42,7 @@ private:
 	Input input;
 
 	bool SwitchCam;
+	bool colisiona;
 
 public:
 	RavenGraphics();

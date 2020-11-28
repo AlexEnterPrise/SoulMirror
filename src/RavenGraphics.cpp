@@ -43,7 +43,9 @@ RavenGraphics::RavenGraphics(){
         wall_2 = smgr->addCubeSceneNode();
         wall_2->setScale(irr::core::vector3df(1.0f,1.0f,3.0f));
         wall_2->setPosition(irr::core::vector3df(30,0,0));
-        
+        walls.push_back(wall);
+        walls.push_back(wall_2);
+        colisiona = false;
         camera = smgr->addCameraSceneNode(0, irr::core::vector3df(0,30,-40), irr::core::vector3df(0,5,0));
         //map = 0;
 
@@ -100,8 +102,7 @@ void RavenGraphics::run(){
         //}else{
         //    std::cout << "NO CCcolisiona" << std::endl;
         //}
-       
-        cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall);
+        cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime,cube_player, walls);
         //cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall_2);
 
         SwitchCam = input.moveCam(SwitchCam, map);
