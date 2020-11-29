@@ -19,11 +19,51 @@ RavenGraphics::RavenGraphics(){
     	smgr = device->getSceneManager();
     	guienv = device->getGUIEnvironment();
         //device->getFileSystem()->addFileArchive("media/map-20kdm2.pk3");
-    	//mesh = smgr->getMesh("media/cofre.stl");
-		//node = smgr->addAnimatedMeshSceneNode( mesh );
-		cube_player = smgr->addCubeSceneNode();
-        //cube_player->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
-        cube_player->setPosition(irr::core::vector3df(15,0,-40));
+    	mesh = smgr->getMesh("media/paredes_001.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_002.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_003.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_004.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_005.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_006.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_007.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_008.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_009.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_010.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_011.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_012.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_013.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+        mesh = smgr->getMesh("media/paredes_014.stl");
+		node = smgr->addAnimatedMeshSceneNode( mesh );
+        walls.push_back(node);
+
+		cube_player = smgr->addCubeSceneNode(3);
+        cube_player->setPosition(irr::core::vector3df(-35,0,-5));
         cube_player->setID(IDFlag_IsPickable);
         cube_enemy = smgr->addCubeSceneNode();
         //cube_enemy->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
@@ -31,20 +71,20 @@ RavenGraphics::RavenGraphics(){
         
         cube_second = smgr->addCubeSceneNode();
         //irr::core::vector3df posCube = irr::core::vector3df(15,0,20);
-        cube_second->setPosition(irr::core::vector3df(15,0,30));
+        cube_second->setPosition(irr::core::vector3df(10,0,-90));
        
         sphere = smgr->addSphereSceneNode();
         //sphere->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         sphere->setPosition(irr::core::vector3df(40,0,40));
 
-		wall = smgr->addCubeSceneNode();
-        wall->setID(IDFlag_IsPickable);
-        wall->setScale(irr::core::vector3df(1.0f,1.0f,3.0f));
-        wall_2 = smgr->addCubeSceneNode();
-        wall_2->setScale(irr::core::vector3df(1.0f,1.0f,3.0f));
-        wall_2->setPosition(irr::core::vector3df(30,0,0));
-        walls.push_back(wall);
-        walls.push_back(wall_2);
+		//wall = smgr->addCubeSceneNode();
+        //wall->setID(IDFlag_IsPickable);
+        //wall->setScale(irr::core::vector3df(1.0f,1.0f,3.0f));
+        //wall_2 = smgr->addCubeSceneNode();
+        //wall_2->setScale(irr::core::vector3df(1.0f,1.0f,3.0f));
+        //wall_2->setPosition(irr::core::vector3df(30,0,0));
+        //walls.push_back(wall);
+        //walls.push_back(wall_2);
         colisiona = false;
         camera = smgr->addCameraSceneNode(0, irr::core::vector3df(0,30,-40), irr::core::vector3df(0,5,0));
         //map = 0;
@@ -196,8 +236,8 @@ void RavenGraphics::addCamera(){
     //ICameraSceneNode *camera = smgr->getActiveCamera();
     irr::core::vector3df camaraPosition;
     camaraPosition.X = cube_player->getPosition().X;
-    camaraPosition.Y = 30;
-    camaraPosition.Z = cube_player->getPosition().Z - 40;
+    camaraPosition.Y = 40;
+    camaraPosition.Z = cube_player->getPosition().Z - 30;
     
     if(!SwitchCam){
         camera->setPosition(camaraPosition);
