@@ -67,11 +67,11 @@ RavenGraphics::RavenGraphics(){
         //cube_player->setID(IDFlag_IsPickable);
         cube_enemy = smgr->addCubeSceneNode();
         //cube_enemy->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
-        cube_enemy->setPosition(irr::core::vector3df(15,0,0));
+        cube_enemy->setPosition(irr::core::vector3df(15,0,15));
         
         cube_second = smgr->addCubeSceneNode();
         //irr::core::vector3df posCube = irr::core::vector3df(15,0,20);
-        cube_second->setPosition(irr::core::vector3df(10,0,-90));
+        cube_second->setPosition(irr::core::vector3df(90,0,10));
        
         sphere = smgr->addSphereSceneNode();
         //sphere->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
@@ -160,14 +160,14 @@ void RavenGraphics::run(){
         // Comprobamos si el cube_player (jugador) colisiona con el cube_enemy (enemigo), si colisiona morirá
         if(collider.checkCollision(smgr,cube_player,cube_enemy)){
         //Colisionan
-            cube_player->setPosition(irr::core::vector3df(15,0,-40));
+            cube_player->setPosition(irr::core::vector3df(4,0,-30));
         }
 
         // Comprobamos si el cube_player (jugador) colisiona con el cube_second (fin del nivel) y así poder pasar de nivel si colisiona
         if(collider.checkCollision(smgr,cube_player,cube_second)){
         //Colisionan
-            cube_player->setPosition(irr::core::vector3df(15,0,-40));
-            cube_second->setPosition(irr::core::vector3df(-20,0,0));
+            cube_player->setPosition(irr::core::vector3df(4,0,-30));
+            cube_second->setPosition(irr::core::vector3df(90,0,10));
             cube_second->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
             cube_second->setMaterialFlag(irr::video::EMF_LIGHTING, false);
         }
@@ -221,6 +221,10 @@ void RavenGraphics::NodeLoadMaterial(){
 
     //if (map)
       //  map->setPosition(core::vector3df(-1300,-144,-1249));
+    for(unsigned int i = 0; i < walls.size();i++){
+        walls[i]->setMaterialTexture(0, driver->getTexture("media/color_pared.jpg"));
+        walls[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+    }
 
     cube_player->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
     cube_player->setMaterialFlag(irr::video::EMF_LIGHTING, false);
@@ -236,7 +240,7 @@ void RavenGraphics::addCamera(){
     //ICameraSceneNode *camera = smgr->getActiveCamera();
     irr::core::vector3df camaraPosition;
     camaraPosition.X = cube_player->getPosition().X;
-    camaraPosition.Y = 50;
+    camaraPosition.Y = 40;
     camaraPosition.Z = cube_player->getPosition().Z - 20;
     
     if(!SwitchCam){
