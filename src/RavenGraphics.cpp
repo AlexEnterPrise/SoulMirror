@@ -1,11 +1,11 @@
 #include "RavenGraphics.hpp"
 
 
-enum{
-   ID_IsNotPickable        = 0,
-   IDFlag_IsPickable       = 1 << 0,
-   IDFlag_IsHighlightable  = 1 << 1
-};
+//enum{
+//   ID_IsNotPickable        = 0,
+//   IDFlag_IsPickable       = 1 << 0,
+//   IDFlag_IsHighlightable  = 1 << 1
+//};
 RavenGraphics::RavenGraphics(){
     //si es false significa que la camara es lejana, si es true pasamos a FP (primera persona)
     SwitchCam = false;
@@ -62,9 +62,9 @@ RavenGraphics::RavenGraphics(){
 		node = smgr->addAnimatedMeshSceneNode( mesh );
         walls.push_back(node);
 
-		cube_player = smgr->addCubeSceneNode(3);
-        cube_player->setPosition(irr::core::vector3df(-35,0,-5));
-        cube_player->setID(IDFlag_IsPickable);
+		cube_player = smgr->addCubeSceneNode(4);
+        cube_player->setPosition(irr::core::vector3df(4,0,-30));
+        //cube_player->setID(IDFlag_IsPickable);
         cube_enemy = smgr->addCubeSceneNode();
         //cube_enemy->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         cube_enemy->setPosition(irr::core::vector3df(15,0,0));
@@ -236,8 +236,8 @@ void RavenGraphics::addCamera(){
     //ICameraSceneNode *camera = smgr->getActiveCamera();
     irr::core::vector3df camaraPosition;
     camaraPosition.X = cube_player->getPosition().X;
-    camaraPosition.Y = 40;
-    camaraPosition.Z = cube_player->getPosition().Z - 30;
+    camaraPosition.Y = 50;
+    camaraPosition.Z = cube_player->getPosition().Z - 20;
     
     if(!SwitchCam){
         camera->setPosition(camaraPosition);
