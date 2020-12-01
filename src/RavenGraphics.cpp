@@ -71,11 +71,14 @@ RavenGraphics::RavenGraphics(){
         cube_enemy->setPosition(irr::core::vector3df(15,0,15));
 
         key_01 = smgr->addSphereSceneNode(1);
+        key_01->setName("key_01");
         key_01->setPosition(irr::core::vector3df(-15,1,15));
+        walls.push_back(key_01);
         key_gotcha = false;
         
         door_01 = smgr->addCubeSceneNode(4);
         door_01->setName("door_01");
+        //door_01->setScale(irr::core::vector3df(1.0f,1.5f,1.0f));
         door_01->setPosition(irr::core::vector3df(45,0,10));
         walls.push_back(door_01);
 
@@ -128,7 +131,6 @@ void RavenGraphics::run(){
     //    cube_player->addAnimator(anim);
     //    anim->drop();
     //}
-    key_01->setName("key_01");
 	while(device->run())
     {
 		const irr::u32 now = device->getTimer()->getTime();
@@ -194,10 +196,16 @@ void RavenGraphics::run(){
     
         //Comprobamos si el cube_player (jugador) colisiona con la key_01 (objeto llave) y así poder cogerlo si colisiona
         if (smgr->getSceneNodeFromName("key_01")!=NULL){
-            if(collider.checkCollision(smgr,cube_player,key_01) && input.IsKeyDown(irr::KEY_KEY_Q)){
+            if(collider.checkCollisionObject(smgr, cube_player, key_01) && input.IsKeyDown(irr::KEY_KEY_Q)){
+                for(unsigned int i = 0; i < walls.size();i++){
+                    if(walls[i] == key_01){
+                        walls.erase(walls.begin() + i);
+                        key_01->remove();
+                        key_gotcha = true;
+                        break;
+                    }
+                }
                 //key_01->setVisible(false);
-                key_01->remove();
-                key_gotcha = true;
                 //key_01->drop();
                 //smgr->addToDeletionQueue(key_01);
                 //scene::ISceneNodeAnimator* anim = smgr->createDeleteAnimator(10);
@@ -217,16 +225,13 @@ void RavenGraphics::run(){
 
         // Comprobamos si el cube_player (jugador) colisiona con el door(puerta del nivel) y así poder pasar
         if(smgr->getSceneNodeFromName("door_01") != NULL){
-            bool coldoor = collider.checkCollisionDoor(smgr,cube_player,door_01,walls);
-            //
-            if(coldoor == true && key_gotcha == true){
-                if(input.IsKeyDown(irr::KEY_KEY_Q)){
-                    for(unsigned int i = 0; i < walls.size();i++){
-                        if(walls[i] == door_01){
-                            walls.erase(walls.begin() + i);
-                            door_01->remove();
-                            key_gotcha = false;
-                        }
+            if(collider.checkCollisionObject(smgr, cube_player, door_01) && key_gotcha == true && input.IsKeyDown(irr::KEY_KEY_Q)){
+                for(unsigned int i = 0; i < walls.size();i++){
+                    if(walls[i] == door_01){
+                        walls.erase(walls.begin() + i);
+                        door_01->remove();
+                        key_gotcha = false;
+                        break;
                     }
                 }
             }
