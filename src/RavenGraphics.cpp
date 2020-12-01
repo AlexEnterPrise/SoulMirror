@@ -18,6 +18,7 @@ RavenGraphics::RavenGraphics(){
     	driver = device->getVideoDriver();
     	smgr = device->getSceneManager();
     	guienv = device->getGUIEnvironment();
+
         //device->getFileSystem()->addFileArchive("media/map-20kdm2.pk3");
     	mesh = smgr->getMesh("media/paredes_001.stl");
 		node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -66,9 +67,15 @@ RavenGraphics::RavenGraphics(){
         cube_player->setPosition(irr::core::vector3df(4,0,-30));
         //cube_player->setID(IDFlag_IsPickable);
 
-        cube_enemy = smgr->addCubeSceneNode(4);
-        //cube_enemy->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
-        cube_enemy->setPosition(irr::core::vector3df(15,0,15));
+        enemy_01 = smgr->addCubeSceneNode(4);
+        //enemy_01->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
+        enemy_01->setPosition(irr::core::vector3df(15,0,15));
+        enemies.push_back(enemy_01);
+
+        enemy_02 = smgr->addCubeSceneNode(4);
+        //enemy_01->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
+        enemy_02->setPosition(irr::core::vector3df(5,0,10));
+        enemies.push_back(enemy_02);
 
         key_01 = smgr->addSphereSceneNode(1);
         key_01->setName("key_01");
@@ -131,6 +138,10 @@ void RavenGraphics::run(){
     //    cube_player->addAnimator(anim);
     //    anim->drop();
     //}
+
+    irr::gui::IGUIButton *btn;
+    gui::IGUIWindow* win;
+
 	while(device->run())
     {
 		const irr::u32 now = device->getTimer()->getTime();
@@ -174,40 +185,37 @@ void RavenGraphics::run(){
         //if(collider.checkCollision(smgr,cube_player,sphere))
         //    input.moveSphere(frameDeltaTime, MOVEMENT_SPEED, cube_player,sphere);
 
-        // Comprobamos si el cube_player (jugador) colisiona con el cube_enemy (enemigo), si colisiona morirá
-        if(collider.checkCollision(smgr,cube_player,cube_enemy)){
-        //Colisionan
-            cube_player->setPosition(irr::core::vector3df(4,0,-30));
-            //gui::IGUIEnvironment* env = device->getGUIEnvironment();
-            //gui::IGUIWindow* message = guienv->addMessageBox(L"GAME OVER", L"OOOH YOU DIED", true, 0x1, 0, -1  );
-            died=true;
-            //std::cout << message->getID() << std::endl;
-            const irr::core::rect<s32> rect(280,220,340,260);
-            gui::IGUIButton* button = device->getGUIEnvironment()->addButton( rect, 0, 1, L"Ok", L"You died");
-            button->setID(3);
-            //event.GUIEvent.EventType = gui::EGET_MESSAGEBOX_OK ;
-                //std::cout << button->getID() << std::endl;
-
-                    //button = 0;
-                
-                //if(button->getID() == 3){
-                //    if(button->isPushButton())
-                //        std::cout <<"entra en el push" << std::endl;
-                //    std::cout << "entra en el if" << std::endl;
-                //    if(button->isPressed()){
-                //        std::cout <<"entra en ispressed" <<std::endl;
-                //        died=false;
-                //        if(!died)
-                //            std::cout <<"Died esta en false" <<std::endl;
-                //    }
-                //}
+        // Comprobamos si el cube_player (jugador) colisiona con algún enemigo en el vector enemies, si colisiona morirá
+        for(unsigned int i = 0; i < enemies.size();i++){
+            if(collider.checkCollision(smgr, cube_player, enemies[i])){
+                //Colisionan
+                cube_player->setPosition(irr::core::vector3df(4,0,-30));
+                win = guienv->addWindow(core::rect<int>(200,90,490,290), true, L"Game Over", 0, 5);
+                win->getCloseButton()->setVisible(false);
+                gui::IGUIFont* font = guienv->getFont("media/fonthaettenschweiler.bmp");
+                if (font)
+                    guienv->getSkin()->setFont(font);
+                guienv->addStaticText(L"You died. \n Press the button to continue.",core::rect<int>(20,40,250,120), true, true, win);
+                died=true;
+                const core::rect<int> rect(110,140,170, 180);
+                btn = guienv->addButton( rect, win, 1, L"Continue", L"Continue");
             }
-        if(input.getSamorio() == false){
-            std::cout<<"samorio en false" <<std::endl;
-            died = false;
-            input.setSamorio(true);
-            //button->remove();
         }
+        if (died==true)
+        {
+            if (btn->isPressed()){
+                died=false;
+                win->remove();
+                //cube_player->setPosition(irr::core::vector3df(4,0,-30));
+            }
+        }
+       
+        //if(input.getSamorio() == false){
+        //    std::cout<<"samorio en false" <<std::endl;
+        //    died = false;
+        //    input.setSamorio(true);
+        //    //button->remove();
+        //}
     
         //Comprobamos si el cube_player (jugador) colisiona con la key_01 (objeto llave) y así poder cogerlo si colisiona
         if (smgr->getSceneNodeFromName("key_01")!=NULL){
@@ -306,11 +314,13 @@ void RavenGraphics::NodeLoadMaterial(){
         walls[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
+    for(unsigned int i = 0; i < enemies.size();i++){
+        enemies[i]->setMaterialTexture(0, driver->getTexture("media/color_enemy.jpg"));
+        enemies[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+    }
+
     cube_player->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
     cube_player->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-
-    cube_enemy->setMaterialTexture(0, driver->getTexture("media/color_enemy.jpg"));
-    cube_enemy->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
     key_01->setMaterialTexture(0, driver->getTexture("media/color_object.jpg"));
     key_01->setMaterialFlag(irr::video::EMF_LIGHTING, false);

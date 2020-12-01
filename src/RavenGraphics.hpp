@@ -24,7 +24,8 @@ private:
 	irr::scene::IAnimatedMeshSceneNode *node;
 	irr::scene::ISceneNode *map;
 	irr::scene::ISceneNode *cube_player;
-	irr::scene::ISceneNode *cube_enemy;
+	irr::scene::ISceneNode *enemy_01;
+	irr::scene::ISceneNode *enemy_02;
 	irr::scene::ISceneNode *key_01;
 	irr::scene::ISceneNode *door_01;
 	//irr::scene::ISceneNode *wall;
@@ -32,6 +33,7 @@ private:
 	irr::scene::ISceneNode* one;
 	irr::scene::ISceneNode* two;
 	std::vector<irr::scene::ISceneNode*> walls;
+	std::vector<irr::scene::ISceneNode*> enemies;
 
 	irr::scene::ISceneNode *cube_second;
 
