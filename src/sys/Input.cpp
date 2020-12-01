@@ -10,8 +10,29 @@ bool Input::OnEvent(const irr::SEvent& event){
         if (event.EventType == irr::EET_KEY_INPUT_EVENT)
             KeyIsDown[event.KeyInput.Key] = event.KeyInput.PressedDown;
 
+        else if(event.EventType == irr::EET_GUI_EVENT){
+            s32 id = event.GUIEvent.Caller->getID();
+            if(event.GUIEvent.EventType == irr::gui::EGET_BUTTON_CLICKED){
+            //if(irr::EET_GUI_EVENT == irr::gui::EGET_BUTTON_CLICKED )
+                std::cout<<"el id del boton es: "<< id <<std::endl;
+                if(id == 3){
+                    //event.GUIEvent.Caller->setID(-1);
+                    event.GUIEvent.Caller->remove();
+                    samorio = false;
+                }
+            }
+        }
+        
         return false;
 
+}
+
+bool Input::getSamorio(){
+    return samorio;
+}
+
+void Input::setSamorio(bool x){
+    samorio = x;
 }
 
 // This is used to check whether a key is being held down

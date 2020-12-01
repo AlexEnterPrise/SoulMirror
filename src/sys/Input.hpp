@@ -23,6 +23,8 @@ public:
     bool moveCam(bool cam, irr::scene::ISceneNode *map);
     void moveSphere(irr::f32 time, irr::f32 speed, irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* sphere);
     //void printXYZ(scene::ISceneNode *);
+    bool getSamorio();
+    void setSamorio(bool);
     
 
 
@@ -30,4 +32,5 @@ private:
     // We use this array to store the current state of each key
     bool KeyIsDown[irr::KEY_KEY_CODES_COUNT];
     Collision col;
+    bool samorio;
 };

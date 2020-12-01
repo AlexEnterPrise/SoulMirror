@@ -178,20 +178,35 @@ void RavenGraphics::run(){
         if(collider.checkCollision(smgr,cube_player,cube_enemy)){
         //Colisionan
             cube_player->setPosition(irr::core::vector3df(4,0,-30));
-	        gui::IGUIEnvironment* env = device->getGUIEnvironment();
-            //gui::IGUIWindow* message = env->addMessageBox(L"GAME OVER", L"OOOH YOU DIED", true, 0x1, 0, -1  );
-            gui::IGUIWindow* message = env->addWindow(core::rect<int>(260,10,512-10,384-10), true, L"GAME OVER", 0, -1);
+            //gui::IGUIEnvironment* env = device->getGUIEnvironment();
+            //gui::IGUIWindow* message = guienv->addMessageBox(L"GAME OVER", L"OOOH YOU DIED", true, 0x1, 0, -1  );
             died=true;
+            //std::cout << message->getID() << std::endl;
+            const irr::core::rect<s32> rect(280,220,340,260);
+            gui::IGUIButton* button = device->getGUIEnvironment()->addButton( rect, 0, 1, L"Ok", L"You died");
+            button->setID(3);
             //event.GUIEvent.EventType = gui::EGET_MESSAGEBOX_OK ;
-            std::cout << message->getCloseButton()->getID()<< std::endl;
-            
-            gui::IGUIButton* button = env->addButton(core::rect<int>(30,295,200,324), message, 2, L"Continue");
-            button->setEnabled(true);
-            std::cout << button->isPressed() << std::endl;
-            if(button->isPressed()){
-                std::cout << "entra en el if" << std::endl;
-                died=false;
+                //std::cout << button->getID() << std::endl;
+
+                    //button = 0;
+                
+                //if(button->getID() == 3){
+                //    if(button->isPushButton())
+                //        std::cout <<"entra en el push" << std::endl;
+                //    std::cout << "entra en el if" << std::endl;
+                //    if(button->isPressed()){
+                //        std::cout <<"entra en ispressed" <<std::endl;
+                //        died=false;
+                //        if(!died)
+                //            std::cout <<"Died esta en false" <<std::endl;
+                //    }
+                //}
             }
+        if(input.getSamorio() == false){
+            std::cout<<"samorio en false" <<std::endl;
+            died = false;
+            input.setSamorio(true);
+            //button->remove();
         }
     
         //Comprobamos si el cube_player (jugador) colisiona con la key_01 (objeto llave) y así poder cogerlo si colisiona
