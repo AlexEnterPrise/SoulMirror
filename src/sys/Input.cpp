@@ -71,16 +71,16 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr,irr
     return cubePosition;
 }
 
-bool Input::moveCam(bool SwitchCam, irr::scene::ISceneNode *map){
-    if(IsKeyDown(irr::KEY_KEY_P)){
-        if(SwitchCam)
-            SwitchCam = false;
-        else
-            SwitchCam = true;
-    }
-
-    return SwitchCam;
-}
+//bool Input::moveCam(bool SwitchCam, irr::scene::ISceneNode *map){
+//    if(IsKeyDown(irr::KEY_KEY_P)){
+//        if(SwitchCam)
+//            SwitchCam = false;
+//        else
+//            SwitchCam = true;
+//    }
+//
+//    return SwitchCam;
+//}
 
 
 void Input::moveSphere(irr::f32 time, irr::f32 speed, irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* sphere){
