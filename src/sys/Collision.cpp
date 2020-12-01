@@ -66,3 +66,38 @@ void Collision::createCollisionMoving(irr::scene::ISceneManager* smgr,irr::scene
       anim->drop();
    }
 }
+
+bool Collision::checkCollisionDoor(irr::scene::ISceneManager* smgr,irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* door,std::vector<irr::scene::ISceneNode*> p){
+       irr::core::vector3df posCube = cube_player->getPosition();
+
+       irr::core::vector3df posCubeM = irr::core::vector3df(posCube.X+0.5,posCube.Y,posCube.Z);
+       cube_player->setPosition(posCubeM);
+       if(checkCollision(smgr,cube_player,door)){
+          cube_player->setPosition(posCube);
+          return true;
+       }
+
+       posCubeM = irr::core::vector3df(posCube.X-0.5,posCube.Y,posCube.Z);
+       cube_player->setPosition(posCubeM);
+       if(checkCollision(smgr,cube_player,door)){
+         cube_player->setPosition(posCube);
+         return true;
+       }
+
+       posCubeM = irr::core::vector3df(posCube.X,posCube.Y,posCube.Z+0.5);
+       cube_player->setPosition(posCubeM);
+       if(checkCollision(smgr,cube_player,door)){
+         cube_player->setPosition(posCube);
+         return true;
+       }
+
+       posCubeM = irr::core::vector3df(posCube.X,posCube.Y,posCube.Z-0.5);
+       cube_player->setPosition(posCubeM);
+       if(checkCollision(smgr,cube_player,door)){
+         cube_player->setPosition(posCube);
+         return true;
+       }
+
+       cube_player->setPosition(posCube);
+      return false;
+    }
