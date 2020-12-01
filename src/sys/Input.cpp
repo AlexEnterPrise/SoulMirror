@@ -20,16 +20,17 @@ bool Input::IsKeyDown(irr::EKEY_CODE keyCode) const {
 }
 
 
-irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr,irr::core::vector3df cubePosition, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> p ){
+irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr,irr::core::vector3df cubePosition, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> p, bool died){
     if(IsKeyDown(irr::KEY_LSHIFT)){
         MOVEMENT_SPEED = 30.f;
     }
     
+    if (!died){
+        irr::core::vector3df posicionActualX = irr::core::vector3df(cubePosition.X+0.5,cubePosition.Y,cubePosition.Z);
+        irr::core::vector3df posicionActualZ = irr::core::vector3df(cubePosition.X,cubePosition.Y,cubePosition.Z+0.5);
+        one->setPosition(posicionActualX);
+        bool colisiona;
 
-    irr::core::vector3df posicionActualX = irr::core::vector3df(cubePosition.X+0.2,cubePosition.Y,cubePosition.Z);
-    irr::core::vector3df posicionActualZ = irr::core::vector3df(cubePosition.X,cubePosition.Y,cubePosition.Z+0.2);
-    one->setPosition(posicionActualX);
-    bool colisiona;
         if(IsKeyDown(irr::KEY_KEY_D)){
             colisiona = col.checkCollisionWalls(smgr,one,p);
             if(colisiona == false){
@@ -37,21 +38,18 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr,irr
             }
         }
 
-    posicionActualX = irr::core::vector3df(cubePosition.X-0.2,cubePosition.Y,cubePosition.Z);
-    one->setPosition(posicionActualX);
+        posicionActualX = irr::core::vector3df(cubePosition.X-0.5,cubePosition.Y,cubePosition.Z);
+        one->setPosition(posicionActualX);
 
-        
         if(IsKeyDown(irr::KEY_KEY_A)){
             colisiona = col.checkCollisionWalls(smgr,one,p);
             if(colisiona == false){
                 cubePosition.X -= MOVEMENT_SPEED * frameDeltaTime;
             }
         }
-    
+        
+        one->setPosition(posicionActualZ);
 
-    one->setPosition(posicionActualZ);
-
-   
         if(IsKeyDown(irr::KEY_KEY_W)){
             colisiona = col.checkCollisionWalls(smgr,one,p);
             if(colisiona == false){
@@ -59,10 +57,8 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr,irr
             }
         }
 
-    
-
-    posicionActualZ = irr::core::vector3df(cubePosition.X,cubePosition.Y,cubePosition.Z-0.2);
-    one->setPosition(posicionActualZ);
+        posicionActualZ = irr::core::vector3df(cubePosition.X,cubePosition.Y,cubePosition.Z-0.5);
+        one->setPosition(posicionActualZ);
 
         if(IsKeyDown(irr::KEY_KEY_S)){
             colisiona = col.checkCollisionWalls(smgr,one,p);
@@ -71,7 +67,7 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr,irr
             }
         }
 
-
+    }
     
     return cubePosition;
 }

@@ -25,8 +25,10 @@ private:
 	irr::scene::ISceneNode *map;
 	irr::scene::ISceneNode *cube_player;
 	irr::scene::ISceneNode *cube_enemy;
-	irr::scene::ISceneNode *wall;
-	irr::scene::ISceneNode *wall_2;
+	irr::scene::ISceneNode *key_01;
+	irr::scene::ISceneNode *door_01;
+	//irr::scene::ISceneNode *wall;
+	//irr::scene::ISceneNode *wall_2;
 	irr::scene::ISceneNode* one;
 	irr::scene::ISceneNode* two;
 	std::vector<irr::scene::ISceneNode*> walls;
@@ -35,7 +37,7 @@ private:
 
 	irr::scene::ICameraSceneNode *camera;
 	irr::scene::ICameraSceneNode *scamera;
-	irr::scene::ISceneNode *sphere;
+	//irr::scene::ISceneNode *sphere;
 
 	Render render;
 	Collision collider;
@@ -43,6 +45,8 @@ private:
 
 	bool SwitchCam;
 	bool colisiona;
+	bool died;
+	bool key_gotcha;
 
 public:
 	RavenGraphics();

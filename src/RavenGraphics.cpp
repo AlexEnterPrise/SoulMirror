@@ -65,17 +65,26 @@ RavenGraphics::RavenGraphics(){
 		cube_player = smgr->addCubeSceneNode(4);
         cube_player->setPosition(irr::core::vector3df(4,0,-30));
         //cube_player->setID(IDFlag_IsPickable);
-        cube_enemy = smgr->addCubeSceneNode();
+
+        cube_enemy = smgr->addCubeSceneNode(4);
         //cube_enemy->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         cube_enemy->setPosition(irr::core::vector3df(15,0,15));
+
+        key_01 = smgr->addSphereSceneNode(1);
+        key_01->setPosition(irr::core::vector3df(-15,1,15));
+        key_gotcha = false;
         
+        door_01 = smgr->addCubeSceneNode(4);
+        door_01->setPosition(irr::core::vector3df(45,0,10));
+        walls.push_back(door_01);
+
         cube_second = smgr->addCubeSceneNode();
         //irr::core::vector3df posCube = irr::core::vector3df(15,0,20);
         cube_second->setPosition(irr::core::vector3df(90,0,10));
        
-        sphere = smgr->addSphereSceneNode();
+        //sphere = smgr->addSphereSceneNode();
         //sphere->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
-        sphere->setPosition(irr::core::vector3df(40,0,40));
+        //sphere->setPosition(irr::core::vector3df(40,0,40));
 
 		//wall = smgr->addCubeSceneNode();
         //wall->setID(IDFlag_IsPickable);
@@ -86,6 +95,7 @@ RavenGraphics::RavenGraphics(){
         //walls.push_back(wall);
         //walls.push_back(wall_2);
         colisiona = false;
+        died = false;
         camera = smgr->addCameraSceneNode(0, irr::core::vector3df(0,30,-40), irr::core::vector3df(0,5,0));
         //map = 0;
 
@@ -99,6 +109,9 @@ void RavenGraphics::run(){
     // In order to do framerate independent movement, we have to know
     // how long it was since the last frame
     irr::u32 then = device->getTimer()->getTime();
+
+    //irr::scene::ISceneNode *key_01 = smgr->addSphereSceneNode(1);
+    //key_01->setPosition(irr::core::vector3df(-15,1,15));
 
     // This is the movement speed in units per second.
     const irr::f32 MOVEMENT_SPEED = 15.f;
@@ -114,6 +127,7 @@ void RavenGraphics::run(){
     //    cube_player->addAnimator(anim);
     //    anim->drop();
     //}
+    key_01->setName("key_01");
 	while(device->run())
     {
 		const irr::u32 now = device->getTimer()->getTime();
@@ -142,7 +156,7 @@ void RavenGraphics::run(){
         //}else{
         //    std::cout << "NO CCcolisiona" << std::endl;
         //}
-        cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime,cube_player, walls);
+        cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime,cube_player, walls, died);
         //cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall_2);
 
         SwitchCam = input.moveCam(SwitchCam, map);
@@ -154,15 +168,43 @@ void RavenGraphics::run(){
         addCamera();
 
         //Comprobamos si el cube_player (jugador) colisiona con la sphere (objeto) y así poder arrastrarlo si colisiona
-        if(collider.checkCollision(smgr,cube_player,sphere))
-            input.moveSphere(frameDeltaTime, MOVEMENT_SPEED, cube_player,sphere);
+        //if(collider.checkCollision(smgr,cube_player,sphere))
+        //    input.moveSphere(frameDeltaTime, MOVEMENT_SPEED, cube_player,sphere);
 
         // Comprobamos si el cube_player (jugador) colisiona con el cube_enemy (enemigo), si colisiona morirá
         if(collider.checkCollision(smgr,cube_player,cube_enemy)){
         //Colisionan
             cube_player->setPosition(irr::core::vector3df(4,0,-30));
+	        gui::IGUIEnvironment* env = device->getGUIEnvironment();
+            //gui::IGUIWindow* message = env->addMessageBox(L"GAME OVER", L"OOOH YOU DIED", true, 0x1, 0, -1  );
+            gui::IGUIWindow* message = env->addWindow(core::rect<int>(260,10,512-10,384-10), true, L"GAME OVER", 0, -1);
+            died=true;
+            //event.GUIEvent.EventType = gui::EGET_MESSAGEBOX_OK ;
+            std::cout << message->getCloseButton()->getID()<< std::endl;
+            
+            gui::IGUIButton* button = env->addButton(core::rect<int>(30,295,200,324), message, 2, L"Continue");
+            button->setEnabled(true);
+            std::cout << button->isPressed() << std::endl;
+            if(button->isPressed()){
+                std::cout << "entra en el if" << std::endl;
+                died=false;
+            }
         }
-
+    
+        //Comprobamos si el cube_player (jugador) colisiona con la key_01 (objeto llave) y así poder cogerlo si colisiona
+        if (smgr->getSceneNodeFromName("key_01")!=NULL){
+            if(collider.checkCollision(smgr,cube_player,key_01)){
+                //key_01->setVisible(false);
+                key_01->remove();
+                key_gotcha = true;
+                //key_01->drop();
+                //smgr->addToDeletionQueue(key_01);
+                //scene::ISceneNodeAnimator* anim = smgr->createDeleteAnimator(10);
+			    //key_01->addAnimator(anim);
+			    //anim->drop();
+            }
+        }
+        
         // Comprobamos si el cube_player (jugador) colisiona con el cube_second (fin del nivel) y así poder pasar de nivel si colisiona
         if(collider.checkCollision(smgr,cube_player,cube_second)){
         //Colisionan
@@ -231,6 +273,12 @@ void RavenGraphics::NodeLoadMaterial(){
 
     cube_enemy->setMaterialTexture(0, driver->getTexture("media/color_enemy.jpg"));
     cube_enemy->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+
+    key_01->setMaterialTexture(0, driver->getTexture("media/color_object.jpg"));
+    key_01->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+
+    door_01->setMaterialTexture(0, driver->getTexture("media/color_door.jpg"));
+    door_01->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
 }
 
