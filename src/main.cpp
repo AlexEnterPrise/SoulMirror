@@ -6,7 +6,7 @@ int main(){
     
     bool dev = rgraphics.getDevice();
     //bool mes = rgraphics.getMesh();
-    rgraphics.addTextGUI();
+    //rgraphics.addTextGUI();
 
     if(!dev){
         return 1;
@@ -17,7 +17,7 @@ int main(){
     if(cube && node){
         rgraphics.NodeLoadMaterial();
     }
-    rgraphics.addCamera();
+    //rgraphics.addCamera();
     rgraphics.run();
     rgraphics.drop();
     return 0;
