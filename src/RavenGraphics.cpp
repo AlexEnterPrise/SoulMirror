@@ -1,4 +1,5 @@
 #include "RavenGraphics.hpp"
+#include <man/entitymanager.hpp>
 
 
 RavenGraphics::RavenGraphics(){
@@ -9,6 +10,10 @@ RavenGraphics::RavenGraphics(){
             false, false, false, &input);
     
     if(device){
+        EntityManager_t t;
+        t.createEntity();
+        
+
     	device->setWindowCaption(L"SoulMirror");
     	driver = device->getVideoDriver();
     	smgr = device->getSceneManager();
