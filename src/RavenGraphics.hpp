@@ -20,47 +20,51 @@ using namespace std;
 #pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
 #endif
 
-class RavenGraphics {
+	struct EntityManager_t;
 
-private:
-	IrrlichtDevice *device;
-	IVideoDriver *driver;
-	ISceneManager *smgr;
-	IGUIEnvironment *guienv;
-	IAnimatedMesh *mesh;
-	IAnimatedMeshSceneNode *node;
-	ISceneNode *map;
-	ISceneNode *cube;
-	ISceneNode *wall;
-	ISceneNode *wall_2;
-	ISceneNode* one;
-	ISceneNode* two;
-	ICameraSceneNode *camera;
+	struct RavenGraphics {
+		explicit RavenGraphics(EntityManager_t& em);
+	private:
 
-	ISceneNode *cube_second;
-	ICameraSceneNode *scamera;
+		EntityManager_t& m_EntMan;
+		IrrlichtDevice *device;
+		IVideoDriver *driver;
+		ISceneManager *smgr;
+		IGUIEnvironment *guienv;
+		IAnimatedMesh *mesh;
+		IAnimatedMeshSceneNode *node;
+		ISceneNode *map;
+		ISceneNode *cube;
+		ISceneNode *wall;
+		ISceneNode *wall_2;
+		ISceneNode* one;
+		ISceneNode* two;
+		ICameraSceneNode *camera;
 
-	Render render;
-	Collision collider;
-	Input input;
-	bool SwitchCam;
+		ISceneNode *cube_second;
+		ICameraSceneNode *scamera;
 
-public:
-	RavenGraphics();
-	void run();
-	void drop();
-	void escenadrawAll();
-	void envirodrawAll();
-	void addTextGUI();
-	void beginScene();
-	void endScene();
-	void NodeLoadMaterial();
-	void addCamera();
-	void drawMap();
-	IrrlichtDevice* getDevice();
-	IAnimatedMesh* getMesh();
-	IAnimatedMeshSceneNode* getNode();
-	ISceneNode* getCube();
-};
+		Render render;
+		Collision collider;
+		Input input;
+		bool SwitchCam;
+
+	public:
+		RavenGraphics();
+		void run();
+		void drop();
+		void escenadrawAll();
+		void envirodrawAll();
+		void addTextGUI();
+		void beginScene();
+		void endScene();
+		void NodeLoadMaterial();
+		void addCamera();
+		void drawMap();
+		IrrlichtDevice* getDevice();
+		IAnimatedMesh* getMesh();
+		IAnimatedMeshSceneNode* getNode();
+		ISceneNode* getCube();
+	};
 
 #endif

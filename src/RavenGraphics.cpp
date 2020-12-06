@@ -2,28 +2,34 @@
 #include <man/entitymanager.hpp>
 
 
-RavenGraphics::RavenGraphics(){
+RavenGraphics::RavenGraphics(EntityManager_t& em) : m_EntMan{em}{
+
     //si es false significa que la camara es lejana, si es true pasamos a FP (primera persona)
     SwitchCam = false;
 
-	device = createDevice( video::EDT_SOFTWARE, dimension2d<u32>(640, 480), 16,
+    device = createDevice( video::EDT_SOFTWARE, dimension2d<u32>(640, 480), 16,
             false, false, false, &input);
     
     if(device){
-        EntityManager_t t;
-        t.createEntity();
-        
 
-    	device->setWindowCaption(L"SoulMirror");
-    	driver = device->getVideoDriver();
-    	smgr = device->getSceneManager();
-    	guienv = device->getGUIEnvironment();
+
+        device->setWindowCaption(L"SoulMirror");
+        driver = device->getVideoDriver();
+        smgr = device->getSceneManager();
+        guienv = device->getGUIEnvironment();
         device->getFileSystem()->addFileArchive("media/map-20kdm2.pk3");
-    	//mesh = smgr->getMesh("media/cofre.stl");
-		//node = smgr->addAnimatedMeshSceneNode( mesh );
-		cube = smgr->addCubeSceneNode();
-        cube->setPosition(vector3df(15,0,-10));
-		wall = smgr->addCubeSceneNode();
+        //mesh = smgr->getMesh("media/cofre.stl");
+        //node = smgr->addAnimatedMeshSceneNode( mesh );
+        cube = smgr->addCubeSceneNode();
+        int32_t x,y,z;
+        x= m_EntMan.getEntities()[0].x;
+        y= m_EntMan.getEntities()[0].y;
+        z= m_EntMan.getEntities()[0].z;
+        
+      
+        cube->setPosition(vector3df(x,y,z));
+    
+        wall = smgr->addCubeSceneNode();
         wall->setScale(vector3df(1.0f,1.0f,3.0f));
         wall_2 = smgr->addCubeSceneNode();
         wall_2->setScale(vector3df(1.0f,1.0f,3.0f));
@@ -34,9 +40,8 @@ RavenGraphics::RavenGraphics(){
         cube_second->setPosition(posCube);
     }
 }
-
 void RavenGraphics::run(){
-	 int lastFPS = -1;
+     int lastFPS = -1;
 
     // In order to do framerate independent movement, we have to know
     // how long it was since the last frame
@@ -44,15 +49,15 @@ void RavenGraphics::run(){
 
     // This is the movemen speed in units per second.
     const f32 MOVEMENT_SPEED = 15.f;
-	while(device->run())
+    while(device->run())
     {
-		const u32 now = device->getTimer()->getTime();
+        const u32 now = device->getTimer()->getTime();
         const f32 frameDeltaTime = (f32)(now - then) / 1000.f; // Time in seconds
         then = now;
 
-		vector3df cubePosition = cube->getPosition();
+        vector3df cubePosition = cube->getPosition();
 
-		//core::vector3df cubePosition = cube->getPosition();
+        //core::vector3df cubePosition = cube->getPosition();
 
        
         cubePosition = input.comproveMovement(cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube, wall);
@@ -61,7 +66,7 @@ void RavenGraphics::run(){
         SwitchCam = input.moveCam(SwitchCam, map);
         cube->setPosition(cubePosition);
         
-		driver->beginScene(true, true, SColor(100,20,101,140));
+        driver->beginScene(true, true, SColor(100,20,101,140));
 
         addCamera();
 
@@ -77,7 +82,7 @@ void RavenGraphics::run(){
         render.draw(smgr, guienv);
 
         driver->endScene();
-		 int fps = driver->getFPS();
+         int fps = driver->getFPS();
 
         if (lastFPS != fps)
         {
@@ -94,29 +99,29 @@ void RavenGraphics::run(){
 
 
 void RavenGraphics::drop(){
-	device->drop();
+    device->drop();
 }
 
 //void RavenGraphics::escenadrawAll(){
-//	smgr->drawAll();
+//  smgr->drawAll();
 //}
 //
 //void RavenGraphics::envirodrawAll(){
-//	guienv->drawAll();
+//  guienv->drawAll();
 //}
 
 void RavenGraphics::addTextGUI(){
-	guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",rect<s32>(10,10,260,22), true);
+    guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",rect<s32>(10,10,260,22), true);
 }
 
 
 void RavenGraphics::endScene(){
-	driver->endScene();
+    driver->endScene();
 }
 
 void RavenGraphics::NodeLoadMaterial(){
-	//node->setMaterialFlag(EMF_LIGHTING, false);
-	//node->setMD2Animation(scene::EMAT_STAND);
+    //node->setMaterialFlag(EMF_LIGHTING, false);
+    //node->setMD2Animation(scene::EMAT_STAND);
     //node->setMaterialTexture( 0, driver->getTexture("media/sydney.bmp"));
     //mesh = smgr->getMesh("20kdm2.bsp");
     //if(mesh)
@@ -131,7 +136,7 @@ void RavenGraphics::NodeLoadMaterial(){
 
 void RavenGraphics::addCamera(){
 
-	//smgr->addCameraSceneNode(0, vector3df(0,30,-40), cube->getPosition());
+    //smgr->addCameraSceneNode(0, vector3df(0,30,-40), cube->getPosition());
     //ICameraSceneNode *camera = smgr->getActiveCamera();
     vector3df camaraPosition;
     camaraPosition.X = cube->getPosition().X;
@@ -156,17 +161,17 @@ void RavenGraphics::addCamera(){
 
 
 IrrlichtDevice* RavenGraphics::getDevice(){
-	return device;
+    return device;
 }
 
 IAnimatedMesh* RavenGraphics::getMesh(){
-	return mesh;
+    return mesh;
 }
 
 IAnimatedMeshSceneNode* RavenGraphics::getNode(){
-	return node;
+    return node;
 }
 
 ISceneNode* RavenGraphics::getCube(){
-	return cube;
+    return cube;
 }
