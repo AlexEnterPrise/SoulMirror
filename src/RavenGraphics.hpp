@@ -35,6 +35,7 @@ private:
 	irr::scene::ISceneNode* two;
 	std::vector<irr::scene::ISceneNode*> walls;
 	std::vector<irr::scene::ISceneNode*> enemies;
+	//std::vector<irr::scene::ISceneNode*> npc;
 
 	irr::scene::ISceneNode *cube_second;
 
@@ -48,8 +49,10 @@ private:
 
 	bool SwitchCam;
 	bool colisiona;
-	bool died;
+	int  hit_points;
+	int  died; 		// 0 --> normal; 1 --> golpeado; 2 --> muerto 
 	bool key_gotcha;
+	bool pocion_gotcha;
 
 public:
 	RavenGraphics();

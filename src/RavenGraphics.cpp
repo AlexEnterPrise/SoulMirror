@@ -73,12 +73,20 @@ RavenGraphics::RavenGraphics(){
         //object->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         object->setPosition(irr::core::vector3df(15,0,15));
         enemies.push_back(object);
+        walls.push_back(object);
 
         object = smgr->addCubeSceneNode(4);
         object->setName("enemy_02");
         //object->setScale(irr::core::vector3df(0.5f,0.5f,0.5f));
         object->setPosition(irr::core::vector3df(5,0,10));
         enemies.push_back(object);
+        walls.push_back(object);
+
+        object = smgr->addSphereSceneNode(1);
+        object->setName("pocion_01");
+        object->setPosition(irr::core::vector3df(-15,1,8));
+        walls.push_back(object);
+        pocion_gotcha = false;
 
         object = smgr->addSphereSceneNode(1);
         object->setName("key_01");
@@ -90,6 +98,11 @@ RavenGraphics::RavenGraphics(){
         object->setName("door_01");
         //object->setScale(irr::core::vector3df(1.0f,1.5f,1.0f));
         object->setPosition(irr::core::vector3df(45,0,10));
+        walls.push_back(object);
+
+        object = smgr->addSphereSceneNode(2);
+        object->setName("npc_01");
+        object->setPosition(irr::core::vector3df(-5,1,15));
         walls.push_back(object);
 
         cube_second = smgr->addCubeSceneNode();
@@ -108,8 +121,11 @@ RavenGraphics::RavenGraphics(){
         //wall_2->setPosition(irr::core::vector3df(30,0,0));
         //walls.push_back(wall);
         //walls.push_back(wall_2);
+        
+
         colisiona = false;
-        died = false;
+        died = 0;
+        hit_points = 3;
         camera = smgr->addCameraSceneNode(0, irr::core::vector3df(0,30,-40), irr::core::vector3df(0,5,0));
         //map = 0;
 
@@ -142,8 +158,15 @@ void RavenGraphics::run(){
     //    anim->drop();
     //}
 
+    gui::IGUIFont* font = guienv->getFont("media/fonthaettenschweiler.bmp");
+    if (font)
+        guienv->getSkin()->setFont(font);
     irr::gui::IGUIButton *btn;
     gui::IGUIWindow* win;
+    bool open = false;
+    //irr::scene::ISceneNodeAnimator *anim;
+    //irr::core::vector3df playerPositionOld;
+    irr::core::vector3df playerPositionNew;
 
 	while(device->run())
     {
@@ -151,7 +174,7 @@ void RavenGraphics::run(){
         const irr::f32 frameDeltaTime = (irr::f32)(now - then) / 1000.f; // Time in seconds
         then = now;
 
-		irr::core::vector3df cubePosition = smgr->getSceneNodeFromName("cube_player")->getPosition();
+		//cubePosition = smgr->getSceneNodeFromName("cube_player")->getPosition();
         //core::line3d<f32> ray;
         //ray.start = camera->getPosition();
         //ray.end = ray.start + (camera->getTarget() - ray.start).normalize() * 1000.0f;
@@ -173,7 +196,8 @@ void RavenGraphics::run(){
         //}else{
         //    std::cout << "NO CCcolisiona" << std::endl;
         //}
-        cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime,smgr->getSceneNodeFromName("cube_player"), walls, died);
+        
+        irr::core::vector3df cubePosition = input.comproveMovement(smgr, MOVEMENT_SPEED, frameDeltaTime,smgr->getSceneNodeFromName("cube_player"), walls, died, enemies, driver);
         //cubePosition = input.comproveMovement(smgr,cubePosition, MOVEMENT_SPEED, frameDeltaTime, cube_player, wall_2);
 
         //SwitchCam = input.moveCam(SwitchCam, map);
@@ -190,36 +214,149 @@ void RavenGraphics::run(){
 
         // Comprobamos si el cube_player (jugador) colisiona con algún enemigo en el vector enemies, si colisiona morirá
         for(unsigned int i = 0; i < enemies.size();i++){
-            if(collider.checkCollision(smgr, smgr->getSceneNodeFromName("cube_player"), enemies[i])){
+            if(collider.checkCollisionObject(smgr, smgr->getSceneNodeFromName("cube_player"), enemies[i])){
                 //Colisionan
-                smgr->getSceneNodeFromName("cube_player")->setPosition(irr::core::vector3df(4,0,-30));
-                win = guienv->addWindow(core::rect<int>(200,90,490,290), true, L"Game Over", 0, 5);
-                win->getCloseButton()->setVisible(false);
-                gui::IGUIFont* font = guienv->getFont("media/fonthaettenschweiler.bmp");
-                if (font)
-                    guienv->getSkin()->setFont(font);
-                guienv->addStaticText(L"You died. \n Press the button to continue.",core::rect<int>(20,40,250,120), true, true, win);
-                died=true;
-                const core::rect<int> rect(110,140,170, 180);
-                btn = guienv->addButton( rect, win, 1, L"Continue", L"Continue");
+                hit_points = hit_points - 1;
+                if(hit_points!=0){
+                    //died = 1; // Estado golpeado
+                    // Guardamos la posición actual (que será la antigua)
+                    //playerPositionOld = cubePosition;
+
+                    // Creamos el array de posiciones para la animación
+                    //irr::core::array<irr::core::vector3df> points;
+
+                    // Creamos una variable de posición y cambiamos su valor para añadirlo al array de la animación (Tenemos que comprobar la dirección)
+                    playerPositionNew = cubePosition;
+
+                    /*if(input.IsKeyDown(irr::KEY_KEY_D)){
+                        for (unsigned int i = 0; i < 6; i++){
+                            playerPositionNew.X = playerPositionNew.X - 1;
+                            points.push_back(playerPositionNew);
+                        }
+                    }
+
+                    else if(input.IsKeyDown(irr::KEY_KEY_A)){
+                        for (unsigned int i = 0; i < 6; i++){
+                            playerPositionNew.X = playerPositionNew.X + 1;
+                            points.push_back(playerPositionNew);
+                        }
+                    }
+
+                    if(input.IsKeyDown(irr::KEY_KEY_W)){
+                        for (unsigned int i = 0; i < 6; i++){
+                            playerPositionNew.Z = playerPositionNew.Z - 1;
+                            points.push_back(playerPositionNew);
+                        }
+                    }
+
+                    else if(input.IsKeyDown(irr::KEY_KEY_S)){
+                        for (unsigned int i = 0; i < 6; i++){
+                            playerPositionNew.Z = playerPositionNew.Z + 1;
+                            points.push_back(playerPositionNew);
+                        }
+                    }*/
+
+                    if(input.IsKeyDown(irr::KEY_KEY_D))
+                        playerPositionNew.X = playerPositionNew.X - 2;
+
+                    else if(input.IsKeyDown(irr::KEY_KEY_A))
+                        playerPositionNew.X = playerPositionNew.X + 2;
+
+                    if(input.IsKeyDown(irr::KEY_KEY_W))
+                        playerPositionNew.Z = playerPositionNew.Z - 2;
+
+                    else if(input.IsKeyDown(irr::KEY_KEY_S))
+                        playerPositionNew.Z = playerPositionNew.Z + 2;
+
+                    // Actualizamos la posición del jugador      
+                    smgr->getSceneNodeFromName("cube_player")->setPosition(playerPositionNew);
+                    
+                    // Creamos la animación y se la añadimos al jugador
+                    //anim = smgr->createFollowSplineAnimator(0, points, 10.f, 0.3f, true, false);
+                    //smgr->getSceneNodeFromName("cube_player")->addAnimator(anim);
+                }
+                else{
+                    smgr->getSceneNodeFromName("cube_player")->setPosition(irr::core::vector3df(4,0,-30));
+                    win = guienv->addWindow(core::rect<int>(200,90,490,290), true, L"Game Over", 0, 5);
+                    win->getCloseButton()->setVisible(false);
+                    guienv->addStaticText(L"You died. \n Press the button to continue.",core::rect<int>(20,40,250,120), true, true, win);
+                    died = 2; // Estado muerto
+                    const core::rect<int> rect(110,140,170, 180);
+                    btn = guienv->addButton( rect, win, 1, L"Continue", L"Continue");
+                }  
             }
         }
-        if (died==true)
-        {
+
+        // Comprobamos la animación hacia todos los lados y si choca antes con alguna pared
+        /*if(died == 1 && collider.checkCollisionWallsAnim(smgr, smgr->getSceneNodeFromName("cube_player"), walls)){
+            smgr->getSceneNodeFromName("cube_player")->removeAnimator(anim);
+            died = 0;
+            anim->drop();
+            std::cout << "Entro colision" << std::endl;
+        }
+        else if(died == 1 && round(cubePosition.X) == round(playerPositionOld.X)-6){
+            smgr->getSceneNodeFromName("cube_player")->removeAnimator(anim);
+            died = 0;
+            anim->drop();
+            std::cout << "Entro" << std::endl;
+        }
+
+        else if(died == 1 && round(cubePosition.X) == round(playerPositionOld.X)+6){
+            smgr->getSceneNodeFromName("cube_player")->removeAnimator(anim);
+            died = 0;
+            anim->drop();
+            std::cout << "Entro" << std::endl;
+        }
+
+        else if(died == 1 && round(cubePosition.Z) == round(playerPositionOld.Z)-6){
+            smgr->getSceneNodeFromName("cube_player")->removeAnimator(anim);
+            died = 0;
+            anim->drop();
+            std::cout << "Entro" << std::endl;
+        }
+
+        else if(died == 1 && round(cubePosition.Z) == round(playerPositionOld.Z)+6){
+            smgr->getSceneNodeFromName("cube_player")->removeAnimator(anim);
+            died = 0;
+            anim->drop();
+            std::cout << "Entro" << std::endl;
+        }*/
+
+        // Comprobamos si está muerto para cerrar la ventana si pulsa el botón
+        if (died == 2){
             if (btn->isPressed()){
-                died=false;
+                died = 0;
+                hit_points = 10;
                 win->remove();
                 //cube_player->setPosition(irr::core::vector3df(4,0,-30));
             }
         }
        
-        //if(input.getSamorio() == false){
-        //    std::cout<<"samorio en false" <<std::endl;
-        //    died = false;
-        //    input.setSamorio(true);
-        //    //button->remove();
-        //}
-    
+       // Comprobamos si el cube_player (jugador) colisiona con algún bot en el vector npc, si colisiona hablará
+       if (smgr->getSceneNodeFromName("npc_01")!=NULL){
+            if(!open && collider.checkCollisionObject(smgr, smgr->getSceneNodeFromName("cube_player"), smgr->getSceneNodeFromName("npc_01")) && input.IsKeyDown(irr::KEY_RETURN)){
+                for(unsigned int i = 0; i < walls.size();i++){
+                    if(walls[i] == smgr->getSceneNodeFromName("npc_01")){
+                        //walls.erase(walls.begin() + i);
+                        win = guienv->addWindow(core::rect<int>(200,90,490,290), true, L"Hello", 0, 5);
+                        win->getCloseButton()->setVisible(false);
+                        guienv->addStaticText(L"Hello my name is Tom, you are at the beginning of the game. \n Hope you have a nice adventure!",core::rect<int>(20,40,250,120), true, true, win);
+                        const core::rect<int> rect(110,140,170, 180);
+                        open=true;
+                        btn = guienv->addButton( rect, win, 1, L"Continue", L"Continue");
+                        //break;
+                    }
+                }
+            }
+        }
+        
+        if(open){
+            if(btn->isPressed()){
+                open = false;  
+                win->remove();
+            }
+        }
+
         //Comprobamos si el cube_player (jugador) colisiona con la key_01 (objeto llave) y así poder cogerlo si colisiona
         if (smgr->getSceneNodeFromName("key_01")!=NULL){
             if(collider.checkCollisionObject(smgr, smgr->getSceneNodeFromName("cube_player"), smgr->getSceneNodeFromName("key_01")) && input.IsKeyDown(irr::KEY_KEY_Q)){
@@ -231,15 +368,55 @@ void RavenGraphics::run(){
                         break;
                     }
                 }
-                //key_01->setVisible(false);
-                //key_01->drop();
-                //smgr->addToDeletionQueue(key_01);
-                //scene::ISceneNodeAnimator* anim = smgr->createDeleteAnimator(10);
-			    //key_01->addAnimator(anim);
-			    //anim->drop();
             }
         }
         
+
+        //Comprobamos si el cube_player (jugador) colisiona con la pocion y así poder cogerla si colisiona
+        if (smgr->getSceneNodeFromName("pocion_01")!=NULL){
+            if(collider.checkCollisionObject(smgr, smgr->getSceneNodeFromName("cube_player"), smgr->getSceneNodeFromName("pocion_01")) && input.IsKeyDown(irr::KEY_KEY_C)){
+                for(unsigned int i = 0; i < walls.size();i++){
+                    if(walls[i] == smgr->getSceneNodeFromName("pocion_01")){
+                        walls.erase(walls.begin() + i);
+                        smgr->getSceneNodeFromName("pocion_01")->remove();
+                        pocion_gotcha = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        //Beber pocion
+        if(pocion_gotcha && input.IsKeyDown(irr::KEY_KEY_B)){
+            if(hit_points<3){
+                std::cout<<hit_points <<std::endl;
+                //sumado = true;
+                hit_points ++;
+                win = guienv->addWindow(core::rect<int>(200,90,490,290), true, L"Congratulations!");
+                win->getCloseButton()->setVisible(false);
+                guienv->addStaticText(L"You have now one more point",core::rect<int>(20,40,250,120), true, true, win);
+                const core::rect<int> rect(110,140,170, 180);
+                btn = guienv->addButton( rect, win,1 , L"Ok", L"Ok"); 
+                open = true;
+                pocion_gotcha = false;
+            }else if(!open){
+                win = guienv->addWindow(core::rect<int>(200,90,490,290), true, L"Advertance!", 0, 2);
+                win->getCloseButton()->setVisible(false);
+                guienv->addStaticText(L"You have the maxium of your hit point",core::rect<int>(20,40,250,120), true, true, win);
+                open = true;
+                const core::rect<int> rect(110,140,170, 180);
+                btn = guienv->addButton( rect, win, 1, L"Continue", L"Continue");
+                std::cout<<"entro en las 3 vidas" <<std::endl;
+            }
+        }
+        if(open){
+                if(btn->isPressed()){
+                    open = false;  
+                    win->remove();
+                }
+            }
+        
+
         // Comprobamos si el cube_player (jugador) colisiona con el cube_second (fin del nivel) y así poder pasar de nivel si colisiona
         if(collider.checkCollision(smgr,smgr->getSceneNodeFromName("cube_player"),cube_second)){
         //Colisionan
@@ -330,6 +507,9 @@ void RavenGraphics::NodeLoadMaterial(){
 
     smgr->getSceneNodeFromName("door_01")->setMaterialTexture(0, driver->getTexture("media/color_door.jpg"));
     smgr->getSceneNodeFromName("door_01")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+
+    smgr->getSceneNodeFromName("npc_01")->setMaterialTexture(0, driver->getTexture("media/color_npc.jpg"));
+    smgr->getSceneNodeFromName("npc_01")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
 }
 
