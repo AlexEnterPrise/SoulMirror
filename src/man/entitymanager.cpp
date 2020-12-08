@@ -8,15 +8,9 @@ EntityManager_t::EntityManager_t(){
 }
 
 
-void EntityManager_t::createEntity(uint32_t ax,uint32_t ay,uint32_t az){
-	//auto& e = m_Entities.emplace_back(type);
-	Entity_t e;
-	e.x=ax;
-	e.y=ay;
-	e.z=az;
+void EntityManager_t::createEntity(int32_t ax,int32_t ay,int32_t az){
+	//auto& e = m_Entities.emplace_back(ax,ay,az);
+	Entity_t e {ax,ay,az};
 	m_Entities.push_back(e);
-	
-	
-
 }
 

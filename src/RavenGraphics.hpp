@@ -6,6 +6,7 @@
 #include "sys/Collision.hpp"
 #include "sys/Input.hpp"
 #include "sys/Render.hpp"
+#include <vector>
 
 
 using namespace irr;
@@ -33,6 +34,7 @@ using namespace std;
 		IGUIEnvironment *guienv;
 		IAnimatedMesh *mesh;
 		IAnimatedMeshSceneNode *node;
+		vector<ISceneNode*> nodes;
 		ISceneNode *map;
 		ISceneNode *cube;
 		ISceneNode *wall;
@@ -44,13 +46,15 @@ using namespace std;
 		ISceneNode *cube_second;
 		ICameraSceneNode *scamera;
 
-		Render render;
+		
 		Collision collider;
 		Input input;
 		bool SwitchCam;
 
 	public:
 		RavenGraphics();
+		void openWindow(u_int32_t w,uint32_t h);
+		void createEntities();
 		void run();
 		void drop();
 		void escenadrawAll();
