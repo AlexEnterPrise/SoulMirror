@@ -19,22 +19,22 @@ bool Input::IsKeyDown(irr::EKEY_CODE keyCode) const {
 }
 
 
-irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> p, bool died, std::vector<irr::scene::ISceneNode*> e, irr::video::IVideoDriver* driver){
-    if(IsKeyDown(irr::KEY_LSHIFT)){
-        MOVEMENT_SPEED = 30.f;
+irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> collideables, bool died, irr::video::IVideoDriver* driver){
+    if(IsKeyDown(irr::KEY_LSHIFT) || IsKeyDown(irr::KEY_RSHIFT)){
+        MOVEMENT_SPEED = 40.f;
     }
 
+    bool colisiona;
     irr::core::vector3df cubePosition = smgr->getSceneNodeFromName("cube_player")->getPosition();
 
     if (died == 0){
         irr::core::vector3df posicionActualX = irr::core::vector3df(cubePosition.X+0.5,cubePosition.Y,cubePosition.Z);
-        irr::core::vector3df posicionActualZ = irr::core::vector3df(cubePosition.X,cubePosition.Y,cubePosition.Z+0.5);
         one->setPosition(posicionActualX);
-        bool colisiona;
+        
 
         if(IsKeyDown(irr::KEY_KEY_D)){
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
             //std::cout<<"ha entrado en d solo" <<std::endl;
                 one->setRotation(core::vector3df(0,90,0));
                 cubePosition.X += MOVEMENT_SPEED * frameDeltaTime;
@@ -45,18 +45,19 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, ir
         one->setPosition(posicionActualX);
 
         if(IsKeyDown(irr::KEY_KEY_A)){
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
                 one->setRotation(core::vector3df(0,-90,0));
                 cubePosition.X -= MOVEMENT_SPEED * frameDeltaTime;
             }
         }
-        
+
+        irr::core::vector3df posicionActualZ = irr::core::vector3df(cubePosition.X,cubePosition.Y,cubePosition.Z+0.5);
         one->setPosition(posicionActualZ);
 
         if(IsKeyDown(irr::KEY_KEY_W)){
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
                 one->setRotation(core::vector3df(0,0,0));
                 cubePosition.Z += MOVEMENT_SPEED * frameDeltaTime;
             }
@@ -66,38 +67,38 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, ir
         one->setPosition(posicionActualZ);
 
         if(IsKeyDown(irr::KEY_KEY_S)){
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
                 one->setRotation(core::vector3df(0,180,0));              
                 cubePosition.Z -= MOVEMENT_SPEED * frameDeltaTime;
             }
         }
 
         /*if(IsKeyDown(irr::KEY_KEY_D) && IsKeyDown(irr::KEY_KEY_W)){ //diagonal derecha arriba
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
             std::cout<<"ha entrado en d y w" <<std::endl;
                 one->setRotation(core::vector3df(0,45,0));              
             }
         }
 
         if(IsKeyDown(irr::KEY_KEY_D) && IsKeyDown(irr::KEY_KEY_S)){ //diagonal derecha abajo
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
                 one->setRotation(core::vector3df(0,135,0));              
             }
         }
 
         if(IsKeyDown(irr::KEY_KEY_A) && IsKeyDown(irr::KEY_KEY_W)){ //diagonal izquierda arriba
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
                 one->setRotation(core::vector3df(0,315,0));              
             }
         }
 
         if(IsKeyDown(irr::KEY_KEY_A) && IsKeyDown(irr::KEY_KEY_S)){ //diagonal izquierda abajo
-            colisiona = col.checkCollisionWalls(smgr,one,p);
-            if(colisiona == false){
+            colisiona = col.checkCollisionCollideables(smgr,one,collideables);
+            if(!colisiona){
                 one->setRotation(core::vector3df(0,225,0));              
             }
         }*/
@@ -132,32 +133,91 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, ir
 //    return SwitchCam;
 //}
 
-void Input::moveSphere(irr::f32 time, irr::f32 speed, irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* sphere){
-    irr::core::vector3df spherePosition;
-    spherePosition.X = sphere->getPosition().X;
-    spherePosition.Y = sphere->getPosition().Y;
-    spherePosition.Z = sphere->getPosition().Z;
+void Input::moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNode* draggable, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables){
+    irr::core::vector3df pos = draggable->getPosition();
+    bool colisiona;
+
+    irr::core::vector3df posicionActualZ = pos;
+    irr::core::vector3df posicionActualX = pos;
+
     if(IsKeyDown(irr::KEY_KEY_W)){
-        if(cube_player->getPosition().Z < sphere->getPosition().Z)
-            spherePosition.Z += speed * time + 0.5;    
+        // Actualizamos la posición para ver si colisiona en una posición adelantada
+        posicionActualZ.Z += 0.5;
+        draggable->setPosition(posicionActualZ);
+        // Comprobamos la colisión
+        colisiona = col.checkCollisionCollideables(smgr,draggable, collideables);
+        if (!colisiona)
+            pos.Z += MOVEMENT_SPEED * frameDeltaTime;   
     }
 
     else if(IsKeyDown(irr::KEY_KEY_S)){
-        if(cube_player->getPosition().Z > sphere->getPosition().Z)
-            spherePosition.Z -= speed * time + 0.5;    
+        // Actualizamos la posición para ver si colisiona en una posición adelantada
+        posicionActualZ.Z -= 0.5;
+        draggable->setPosition(posicionActualZ);
+        // Comprobamos la colisión
+        colisiona = col.checkCollisionCollideables(smgr,draggable, collideables);
+        if (!colisiona)
+            pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
     }
 
-    else if(IsKeyDown(irr::KEY_KEY_A)){
-        if(cube_player->getPosition().X > sphere->getPosition().X)
-            spherePosition.X -= speed * time + 0.5;    
+    if(IsKeyDown(irr::KEY_KEY_A)){
+        // Actualizamos la posición para ver si colisiona en una posición adelantada
+        posicionActualX.X -= 0.5;
+        draggable->setPosition(posicionActualX);
+        // Comprobamos la colisión
+        colisiona = col.checkCollisionCollideables(smgr,draggable, collideables);
+        if (!colisiona)
+            pos.X -= MOVEMENT_SPEED * frameDeltaTime;
     }
 
     else if(IsKeyDown(irr::KEY_KEY_D)){
-        if(cube_player->getPosition().X < sphere->getPosition().X)
-            spherePosition.X += speed * time + 0.5;    
+        // Actualizamos la posición para ver si colisiona en una posición adelantada
+        posicionActualX.X += 0.5;
+        draggable->setPosition(posicionActualX);
+        // Comprobamos la colisión
+        colisiona = col.checkCollisionCollideables(smgr,draggable, collideables);
+        if (!colisiona)
+            pos.X += MOVEMENT_SPEED * frameDeltaTime;
+        //else
+        //    std::cout << "Colisiono" << std::endl;
     }
 
-    sphere->setPosition(spherePosition);
+    draggable->setPosition(pos);
+}
+
+void Input::moveObject (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, int direction){
+    irr::core::vector3df pos = object->getPosition();
+    
+    //std::cout<<"ha entrado en moveObject solo" <<std::endl;
+
+    // Comprobamos la dirección para establecer la posición siguiente del objeto (object)
+    if(direction == 1)
+        pos.X += MOVEMENT_SPEED * frameDeltaTime;
+    else if(direction == 2)
+        pos.X -= MOVEMENT_SPEED * frameDeltaTime;
+    else if(direction == 3)
+        pos.Z += MOVEMENT_SPEED * frameDeltaTime;
+    else if(direction == 4)
+        pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
+    else if(direction == 5){
+        pos.X += MOVEMENT_SPEED * frameDeltaTime;
+        pos.Z += MOVEMENT_SPEED * frameDeltaTime;
+    }
+    else if(direction == 6){
+        pos.X -= MOVEMENT_SPEED * frameDeltaTime;
+        pos.Z += MOVEMENT_SPEED * frameDeltaTime;
+    }
+    else if(direction == 7){
+        pos.X += MOVEMENT_SPEED * frameDeltaTime;
+        pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
+    }
+    else if(direction == 8){
+        pos.X -= MOVEMENT_SPEED * frameDeltaTime;
+        pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
+    }
+
+    // Actualizamos la posición de la felcha (arrow)
+    object->setPosition(pos); 
 }
 //void Input::printXYZ(scene::ISceneNode *cube){
 //    int x,y,z;

@@ -19,9 +19,10 @@ public:
     virtual bool OnEvent(const irr::SEvent& event);
     // This is used to check whether a key is being held down
     virtual bool IsKeyDown(irr::EKEY_CODE keyCode) const;
-    irr::core::vector3df comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 speed, irr::f32 frame, irr::scene::ISceneNode* one,std::vector<irr::scene::ISceneNode*> p, bool died, std::vector<irr::scene::ISceneNode*> e, irr::video::IVideoDriver* driver);
+    irr::core::vector3df comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 speed, irr::f32 frame, irr::scene::ISceneNode* one,std::vector<irr::scene::ISceneNode*> collideables, bool died, irr::video::IVideoDriver* driver);
     //bool moveCam(bool cam, irr::scene::ISceneNode *map);
-    void moveSphere(irr::f32 time, irr::f32 speed, irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* sphere);
+    void moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNode* draggable, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables);
+    void moveObject (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, int direction);
     //void printXYZ(scene::ISceneNode *);
 
 

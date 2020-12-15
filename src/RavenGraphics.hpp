@@ -31,17 +31,21 @@ private:
 	//irr::scene::ISceneNode *door_01;
 	//irr::scene::ISceneNode *wall;
 	//irr::scene::ISceneNode *wall_2;
-	irr::scene::ISceneNode* one;
-	irr::scene::ISceneNode* two;
-	std::vector<irr::scene::ISceneNode*> walls;
+	//irr::scene::ISceneNode* one;
+	//irr::scene::ISceneNode* two;
+	std::vector<irr::scene::ISceneNode*> collideables; // Array para toos los objetos con colisión
 	std::vector<irr::scene::ISceneNode*> enemies;
+	std::vector<irr::scene::ISceneNode*> barriles;
+	std::vector<irr::scene::ISceneNode*> draggables;
+	std::vector<irr::scene::ISceneNode*> buttons;
 	//std::vector<irr::scene::ISceneNode*> npc;
 
 	irr::scene::ISceneNode *cube_second;
 
 	irr::scene::ICameraSceneNode *camera;
 	irr::scene::ICameraSceneNode *scamera;
-	//irr::scene::ISceneNode *sphere;
+	irr::gui::IGUIButton *btn;
+    irr::gui::IGUIWindow* win;
 
 	Render render;
 	Collision collider;
@@ -49,8 +53,20 @@ private:
 
 	bool SwitchCam;
 	bool colisiona;
-	int  hit_points;
-	int  died; 		// 0 --> normal; 1 --> golpeado; 2 --> muerto 
+	int  hit_points;	// Puntos de salud (HP) del jugador
+	// ---------------------------------------------------------
+	int  direction;		// 1 --> derecha; 2 --> izquierda; 3 --> arriba; 4 --> abajo; 
+	int throw_direction;// 5 --> derecha-arriba; 6 --> izquierda-arribs; 7 --> derecha-abajo; 8 --> izquierda-abajo;
+	// --------------------------------------------------------- 
+
+	int  died; 			// 0 --> normal; 1 --> golpeado; 2 --> muerto 
+	// ---------------------------------------------------------
+	int catched;		// 0 --> Sin coger; 1 --> Cogido; 2 --> Lanzado; 3 --> Arrastrable cogido
+	// ---------------------------------------------------------
+	int bomb;			// 0 --> Sin poner; 1 --> Puesta;
+	// ---------------------------------------------------------
+	bool isPressed; 	// Comprobar si se sigue pulsando una tecla
+	int  arrows;		// Número de flechas
 	bool key_gotcha;
 	bool pocion_gotcha;
 
@@ -58,6 +74,7 @@ public:
 	RavenGraphics();
 	void run();
 	void drop();
+	void comproveHP(irr::core::vector3df cubePosition);
 	void escenadrawAll();
 	void envirodrawAll();
 	void addTextGUI();
