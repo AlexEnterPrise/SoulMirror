@@ -182,50 +182,19 @@ bool Collision::checkCollisionObject(irr::scene::ISceneManager* smgr,irr::scene:
       return col;
     }
 
-bool Collision::checkCollisionEspada(irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* enemy, int direction){
-   irr::core::vector3df pos = cube_player->getPosition();
-   irr::core::vector3df posPrueba = pos;
-   // Comprobamos la dirección para establecer la posición de la espada
-
-   if(direction == 1)
-      posPrueba.X += 3;
-   else if(direction == 2)
-      posPrueba.X -= 3;
-   else if(direction == 3)
-      posPrueba.Z += 3;
-   else if(direction == 4)
-      posPrueba.Z -= 3;
-   else if(direction == 5){
-      posPrueba.X += 3;
-      posPrueba.Z += 3;
-   }
-   else if(direction == 6){
-      posPrueba.X -= 3;
-      posPrueba.Z += 3;
-   }
-   else if(direction == 7){
-      posPrueba.X += 3;
-      posPrueba.Z -= 3;
-   }
-   else if(direction == 8){
-      posPrueba.X -= 3;
-      posPrueba.Z -= 3;
-   }
-
-   cube_player->setPosition(posPrueba);
+bool Collision::checkCollisionEspada(irr::scene::ISceneNode* sword, irr::scene::ISceneNode* enemy, int direction){
    bool col = false;
    irr::core::aabbox3d<irr::f32> b1, b2;
    
-   b1 = cube_player->getBoundingBox ();
+   b1 = sword->getBoundingBox ();
    b2 = enemy->getBoundingBox ();
 
-   cube_player->getRelativeTransformation().transformBoxEx( b1 );
+   sword->getRelativeTransformation().transformBoxEx( b1 );
    enemy->getRelativeTransformation().transformBoxEx( b2 );
    
    if(b1.intersectsWithBox(b2)){
       col = true;
    }
-   cube_player->setPosition(pos);
    
    return col;
 }

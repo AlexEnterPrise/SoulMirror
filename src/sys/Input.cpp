@@ -3,14 +3,36 @@
 Input::Input(){
 	for (irr::u32 i=0; i<irr::KEY_KEY_CODES_COUNT; ++i)
             KeyIsDown[i] = false;
+    LeftClickDown = false;
 }
 
 bool Input::OnEvent(const irr::SEvent& event){
+    bool press = false;
 	// Remember whether each key is down or up
     if (event.EventType == irr::EET_KEY_INPUT_EVENT)
         KeyIsDown[event.KeyInput.Key] = event.KeyInput.PressedDown;
 
-    return false;
+    // Remember the mouse state
+    if (event.EventType == irr::EET_MOUSE_INPUT_EVENT){
+        /*switch(event.MouseInput.Event)
+        {
+            case EMIE_LMOUSE_PRESSED_DOWN:
+                press = true;
+                //std::cout<<"Entro en el click" <<std::endl;
+                break;
+
+            case EMIE_LMOUSE_LEFT_UP:
+                press = false;
+                break;
+
+            default:
+				// We won't use the wheel
+				break;
+        }*/
+        LeftClickDown = event.MouseInput.isLeftPressed();
+    }
+
+    return press;
 }
 
 // This is used to check whether a key is being held down
@@ -18,6 +40,10 @@ bool Input::IsKeyDown(irr::EKEY_CODE keyCode) const {
     return KeyIsDown[keyCode];
 }
 
+// This is used to check the left clck (mouse)
+bool Input::IsLeftClickDown() const{
+    return LeftClickDown;
+}
 
 irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> collideables, bool died, irr::video::IVideoDriver* driver){
     if(IsKeyDown(irr::KEY_LSHIFT) || IsKeyDown(irr::KEY_RSHIFT)){

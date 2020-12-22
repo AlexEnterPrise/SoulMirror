@@ -18,7 +18,7 @@ public:
     bool checkCollisionEnemies(irr::scene::ISceneManager* smgr,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> p);
     bool checkCollisionOneEnemy(irr::scene::ISceneNode* one, irr::scene::ISceneNode* enemy);
     bool checkCollisionObject(irr::scene::ISceneManager* smgr,irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* object);
-    bool checkCollisionEspada(irr::scene::ISceneNode* cube_player, irr::scene::ISceneNode* enemy, int direction);
+    bool checkCollisionEspada(irr::scene::ISceneNode* sword, irr::scene::ISceneNode* enemy, int direction);
     bool checkPressedButton(irr::scene::ISceneNode* draggable, std::vector<irr::scene::ISceneNode*> buttons);
     bool checkCollisionBomba(irr::scene::ISceneNode* bomba, irr::scene::ISceneNode* enemy);
     bool checkCollisionPlayerBomb(irr::scene::ISceneNode* bomba, irr::scene::ISceneNode* cube_player);
