@@ -139,7 +139,6 @@ private:
     bool colBomba = false;
     int contFPS = 0;
     bool zoneChange = true;
-	bool updateHearts = true;
 	bool open = false;
 	bool fin = false;
 	Input input;

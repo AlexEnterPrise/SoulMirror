@@ -37,10 +37,16 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
         names.push_back("barril_");
         names.push_back("draggable_");
         names.push_back("button_");
-        names.push_back("zone_");
+        //names.push_back("zone_");
         names.push_back("range_");
         names.push_back("npc_");
         names.push_back("chest_");
+        names.push_back("col_farolillo_");
+        names.push_back("cartel_");
+        names.push_back("col_stone_");
+        names.push_back("col_banco_");
+        names.push_back("col_valla_");
+
         //names.push_back("pared_");
 
         // Comprobamos si hay un archivo de guardado
@@ -54,129 +60,123 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
         else{
             //----------------------------------------------------  PRIMERA ZONA  ----------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            mesh = smgr->getMesh("media/z1_p1.STL");
+
+            mesh = smgr->getMesh("media/obj/z1_p1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_1");
 
-            mesh = smgr->getMesh("media/z1_p2.STL");
+            mesh = smgr->getMesh("media/obj/z1_p2.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_2");
 
-            mesh = smgr->getMesh("media/z1_p3.STL");
+            mesh = smgr->getMesh("media/obj/z1_p3.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_3");
 
-            mesh = smgr->getMesh("media/z1_p4.STL");
+            mesh = smgr->getMesh("media/obj/z1_p4.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_4");
 
-            mesh = smgr->getMesh("media/z1_p5.STL");
+            mesh = smgr->getMesh("media/obj/z1_p5.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_5");
 
-            mesh = smgr->getMesh("media/z1_p6.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_6");
 
-            mesh = smgr->getMesh("media/z1_p7.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p2.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_7");
 
-            mesh = smgr->getMesh("media/suelo1.stl");
+            mesh = smgr->getMesh("media/obj/z1_z2_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_8");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_9");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_10");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_11");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p7.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_12");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p8.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_13");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p9.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_14");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p10.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_15");
+
+            mesh = smgr->getMesh("media/obj/z1_suelo.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("suelo");
 
-            /*mesh = smgr->getMesh("media/p1_z1.obj");
+            mesh = smgr->getMesh("media/obj/cartel.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setName("pared_1");
+            node->setName("cartel_1");
+            node->setPosition(irr::core::vector3df(-18.8,0,28.3));
 
-            mesh = smgr->getMesh("media/p2_z1.obj");
+            mesh = smgr->getMesh("media/obj/z1_stones_1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setName("pared_2");
+            node->setName("col_stone_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/p3_z1.obj");
+            mesh = smgr->getMesh("media/obj/z1_stones_2.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setName("pared_3");
+            node->setName("col_stone_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/p4_z1.obj");
+            mesh = smgr->getMesh("media/obj/farolillo.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setName("pared_4");
+            node->setName("col_farolillo_1");
+            node->setPosition(irr::core::vector3df(36.4,0,25.9));
 
-            mesh = smgr->getMesh("media/p5_z1.obj");
+            mesh = smgr->getMesh("media/obj/z1_trees.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setName("pared_5");
+            node->setName("tree_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/p6_z1.obj");
+            mesh = smgr->getMesh("media/obj/z1_z2_trees.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setName("pared_6");
+            node->setName("tree_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/p7_z1.obj");
+            mesh = smgr->getMesh("media/obj/z1_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            //node->setName("pared_7");
+            node->setName("grass_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/suelo_z1.obj");
+            mesh = smgr->getMesh("media/obj/z1_z2_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("suelo");*/
+            node->setName("grass_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            object = smgr->addCubeSceneNode(4);
-            object->setName("cube_player");
-            object->setPosition(irr::core::vector3df(120,0,-86));
+            mesh = smgr->getMesh("media/obj/z1_z2_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
 
-            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(object->getPosition().X,40,object->getPosition().Z - 20), object->getPosition());
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            object = smgr->addCubeSceneNode(4);
-            object->setName("enemy_1");
-            object->setPosition(irr::core::vector3df(99,0,-67));
-            
-            object = smgr->addCubeSceneNode(35);
-            object->setName("range_1");
-            object->setPosition(irr::core::vector3df(99,0,-67));
-            object->setVisible(false);
-
-            /*object = smgr->addCubeSceneNode(4);
-            object->setName("enemy_2");
-            object->setPosition(irr::core::vector3df(110,0,-42));
-            
-            object = smgr->addCubeSceneNode(40);
-            object->setName("range_2");
-            object->setPosition(irr::core::vector3df(110,0,-42));
-            object->setVisible(false);*/
-
-            object = smgr->addCubeSceneNode(4);
-            object->setName("enemy_shoot_2");
-            object->setPosition(irr::core::vector3df(110,0,-42));
-            
-            object = smgr->addCubeSceneNode(40);
-            object->setName("range_2");
-            object->setPosition(irr::core::vector3df(110,0,-42));
-            object->setVisible(false);
-
-            object = smgr->addCubeSceneNode(4);
-            object->setName("npc_1");
-            object->setPosition(irr::core::vector3df(77,0,-86));
-
-            object = smgr->addCubeSceneNode(3);
-            object->setName("chest_1");
-            object->setScale(irr::core::vector3df(2.f,1.f,1.f));
-            object->setPosition(irr::core::vector3df(71,1,-22));
-
-            object = smgr->addSphereSceneNode(1);
-            object->setName("key_1");
-            object->setPosition(irr::core::vector3df(71,1,-22));
-
-            object = smgr->addCubeSceneNode(1);
-            object->setName("door_1");
-            object->setScale(irr::core::vector3df(20.f,3.f,2.f));
-            object->setPosition(irr::core::vector3df(83,0,-9));
-            
-            object = smgr->addCubeSceneNode(1);
-            object->setName("zone_2");
-            object->setScale(irr::core::vector3df(20.f,3.f,2.f));
-            object->setPosition(irr::core::vector3df(83,0,0));
-
-            object = smgr->addSphereSceneNode(1);
-            object->setName("potion_1");
-            object->setPosition(irr::core::vector3df(129,1,-17));
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
 
             // Texturizamos los objetos
             fillVectors();
@@ -193,142 +193,230 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
             //----------------------------------------------------  SEGUNDA ZONA  ----------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            mesh = smgr->getMesh("media/z2_p1.STL");
+            
+            mesh = smgr->getMesh("media/obj/z2_p1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_1");
 
-            mesh = smgr->getMesh("media/z2_p2.STL");
+            mesh = smgr->getMesh("media/obj/z2_p2.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_2");
 
-            mesh = smgr->getMesh("media/z2_p3.STL");
+            mesh = smgr->getMesh("media/obj/z2_p3.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_3");
 
-            mesh = smgr->getMesh("media/z2_p4.STL");
+            mesh = smgr->getMesh("media/obj/z2_p4.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_4");
 
-            mesh = smgr->getMesh("media/z2_p5.STL");
+            mesh = smgr->getMesh("media/obj/z2_p5.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_5");
 
-            mesh = smgr->getMesh("media/z2_p6.STL");
+            mesh = smgr->getMesh("media/obj/z2_p6.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_6");
 
-            mesh = smgr->getMesh("media/z2_p7.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_7");
 
-            mesh = smgr->getMesh("media/z2_p8.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p2.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_8");
 
-            mesh = smgr->getMesh("media/z2_p9.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p3.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_9");
 
-            mesh = smgr->getMesh("media/z2_p10.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p4.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_10");
 
-            mesh = smgr->getMesh("media/z2_p11.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p5.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_11");
 
-            mesh = smgr->getMesh("media/z2_p12.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p6.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_12");
 
-            mesh = smgr->getMesh("media/z2_p13.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p7.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_13");
 
-            mesh = smgr->getMesh("media/z2_p14.STL");
+            mesh = smgr->getMesh("media/obj/z1_z2_p8.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_14");
 
-            mesh = smgr->getMesh("media/suelo2.stl");
+            mesh = smgr->getMesh("media/obj/z1_z2_p9.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_15");
+
+            mesh = smgr->getMesh("media/obj/z1_z2_p10.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_16");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_17");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_18");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_19");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_20");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_21");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_22");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p7.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_23");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p8.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_24");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p9.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_25");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p10.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_26");
+
+            mesh = smgr->getMesh("media/obj/z2_z7_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_27");
+
+            mesh = smgr->getMesh("media/obj/z2_z7_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_28");
+
+            mesh = smgr->getMesh("media/obj/z2_z9_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_29");
+
+            mesh = smgr->getMesh("media/obj/z2_z9_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_30");
+
+            mesh = smgr->getMesh("media/obj/z2_suelo.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("suelo");
 
-            object = smgr->addCubeSceneNode(4);
-            object->setName("cube_player");
-            object->setPosition(irr::core::vector3df(83,0,8));
-
-            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(object->getPosition().X,40,object->getPosition().Z - 20), object->getPosition());
-
-            object = smgr->addCubeSceneNode(1);
-            object->setName("zone_1");
-            object->setScale(irr::core::vector3df(20.f,3.f,2.f));
-            object->setPosition(irr::core::vector3df(83,0,1));
-
-            object = smgr->addCubeSceneNode(4);
-            object->setName("zone_3");
-            object->setScale(irr::core::vector3df(0.5f,1.f,4.f));
-            object->setPosition(irr::core::vector3df(54,0,79));
-
-            object = smgr->addCubeSceneNode(4);
-            object->setName("zone_4");
-            object->setScale(irr::core::vector3df(0.5f,1.f,4.f));
-            object->setPosition(irr::core::vector3df(146,0,78));
-
-            object = smgr->addCubeSceneNode(4);
-            object->setName("door_1");
-            object->setScale(irr::core::vector3df(0.5f,1.f,4.f));
-            object->setPosition(irr::core::vector3df(140,0,78));
-
-            mesh = smgr->getMesh("media/barril.3DS");
+            mesh = smgr->getMesh("media/obj/z2_stones.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("barril_1");
-            node->setPosition(irr::core::vector3df(136,0,29));
+            node->setName("stone_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/barril.3DS");
+            mesh = smgr->getMesh("media/obj/z2_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("barril_2");
-            node->setPosition(irr::core::vector3df(136,0, 37));
+            node->setName("grass_1");
 
-            mesh = smgr->getMesh("media/barril.3DS");
+            mesh = smgr->getMesh("media/obj/z1_z2_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("barril_3");
-            node->setPosition(irr::core::vector3df(136,0, 47));
+            node->setName("grass_2");
 
-            /*object = smgr->addCubeSceneNode(3);
-            object->setName("barril_1");
-            object->setPosition(irr::core::vector3df(136,0,29));
+            mesh = smgr->getMesh("media/obj/z2_z3_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_3");
 
-            object = smgr->addCubeSceneNode(3);
-            object->setName("barril_2");
-            object->setPosition(irr::core::vector3df(136,0, 37));
+            mesh = smgr->getMesh("media/obj/z2_z7_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_4");
 
-            object = smgr->addCubeSceneNode(3);
-            object->setName("barril_3");
-            object->setPosition(irr::core::vector3df(136,0, 47));*/
-            
-            object = smgr->addCubeSceneNode(4);
-            object->setName("enemy_1");
-            object->setPosition(irr::core::vector3df(89,0,30));
+            mesh = smgr->getMesh("media/obj/z2_z9_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_5");
+
+            mesh = smgr->getMesh("media/obj/z2_bancos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("banco_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z2_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z2_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z1_z2_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z2_z3_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_3");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z2_z7_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_4");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z2_z9_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_5");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z1_z2_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z2_z3_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_3");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z2_z7_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_7");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z2_z9_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_9");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(-0.6,0,123.6));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("enemy_1");
+            node->setPosition(irr::core::vector3df(-4.1,0,244.7));
             
             object = smgr->addCubeSceneNode(4);
             object->setName("range_1");
-            object->setScale(irr::core::vector3df(12.f,1.f,4.f));
-            object->setPosition(irr::core::vector3df(89,0,30));
+            object->setScale(irr::core::vector3df(10.f,3.f,12.f));
+            object->setPosition(irr::core::vector3df(-4.1,0,244.7));
             object->setVisible(false);
-
-            object = smgr->addCubeSceneNode(4);
-            object->setName("enemy_2");
-            object->setPosition(irr::core::vector3df(110,0,66));
-            
-            object = smgr->addCubeSceneNode(42);
-            object->setName("range_2");
-            object->setPosition(irr::core::vector3df(110,0,66));
-            object->setVisible(false);
-
-            object = smgr->addCubeSceneNode(4);
-            object->setName("npc_2");
-            object->setPosition(irr::core::vector3df(126,0,103));
-
             
             // Texturizamos los objetos
             fillVectors();
@@ -345,75 +433,199 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             
             //----------------------------------------------------  TERCERA ZONA  ----------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            mesh = smgr->getMesh("media/z3_p1.STL");
+            
+            mesh = smgr->getMesh("media/obj/z3_p1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_1");
 
-            mesh = smgr->getMesh("media/z3_p2.STL");
+            mesh = smgr->getMesh("media/obj/z3_p2.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_2");
 
-            mesh = smgr->getMesh("media/z3_p3.STL");
+            mesh = smgr->getMesh("media/obj/z3_p3.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_3");
 
-            mesh = smgr->getMesh("media/z3_p4.STL");
+            mesh = smgr->getMesh("media/obj/z3_p4.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_4");
 
-            mesh = smgr->getMesh("media/z3_p5.STL");
+            mesh = smgr->getMesh("media/obj/z3_p5.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_5");
 
-            mesh = smgr->getMesh("media/z3_p6.STL");
+            mesh = smgr->getMesh("media/obj/z3_p6.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_6");
 
-            mesh = smgr->getMesh("media/z3_p7.STL");
+            mesh = smgr->getMesh("media/obj/z3_p7.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_7");
 
-            mesh = smgr->getMesh("media/suelo3.stl");
+            mesh = smgr->getMesh("media/obj/z2_z3_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_8");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_9");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_10");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_11");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_12");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_13");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p7.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_14");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p8.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_15");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p9.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_16");
+
+            mesh = smgr->getMesh("media/obj/z2_z3_p10.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_17");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_18");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_19");
+
+            mesh = smgr->getMesh("media/obj/z3_suelo.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("suelo");
 
-            object = smgr->addCubeSceneNode(4);
-            object->setName("cube_player");
-            object->setPosition(irr::core::vector3df(45,0,78));
+            mesh = smgr->getMesh("media/obj/z3_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
 
-            object = smgr->addCubeSceneNode(4);
-            object->setName("enemy_1");
-            object->setPosition(irr::core::vector3df(10,0,77));
+            mesh = smgr->getMesh("media/obj/z2_z3_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z3_z4_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_3");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z3_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z2_z3_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z3_z4_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_3");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z3_z4_stones.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("stone_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z3_stones_1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_stone_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z3_stones_2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_stone_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z3_z4_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/farolillo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_farolillo_1");
+            node->setPosition(irr::core::vector3df(-207.0,0,264.5));
+            node->setRotation(irr::core::vector3df(0,-45,0));
+
+            mesh = smgr->getMesh("media/obj/farolillo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_farolillo_2");
+            node->setPosition(irr::core::vector3df(-188.1,0,189.7));
+            node->setRotation(irr::core::vector3df(0,90,0));
+
+            mesh = smgr->getMesh("media/obj/farolillo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_farolillo_3");
+            node->setPosition(irr::core::vector3df(-310.4,0,189.7));
+            node->setRotation(irr::core::vector3df(0,-180,0));
+
+            mesh = smgr->getMesh("media/obj/pocion.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("potion_1");
+            node->setPosition(irr::core::vector3df(-307.4,0,245.7));
+
+            mesh = smgr->getMesh("media/obj/cofre.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("chest_1");
+            node->setPosition(irr::core::vector3df(-193.6,0,263.4));
+
+            mesh = smgr->getMesh("media/obj/pocion.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("potion_2");
+            node->setPosition(irr::core::vector3df(-193.6,0,263.4));
+
+            mesh = smgr->getMesh("media/obj/z2_z3_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z3_z4_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_4");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(-112.3,0,239));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("enemy_1");
+            node->setPosition(irr::core::vector3df(-261,0,209.3));
             
-            object = smgr->addCubeSceneNode(30);
+            object = smgr->addCubeSceneNode(4);
             object->setName("range_1");
-            object->setPosition(irr::core::vector3df(10,0,77));
+            object->setScale(irr::core::vector3df(10.f,3.f,12.f));
+            object->setPosition(irr::core::vector3df(-261,0,209.3));
             object->setVisible(false);
-
-            object = smgr->addCubeSceneNode(3);
-            object->setName("draggable_1");
-            object->setPosition(irr::core::vector3df(-20,0,64));
-
-            object = smgr->addCubeSceneNode(2);
-            object->setName("button_1");
-            object->setScale(irr::core::vector3df(1.0f,0.5f,1.0f));
-            object->setPosition(irr::core::vector3df(-20,0,92));
-            
-            object = smgr->addCubeSceneNode(4);
-            object->setName("gate_1");
-            object->setScale(irr::core::vector3df(1.f,1.f,12.f));
-            object->setPosition(irr::core::vector3df(-31,0,77));
-            
-            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(object->getPosition().X,40,object->getPosition().Z - 20), object->getPosition());
-
-            object = smgr->addSphereSceneNode(1);
-            object->setName("key_1");
-            object->setPosition(irr::core::vector3df(-47,1,75));
-            
-            object = smgr->addCubeSceneNode(1);
-            object->setName("zone_2");
-            object->setScale(irr::core::vector3df(2.f,3.f,20.f));
-            object->setPosition(irr::core::vector3df(52,0,78));
 
             // Texturizamos los objetos
             fillVectors();
@@ -430,73 +642,216 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
             //----------------------------------------------------  CUARTA ZONA  -----------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            mesh = smgr->getMesh("media/z4_p1.STL");
+            mesh = smgr->getMesh("media/obj/z4_p1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_1");
 
-            mesh = smgr->getMesh("media/z4_p2.STL");
+            mesh = smgr->getMesh("media/obj/z4_p2.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_2");
 
-            mesh = smgr->getMesh("media/z4_p3.STL");
+            mesh = smgr->getMesh("media/obj/z4_p3.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_3");
 
-            mesh = smgr->getMesh("media/z4_p4.STL");
+            mesh = smgr->getMesh("media/obj/z4_p4.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_4");
 
-            mesh = smgr->getMesh("media/z4_p5.STL");
+            mesh = smgr->getMesh("media/obj/z4_p5.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_5");
 
-            mesh = smgr->getMesh("media/z4_p6.STL");
+            mesh = smgr->getMesh("media/obj/z4_p6.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_6");
 
-            mesh = smgr->getMesh("media/z4_p7.STL");
+            mesh = smgr->getMesh("media/obj/z4_p7.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_7");
 
-            mesh = smgr->getMesh("media/z4_p8.STL");
+            mesh = smgr->getMesh("media/obj/z4_p8.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_8");
 
-            mesh = smgr->getMesh("media/z4_p9.STL");
+            mesh = smgr->getMesh("media/obj/z4_p9.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_9");
 
-            mesh = smgr->getMesh("media/z4_p10.STL");
+            mesh = smgr->getMesh("media/obj/z4_p10.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_10");
 
-            mesh = smgr->getMesh("media/z4_p11fin.STL");
+            mesh = smgr->getMesh("media/obj/z4_p11.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("final");
+            node->setName("pared_11");
 
-            mesh = smgr->getMesh("media/suelo4.stl");
+            mesh = smgr->getMesh("media/obj/z4_p12.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_12");
+
+            mesh = smgr->getMesh("media/obj/z4_suelo.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("suelo");
 
-            object = smgr->addCubeSceneNode(4);
-            object->setName("cube_player");
-            object->setPosition(irr::core::vector3df(154,0,78));
+            mesh = smgr->getMesh("media/obj/z4_z5_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_13");
 
-            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(object->getPosition().X,40,object->getPosition().Z - 20), object->getPosition());
+            mesh = smgr->getMesh("media/obj/z4_z5_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_14");
 
-            object = smgr->addCubeSceneNode(1);
-            object->setName("zone_2");
-            object->setScale(irr::core::vector3df(2.f,3.f,20.f));
-            object->setPosition(irr::core::vector3df(148,0,78));
+            mesh = smgr->getMesh("media/obj/z4_z6_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_15");
 
-            object = smgr->addCubeSceneNode(4);
-            object->setName("enemy_1");
-            object->setPosition(irr::core::vector3df(198,0,76));
+            mesh = smgr->getMesh("media/obj/z4_z6_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_16");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_17");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_18");
+
+            mesh = smgr->getMesh("media/obj/z4_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_3");
+
+            mesh = smgr->getMesh("media/obj/z4_z6_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_4");
+
+            mesh = smgr->getMesh("media/obj/z4_bancos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("banco_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z4_gate1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("gate_1");
+
+            mesh = smgr->getMesh("media/obj/z4_stones.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("stone_1");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_stones.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("stone_2");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_stones.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("stone_3");
+
+            mesh = smgr->getMesh("media/obj/z4_vallas_1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_1");
+
+            mesh = smgr->getMesh("media/obj/z4_vallas_2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_2");
+
+            mesh = smgr->getMesh("media/obj/z4_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z4_z5_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+
+            mesh = smgr->getMesh("media/obj/z4_z6_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_3");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_4");
+
+            mesh = smgr->getMesh("media/obj/z4_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z4_z5_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_2");
+
+            mesh = smgr->getMesh("media/obj/z4_z6_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_3");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_4");
+
+            mesh = smgr->getMesh("media/obj/z3_z4_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_3");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z4_z5_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_5");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z4_z6_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_6");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(-375.8,0,211.9));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
+
+            mesh = smgr->getMesh("media/obj/caja.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("draggable_1");
+            node->setPosition(irr::core::vector3df(-453.1,0,262.6));
+
+            mesh = smgr->getMesh("media/obj/button.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("button_1");
+            node->setPosition(irr::core::vector3df(-485.9,0,161.9));
+
+            mesh = smgr->getMesh("media/obj/cofre.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("chest_1");
+            node->setPosition(irr::core::vector3df(-473.5,0,102.8));
+            node->setRotation(irr::core::vector3df(0,-90,0));
+
+            mesh = smgr->getMesh("media/obj/llave.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("key_1");
+            node->setPosition(irr::core::vector3df(-473.5,0,105.0));
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("enemy_1");
+            node->setPosition(irr::core::vector3df(-467.1,0,209.3));
             
-            object = smgr->addCubeSceneNode(40);
+            object = smgr->addCubeSceneNode(4);
             object->setName("range_1");
-            object->setScale(irr::core::vector3df(0.5f,1.f,6.f));
-            object->setPosition(irr::core::vector3df(198,0,76));
+            object->setScale(irr::core::vector3df(10.f,3.f,12.f));
+            object->setPosition(irr::core::vector3df(-467.1,0,209.3));
             object->setVisible(false);
 
             // Texturizamos los objetos
@@ -509,6 +864,1041 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             //------------------------------------------------------------------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
             
+            // Borramos la escena
+            smgr->clear();
+
+            //----------------------------------------------------  QUINTA ZONA  -----------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            mesh = smgr->getMesh("media/obj/z5_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z5_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z5_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_5");
+
+            mesh = smgr->getMesh("media/obj/z5_p_inv.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_6");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z5_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");
+
+            mesh = smgr->getMesh("media/obj/z5_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/z5_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_stones.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("stone_1");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+
+            mesh = smgr->getMesh("media/obj/z5_vallas_1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_1");
+
+            mesh = smgr->getMesh("media/obj/z5_vallas_2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_2");
+
+            mesh = smgr->getMesh("media/obj/z5_bola1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("bola_1");
+
+            mesh = smgr->getMesh("media/obj/z5_bola2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("bola_2");
+
+            mesh = smgr->getMesh("media/obj/z5_bola3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("bola_3");
+
+            mesh = smgr->getMesh("media/obj/z4_z5_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_4");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(-568.8,0,210.6));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
+
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 5
+            smgr->saveScene("zone_5.irr");
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            
+            // Borramos la escena
+            smgr->clear();
+
+            //----------------------------------------------------  SEXTA ZONA  -----------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+
+            mesh = smgr->getMesh("media/obj/z6_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z6_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+
+            mesh = smgr->getMesh("media/obj/z6_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");
+
+            mesh = smgr->getMesh("media/obj/z6_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+
+            mesh = smgr->getMesh("media/obj/z6_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z6_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_1");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_2");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_3");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_4");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_5");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_6");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_7.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_7");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_8.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_8");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_9.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_9");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_10.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_10");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_11.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_11");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_12.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_12");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_13.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_13");
+
+            mesh = smgr->getMesh("media/obj/z6_vallas_14.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_14");
+
+            mesh = smgr->getMesh("media/obj/casa.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("casa_1");
+            node->setPosition(irr::core::vector3df(-469.6,0,467.6));
+            
+            mesh = smgr->getMesh("media/obj/z4_z6_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_4");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z4_z6_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z4_z6_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+
+            mesh = smgr->getMesh("media/obj/z4_z6_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/z4_z6_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z4_z6_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(-470.7,0,328));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
+
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 6
+            smgr->saveScene("zone_6.irr");
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+
+            // Borramos la escena
+            smgr->clear();
+
+            //----------------------------------------------------  SEPTIMA ZONA  -----------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            mesh = smgr->getMesh("media/obj/z7_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z7_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+
+            mesh = smgr->getMesh("media/obj/z7_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z7_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/z7_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_5");
+
+            mesh = smgr->getMesh("media/obj/z7_p6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_6");
+
+            mesh = smgr->getMesh("media/obj/z7_p7.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_7");
+
+            mesh = smgr->getMesh("media/obj/z7_p8.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_8");
+
+            mesh = smgr->getMesh("media/obj/z7_p9.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_9");
+
+            mesh = smgr->getMesh("media/obj/z2_z7_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_10");
+
+            mesh = smgr->getMesh("media/obj/z2_z7_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_11");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_12");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_13");
+
+            mesh = smgr->getMesh("media/obj/z2_z7_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z7_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_3");
+
+            mesh = smgr->getMesh("media/obj/z2_z7_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+
+            mesh = smgr->getMesh("media/obj/z7_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_2");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_3");
+
+            mesh = smgr->getMesh("media/obj/z2_z7_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z7_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_3");
+
+            mesh = smgr->getMesh("media/obj/z7_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");
+
+            mesh = smgr->getMesh("media/obj/z7_stones.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("stone_1");
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(-0.2,0,345));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
+            
+            mesh = smgr->getMesh("media/obj/z2_z7_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_2");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z7_z8_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_8");
+            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setVisible(false);
+
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 7
+            smgr->saveScene("zone_7.irr");
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+
+            // Borramos la escena
+            smgr->clear();
+
+            //----------------------------------------------------  OCTAVA ZONA  -----------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            mesh = smgr->getMesh("media/obj/z8_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z8_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+
+            mesh = smgr->getMesh("media/obj/z8_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z8_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/z8_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_5");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_6");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_7"); 
+
+            mesh = smgr->getMesh("media/obj/z8_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");
+
+            mesh = smgr->getMesh("media/obj/z8_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/z8_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+
+            mesh = smgr->getMesh("media/obj/z8_vallas_1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("vallas_1");
+
+            mesh = smgr->getMesh("media/obj/z8_vallas_2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("vallas_2");
+
+            mesh = smgr->getMesh("media/obj/z7_z8_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_7");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/casa.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("casa_1");
+            node->setPosition(irr::core::vector3df(-48.9,0,568.8));
+
+            mesh = smgr->getMesh("media/obj/casa.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("casa_2");
+            node->setPosition(irr::core::vector3df(0.8,0,541.1));
+
+            mesh = smgr->getMesh("media/obj/casa.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("casa_3");
+            node->setPosition(irr::core::vector3df(54.5,0,563.1));
+
+            mesh = smgr->getMesh("media/obj/casa.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("casa_4");
+            node->setPosition(irr::core::vector3df(54.5,0,615.5));
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(-0.2,0,477.1));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition()); 
+            
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 8
+            smgr->saveScene("zone_8.irr");
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            // Borramos la escena
+            smgr->clear();
+
+            //----------------------------------------------------  NOVENA ZONA  -----------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            mesh = smgr->getMesh("media/obj/z9_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z9_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+
+            mesh = smgr->getMesh("media/obj/z9_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z9_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/z2_z9_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_5");
+
+            mesh = smgr->getMesh("media/obj/z2_z9_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_6");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_7");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_8");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_9");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_10");
+
+            mesh = smgr->getMesh("media/obj/z9_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_11");
+
+            mesh = smgr->getMesh("media/obj/z9_p6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_12");
+
+            mesh = smgr->getMesh("media/obj/z9_p7.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_13");
+
+            mesh = smgr->getMesh("media/obj/z9_p8.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_14");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_15");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_16");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_17");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_18");
+
+            mesh = smgr->getMesh("media/obj/z9_p9.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_19");
+
+            mesh = smgr->getMesh("media/obj/z9_p10.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_20");
+
+            mesh = smgr->getMesh("media/obj/z2_z9_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_2");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z9_z10_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_10");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z10_z11_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_11");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z9_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");  
+
+            mesh = smgr->getMesh("media/obj/z9_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z2_z9_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");   
+
+            mesh = smgr->getMesh("media/obj/z9_z10_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_3");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_4");
+            
+            mesh = smgr->getMesh("media/obj/z2_z9_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+
+            mesh = smgr->getMesh("media/obj/z9_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_2");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_3");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_4");
+
+            mesh = smgr->getMesh("media/obj/z2_z9_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z9_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_3");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_4");
+
+            mesh = smgr->getMesh("media/obj/z9_stones.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("stone_1");
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(93.4,0,239));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition());
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_1");
+            node->setPosition(irr::core::vector3df(130.2,0,278.5));
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_2");
+            node->setPosition(irr::core::vector3df(130.2,0,268.9));
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_3");
+            node->setPosition(irr::core::vector3df(130.2,0,211.2));
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_4");
+            node->setPosition(irr::core::vector3df(130.2,0,201.6));
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_5");
+            node->setPosition(irr::core::vector3df(258.3,0,194.0));
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_6");
+            node->setPosition(irr::core::vector3df(258.3,0,184.5));
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("enemy_1");
+            node->setPosition(irr::core::vector3df(198.2,0,193.6));
+            
+            object = smgr->addCubeSceneNode(4);
+            object->setName("range_1");
+            object->setScale(irr::core::vector3df(10.f,3.f,12.f));
+            object->setPosition(irr::core::vector3df(198.2,0,193.6));
+            object->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("enemy_2");
+            node->setPosition(irr::core::vector3df(198.2,0,281.9));
+            
+            object = smgr->addCubeSceneNode(4);
+            object->setName("range_2");
+            object->setScale(irr::core::vector3df(10.f,3.f,12.f));
+            object->setPosition(irr::core::vector3df(198.2,0,281.9));
+            object->setVisible(false);
+
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 8
+            smgr->saveScene("zone_9.irr");   
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            // Borramos la escena
+            smgr->clear();
+
+            //----------------------------------------------------  DECIMA ZONA  -----------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            mesh = smgr->getMesh("media/obj/z10_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z10_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+
+            mesh = smgr->getMesh("media/obj/z10_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z10_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/z10_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_5");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_6");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_7");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_9");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z10_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");
+
+            mesh = smgr->getMesh("media/obj/z10_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z10_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+
+            mesh = smgr->getMesh("media/obj/z10_vallas1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_1");
+
+            mesh = smgr->getMesh("media/obj/z10_vallas2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("col_valla_2");
+
+            mesh = smgr->getMesh("media/obj/z9_z10_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_1");
+
+            mesh = smgr->getMesh("media/obj/z10_farolillos.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("farolillo_2");
+
+            mesh = smgr->getMesh("media/obj/pocion.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("potion_1");
+            node->setPosition(irr::core::vector3df(157.4,0,520.5));
+
+            mesh = smgr->getMesh("media/obj/cofre.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("chest_1");
+            node->setPosition(irr::core::vector3df(195.6,0,553));
+            
+            mesh = smgr->getMesh("media/obj/llave.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("key_1");
+            node->setPosition(irr::core::vector3df(195.6,0,553));
+            node->setRotation(irr::core::vector3df(0,90,0));
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(195.6,0,401.3));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition()); 
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("enemy_1");
+            node->setPosition(irr::core::vector3df(198.2,0,509.9));
+            
+            object = smgr->addCubeSceneNode(4);
+            object->setName("range_1");
+            object->setScale(irr::core::vector3df(10.f,3.f,12.f));
+            object->setPosition(irr::core::vector3df(198.2,0,509.9));
+            object->setVisible(false);
+
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 8
+            smgr->saveScene("zone_10.irr");   
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            // Borramos la escena
+            smgr->clear();
+
+            //-------------------------------------------------------ZONA ONCE----------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            mesh = smgr->getMesh("media/obj/z11_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z11_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+
+            mesh = smgr->getMesh("media/obj/z11_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z11_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/z11_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_5");
+
+            mesh = smgr->getMesh("media/obj/z11_p6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_6");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_7");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_8");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_9");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_10");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_11");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_12");
+
+            mesh = smgr->getMesh("media/obj/z11_door_1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("door_1");
+
+            mesh = smgr->getMesh("media/obj/z11_door_2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("door_2");
+
+            mesh = smgr->getMesh("media/obj/z11_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_12");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z10_z11_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_9");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z11_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+
+            mesh = smgr->getMesh("media/obj/z10_z11_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_2");
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_1");
+            node->setPosition(irr::core::vector3df(337.3,0,431.8));
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_2");
+            node->setPosition(irr::core::vector3df(401.8,0,431.8));
+
+            mesh = smgr->getMesh("media/obj/cartel.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cartel_1");
+            node->setPosition(irr::core::vector3df(359.4,0,392.6));
+
+            mesh = smgr->getMesh("media/obj/cartel.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cartel_2");
+            node->setPosition(irr::core::vector3df(370.6,0,392.6));
+
+            mesh = smgr->getMesh("media/obj/cartel.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cartel_3");
+            node->setPosition(irr::core::vector3df(381.9,0,392.6));
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(370.4,0,266.3));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition()); 
+
+
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 8
+            smgr->saveScene("zone_11.irr");   
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            // Borramos la escena
+            smgr->clear();
+
+            //-----------------------------------------------------------ZONA DOCE----------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            mesh = smgr->getMesh("media/obj/z12_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_1");
+
+            mesh = smgr->getMesh("media/obj/z12_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_2");
+
+            mesh = smgr->getMesh("media/obj/z12_p3.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_3");
+
+            mesh = smgr->getMesh("media/obj/z12_p4.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_4");
+
+            mesh = smgr->getMesh("media/obj/z12_p5.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_5");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_p1.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_6");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_p2.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_7");
+
+            mesh = smgr->getMesh("media/obj/z11_p6.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("pared_8");
+
+            mesh = smgr->getMesh("media/obj/z12_suelo.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("suelo");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_trees.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("tree_1");
+
+            mesh = smgr->getMesh("media/obj/z11_z12_change.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("zone_11");
+            node->setVisible(false);
+
+            mesh = smgr->getMesh("media/obj/z12_bloque.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("final");
+
+            mesh = smgr->getMesh("media/obj/z12_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_1");
+            node->setPosition(irr::core::vector3df(323.5,0,579.6));
+
+            mesh = smgr->getMesh("media/obj/barril.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("barril_2");
+            node->setPosition(irr::core::vector3df(416.2,0,575.7));
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("cube_player");
+            node->setPosition(irr::core::vector3df(370.4,0,508));
+
+            camera = smgr->addCameraSceneNode(0, irr::core::vector3df(node->getPosition().X,40,node->getPosition().Z - 20), node->getPosition()); 
+
+            mesh = smgr->getMesh("media/obj/player.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("enemy_1");
+            node->setPosition(irr::core::vector3df(370.9,0,593.8));
+            
+            object = smgr->addCubeSceneNode(4);
+            object->setName("range_1");
+            object->setScale(irr::core::vector3df(10.f,3.f,12.f));
+            object->setPosition(irr::core::vector3df(370.9,0,593.8));
+            object->setVisible(false);
+
+            // Texturizamos los objetos
+            fillVectors();
+            NodeLoadMaterial();
+
+            // Guardamos la zona número 8
+            smgr->saveScene("zone_12.irr");   
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
             // Borramos la escena
             smgr->clear();
 
@@ -551,10 +1941,10 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
         sound.loadEvent("event:/Efectos/colisiones/objeto");
         sound.loadEvent("event:/Efectos/abrir_puerta");
         sound.loadEvent("event:/Efectos/mecanismo");
+        sound.loadEvent("event:/Música/BandaSonora");
         
         sound.loadEvent("event:/Efectos/colisiones/herida");
-        
-        sound.playEvent("event:/Ambientes/Nieve");
+        sound.playEvent("event:/Música/BandaSonora");
 
     }
 }
@@ -573,8 +1963,10 @@ void Irrlicht_t::physicsInit(){
 
 void Irrlicht_t::renderInit(){
     font = guienv->getFont("media/myfont.xml");
-    if (font)
+    if (font){
         guienv->getSkin()->setFont(font);
+        guienv->getSkin()->setColor(irr::gui::EGUI_DEFAULT_COLOR::EGDC_BUTTON_TEXT, irr::video::SColor(255, 255, 255, 255));
+    }
     //irr::gui::IGUIButton *btn;
     //irr::<çgui::IGUIWindow* win;
     //irr::scene::ISceneNodeAnimator *anim;
@@ -589,9 +1981,14 @@ void Irrlicht_t::renderInit(){
 }
 
 void Irrlicht_t::run(){
-	
+
+	bool checkSoundBanda = true; // Variable para comprobar si se ha iniciado la banda sonora
+    bool checkSoundPasos = true; // Variable para comprobar si ha empezado a caminar
     int btn_check = 0; // Botón seleccionado en el menú; 0 --> resume; 1 --> load; 2 --> exit 
     int change_btn_check = btn_check; // Variable auxiliar para comprobar si en el menú se cambia de botón
+    bool updateHearts = true; // Variable para saber si hay que actualizar los corazones
+    bool updateWeapon = true; // Variable para saber si hay que actualizar las armas
+    //float speed_check = 0.0; // Variable para comprobar si se ha cambiado de velocidad
 
     //Aqui irá el bucle en el main
     while(device->run()){
@@ -601,66 +1998,171 @@ void Irrlicht_t::run(){
         //video::ITexture* irrlichtBack = driver->getTexture("media/color_enemy.jpg");
 
         if(menu == 0){
-            //tabctrl = guienv->addTabControl(irr::core::rect<int>(60,10,602,374), 0, true, true);
-            tabctrl = guienv->addTabControl(irr::core::rect<int>(0,0,1920,1080), 0, true, true);
-            irr::gui::IGUITab* optContr = tabctrl->addTab(L"  Game  ");
-            irr::gui::IGUITab* aboutTab = tabctrl->addTab(L"  Info  ");   
-
-            //startButton = guienv->addButton(irr::core::rect<int>(100,900,300,950), optContr, 2, L"Start game");
 
             menu = 1;
             died = 2;
-
-            // Añadimos a la pestaña de info el contenido
-            text =  L"This is the first prototype of our game.\n"\
-                    L"The purpose of the game is to show the mechanics and reach the end of the map.";
-            guienv->addStaticText(text, irr::core::rect<int>(650, 200, 1250, 600), false, true, aboutTab);
-            img = driver->getTexture("media/title_info.png");
-            if(img) guienv->addImage(img, irr::core::position2di(855, 100), true, aboutTab, -1, L"Title info");
-            img = driver->getTexture("media/start_game.png");
-            if(img) guienv->addImage(img, irr::core::position2di(480, 820), true, aboutTab, -1, L"Start game");
-
-            // Añadimos a la pestaña de game el contenido
-            img = driver->getTexture("media/controls.png");
-            if(img) guienv->addImage(img, irr::core::position2di(330, 100), true, optContr, -1, L"Controls");
-            img = driver->getTexture("media/start_game.png");
-            if(img) guienv->addImage(img, irr::core::position2di(480, 820), true, optContr, -1, L"Start game");
-
-            /*text =  L"\n"\
-                                    L"MOVEMENTS\n"\
-                                    L"W-> Move up\n"\
-                                    L"A-> Move left\n"\
-                                    L"S-> Move down\n"\
-                                    L"D-> Move right\n"\
-                                    L"\n"\
-                                    L"\n"\
-                                    L"ACTIONS\n"\
-                                    L"Space-> Action button\n"\
-                                    L"Left/Rigth Shift-> Run\n"\
-                                    L"1-> Use sword\n"\
-                                    L"2-> Use shield\n"\
-                                    L"3-> Use bow\n"\
-                                    L"4-> Use bomb\n"\
-                                    L"5-> Use potion\n"\
-                                    L"Left click-> Use weapon\n"\
-                                    L"Enter-> Close messages\n";
-                                    
-
-            //guienv->addStaticText(text, irr::core::rect<int>(10, 10, 430, 280), false, true, optContr);
-            guienv->addStaticText(text, irr::core::rect<int>(10, 10, 1920, 800), false, true, optContr);*/
+            
+            treeWindow = guienv->addTreeView(irr::core::rect<int>(0,0,1920,1080), 0, -1, false, false, false);
+            img = driver->getTexture("media/start_screen/start_screen_0.png");
+            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, treeWindow, -1, L"Start menu");
                 
         }
         
-        if(menu == 1 && (/*startButton->isPressed() ||*/ input.IsKeyDown(irr::KEY_RETURN))){
-            died = 0;
-            menu = 2;
-            tabctrl->remove();
+        if(menu == 1){
+            // Comprobamos si se ha cambiado btn_check para evitar que pulsando la tecla se pueda cambiar muy rápidamente en el menú
+            // (Caso especial cuando vuelve de otra parte del menú y change_btn_check  es = a 4, tarda mas en poder pulsar las teclas)
+            if(change_btn_check == 4){
+                contFPS++;
+                if(contFPS == 30){
+                    contFPS = 0;
+                    // Actulizamos la variable auxiliar del cambio de botón
+                    change_btn_check = btn_check;
+                }
+            }
+            else if(btn_check != change_btn_check){
+                contFPS++;
+                if(contFPS == 15){
+                    contFPS = 0;
+                    // Actulizamos la variable auxiliar del cambio de botón
+                    change_btn_check = btn_check;
+                }
+            }
+
+            else{
+                // Comprobamos si W o S para moverse por el menú
+                if(input.IsKeyDown(irr::KEY_KEY_S)){
+                    btn_check++;
+                    if(btn_check == 4) btn_check = 0;
+                }
+                else if(input.IsKeyDown(irr::KEY_KEY_W)){
+                    btn_check--;
+                    if(btn_check == -1) btn_check = 3;
+                }
+
+                // Comprobamos el botón seleccionado para cambiarle la selección 
+                if(btn_check != change_btn_check){
+                    if(btn_check == 0) {
+                        img = driver->getTexture("media/start_screen/start_screen_exit.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(825, 789), true, treeWindow, -1, L"Exit");
+                        img = driver->getTexture("media/start_screen/start_screen_game_check.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(714, 489), true, treeWindow, -1, L"Game");
+                        img = driver->getTexture("media/start_screen/start_screen_controls.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(751, 589), true, treeWindow, -1, L"Controls");
+                    }
+                    else if(btn_check == 1) {
+                        img = driver->getTexture("media/start_screen/start_screen_game.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(714, 489), true, treeWindow, -1, L"Game");
+                        img = driver->getTexture("media/start_screen/start_screen_controls_check.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(751, 589), true, treeWindow, -1, L"Controls");
+                        img = driver->getTexture("media/start_screen/start_screen_about.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(807, 689), true, treeWindow, -1, L"About");
+                    }
+                    else if(btn_check == 2) {
+                        img = driver->getTexture("media/start_screen/start_screen_controls.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(751, 589), true, treeWindow, -1, L"Controls");
+                        img = driver->getTexture("media/start_screen/start_screen_about_check.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(807, 689), true, treeWindow, -1, L"About");
+                        img = driver->getTexture("media/start_screen/start_screen_exit.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(825, 789), true, treeWindow, -1, L"Exit");
+                    }
+                    else if(btn_check == 3) {
+                        img = driver->getTexture("media/start_screen/start_screen_about.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(807, 689), true, treeWindow, -1, L"About");
+                        img = driver->getTexture("media/start_screen/start_screen_exit_check.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(825, 789), true, treeWindow, -1, L"Exit");
+                        img = driver->getTexture("media/start_screen/start_screen_game.png");
+                        if(img) guienv->addImage(img, irr::core::position2di(714, 489), true, treeWindow, -1, L"Game");
+                    }
+                }
+
+                // Actualizamos el motor de audio
+                sound.studioUpdate();
+            }
+
+            if(btn_check == change_btn_check){
+                // Comprobamos si pulsa enter y en que apartado lo hace para realizar esa acción
+                if(btn_check == 0 && input.IsKeyDown(irr::KEY_RETURN)){
+                    treeWindow->remove();
+                    menu = 4;
+                    died = 0;
+                }
+                else if(btn_check == 1 && input.IsKeyDown(irr::KEY_RETURN)){
+                    menu = 2;
+                    // Ponemos la imagen de los controles
+                    img = driver->getTexture("media/start_screen/start_controls.png");
+                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, treeWindow, -1, L"Start controls");
+                }
+                else if(btn_check == 2 && input.IsKeyDown(irr::KEY_RETURN)){
+                    menu = 3;
+                    // Ponemos la imagen de los controles y el texto
+                    img = driver->getTexture("media/start_screen/start_about.png");
+                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, treeWindow, -1, L"Start about");
+                    text =  L"This is the first prototype of our game.\n"\
+                    L"The purpose of the game is to show the mechanics and reach the end of the map.";
+                    guienv->addStaticText(text, irr::core::rect<int>(650, 200, 1250, 600), false, true, treeWindow);
+                }
+                else if(btn_check == 3 && input.IsKeyDown(irr::KEY_RETURN)){
+                    treeWindow->remove();
+                    device->closeDevice();
+                }
+            }
         }
 
         if(menu == 2){
+            // Esperemos a que pasen 15 frames para que se pueda a volver a pulsar el enter
+            if(contFPS < 30){
+                contFPS++;
+            }
+            
+            // Si no está pulsado el enter y lo pulsa se cierran los controles
+            if(contFPS >= 30 && input.IsKeyDown(irr::KEY_RETURN)){
+                menu = 1;
+                contFPS = 0;
+                change_btn_check = 4; // Para que no se pueda pulsar seguidamente el enter
+                // Ponemos la imagen de la pantalla de inicio
+                img = driver->getTexture("media/start_screen/start_screen_1.png");
+                if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, treeWindow, -1, L"Start menu");
+            }
+
+            // Actualizamos el motor de audio
+            sound.studioUpdate();
+        }
+
+        if(menu == 3){
+            // Esperemos a que pasen 15 frames para que se pueda a volver a pulsar el enter
+            if(contFPS < 30){
+                contFPS++;
+            }
+            
+            // Si no está pulsado el enter y lo pulsa se cierran los controles
+            if(contFPS >= 30 && input.IsKeyDown(irr::KEY_RETURN)){
+                menu = 1;
+                contFPS = 0;
+                change_btn_check = 4; // Para que no se pueda pulsar seguidamente el enter
+                // Ponemos la imagen de la pantalla de inicio
+                img = driver->getTexture("media/start_screen/start_screen_2.png");
+                if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, treeWindow, -1, L"Start menu");
+            }
+
+            // Actualizamos el motor de audio
+            sound.studioUpdate();
+        }
+
+        if(menu == 4){
 
             //std::cout << "Frame delta time = ";
             //std::cout << frameDeltaTime << std::endl;
+
+            if(checkSoundBanda){
+                // Paramos la banda sonora
+                sound.stopEvent("event:/Música/BandaSonora");
+                // Empezamos la música de ambiente
+                sound.playEvent("event:/Ambientes/Bosque");
+                checkSoundBanda = false;
+            }
+
+            // Cambiamos el color de la fuente a negro
+            guienv->getSkin()->setColor(irr::gui::EGUI_DEFAULT_COLOR::EGDC_BUTTON_TEXT, irr::video::SColor(255, 0, 0, 0));
 
             // Comprobamos si se produce un cambio de zona
             if(zoneChange){
@@ -672,14 +2174,14 @@ void Irrlicht_t::run(){
 
             // Comprobamos si el jugador corre para cambiar la velocidad
             if(catched == 0 && (input.IsKeyDown(irr::KEY_LSHIFT) || input.IsKeyDown(irr::KEY_RSHIFT))){
-                MOVEMENT_SPEED = 30.f;
+                MOVEMENT_SPEED = 40.f;
             }
 
             if (catched != 0 || (!input.IsKeyDown(irr::KEY_LSHIFT) && !input.IsKeyDown(irr::KEY_RSHIFT))){
                 MOVEMENT_SPEED = 20.f;
             }
 
-            if(MOVEMENT_SPEED > 20.f){
+            /*if(MOVEMENT_SPEED > 20.f){
                 sound.playEvent("event:/Efectos/correr");
                 sound.stopEvent("event:/Efectos/caminar");
             }else if(MOVEMENT_SPEED > 0.f){
@@ -688,13 +2190,51 @@ void Irrlicht_t::run(){
             }else{
                 sound.stopEvent("event:/Efectos/correr");
                 sound.stopEvent("event:/Efectos/caminar");
+            }*/
+
+            if(MOVEMENT_SPEED > 20.f){
+                if(checkSoundPasos && (input.IsKeyDown(irr::KEY_KEY_W) || input.IsKeyDown(irr::KEY_KEY_A) || input.IsKeyDown(irr::KEY_KEY_S) || input.IsKeyDown(irr::KEY_KEY_D))){
+                    //std::cout << "Sueno" << std::endl;
+                    sound.playEvent("event:/Efectos/correr", "Terreno", 1.0);
+                    //sound.playEvent("event:/Música/BandaSonora");
+                    checkSoundPasos = false;
+                }
+                   
             }
+
+            else{
+                if(checkSoundPasos && (input.IsKeyDown(irr::KEY_KEY_W) || input.IsKeyDown(irr::KEY_KEY_A) || input.IsKeyDown(irr::KEY_KEY_S) || input.IsKeyDown(irr::KEY_KEY_D))){
+                    //std::cout << "Sueno" << std::endl;
+                    sound.playEvent("event:/Efectos/caminar", "Terreno", 1.0);
+                    //sound.playEvent("event:/Música/BandaSonora");
+                    checkSoundPasos = false;
+                     if(MOVEMENT_SPEED > 20.f){
+                    
+                        checkSoundPasos = true;
+                    }
+                }
+            }
+
+            if(!checkSoundPasos && !input.IsKeyDown(irr::KEY_KEY_W) && !input.IsKeyDown(irr::KEY_KEY_A) && !input.IsKeyDown(irr::KEY_KEY_S) && !input.IsKeyDown(irr::KEY_KEY_D)){
+                //std::cout << "Paro" << std::endl;
+                sound.stopEvent("event:/Efectos/caminar");
+                sound.stopEvent("event:/Efectos/correr");
+
+                //sound.stopEvent("event:/Música/BandaSonora");
+                checkSoundPasos = true;
+            }
+
+            // Cada frame actualizamos la velocidad para comprobar si cambia
+            //speed_check = MOVEMENT_SPEED;
+
+
 
 
             // Comprobamos el movimiento del jugador y lo movemos
             irr::core::vector3df cubePosition = irr::core::vector3df(0);
             cubePosition = input.comproveMovement(smgr, MOVEMENT_SPEED, frameDeltaTime, smgr->getSceneNodeFromName("cube_player"), collideables, died, driver);
             smgr->getSceneNodeFromName("cube_player")->setPosition(cubePosition);
+            //std::cout << "X = " << cubePosition.X << "; Y = " << cubePosition.Y << "; Z = " << cubePosition.Z << std::endl;
 
             // Comprobamos a que dirección se dirige el jugador
             if(input.IsKeyDown(irr::KEY_KEY_D)){
@@ -734,7 +2274,7 @@ void Irrlicht_t::run(){
                 if(contFPS == 50){
                     contFPS = 0;
                     died = 0;
-                    smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
+                    smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/texturas/color_player.jpg"));
                     smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
                 }
             }
@@ -755,26 +2295,31 @@ void Irrlicht_t::run(){
             //------------------------------------------------------------------------------------------------------------------------------------------------
             if(input.IsKeyDown(irr::KEY_KEY_1)){
                 weapon = 1; // Espada
+                updateWeapon = true;
                 sound.playEvent("event:/Efectos/cambio_arma/desenfundar","Arma",0);
             }
 
             if(input.IsKeyDown(irr::KEY_KEY_2)){
                 weapon = 2; // Escudo
+                updateWeapon = true;
                 sound.playEvent("event:/Efectos/cambio_arma/desenfundar","Arma",3);
             }
 
             if(input.IsKeyDown(irr::KEY_KEY_3)){
                 weapon = 3; // Arco
+                updateWeapon = true;
                 sound.playEvent("event:/Efectos/cambio_arma/desenfundar","Arma",1);
             }
 
             if(input.IsKeyDown(irr::KEY_KEY_4)){
                 weapon = 4; // Bomba
+                updateWeapon = true;
                 sound.playEvent("event:/Efectos/cambio_arma/desenfundar","Arma",2);
             }
 
             if(input.IsKeyDown(irr::KEY_KEY_5)){
                 weapon = 5; // Poción
+                updateWeapon = true;
                 sound.playEvent("event:/Efectos/cambio_arma/desenfundar","Arma",4);
             }
 
@@ -821,13 +2366,13 @@ void Irrlicht_t::run(){
                     posPlayer = cubePosition;
 
                     if(aux == 1)
-                        posPlayer.X -= 4;
+                        posPlayer.X -= 2;
                     else if(aux == 2)
-                        posPlayer.X += 4;
+                        posPlayer.X += 2;
                     else if(aux == 3)
-                        posPlayer.Z -= 4;
+                        posPlayer.Z -= 2;
                     else if(aux == 4)
-                        posPlayer.Z += 4;
+                        posPlayer.Z += 2;
 
                     smgr->getSceneNodeFromName("cube_player")->setPosition(posPlayer);
 
@@ -881,31 +2426,32 @@ void Irrlicht_t::run(){
                 shield = 1;
 
                 posPlayer = cubePosition;
+                posPlayer.Y += 5.f;
                 scale.X = 1.f;
-                scale.Y = 1.f;
+                scale.Y = 5.f;
                 scale.Z = 1.f;
                 rotation.X = 0.f;
                 rotation.Y = 0.f;
                 rotation.Z = 0.f;
 
-                // Comprobamos la dirección para establecer la posición de la espada
+                // Comprobamos la dirección para establecer la posición del escudo
                 if(direction == 1){
-                    posPlayer.X += 3.2f;
+                    posPlayer.X += 3.6f;
                     scale.X = 1.f;
                     scale.Z = 4.5f;
                 }
                 else if(direction == 2){
-                    posPlayer.X -= 3.2f;
+                    posPlayer.X -= 3.6f;
                     scale.X = 1.f;
                     scale.Z = 4.5f;
                 }
                 else if(direction == 3 || direction == 5 || direction == 6){
-                    posPlayer.Z += 3.2f;
+                    posPlayer.Z += 3.6f;
                     scale.X = 4.5f;
                     scale.Z = 1.f;
                 }
                 else if(direction == 4 || direction == 7 || direction == 8){
-                    posPlayer.Z -= 3.2f;
+                    posPlayer.Z -= 3.6f;
                     scale.X = 4.5f;
                     scale.Z = 1.f;
                 }
@@ -996,39 +2542,39 @@ void Irrlicht_t::run(){
             }
             
             //Comprobamos la colision con el barril para ver si lo cogemos 
-            if(catched==1){
+            if(catched == 1){
                 irr::core::vector3df pos = smgr->getSceneNodeFromName("cube_player")->getPosition();
                 pos.Y = pos.Y + 4;
                 barriles[pos_object]->setPosition(pos);
             }
             //lanzamos el objeto
-            if(catched==1 && input.IsLeftClickDown()){
+            if(catched == 1 && input.IsLeftClickDown()){
                 sound.playEvent("event:/Efectos/ataque/soltar_objeto");
                 irr::core::vector3df posBar = barriles[pos_object]->getPosition();
                     // Comprobamos la dirección para establecer la posición inicial de la flecha
                 if(direction == 1)
-                    posBar.X += 4;
+                    posBar.X += 6;
                 else if(direction == 2)
-                    posBar.X -= 4;
+                    posBar.X -= 6;
                 else if(direction == 3)
-                    posBar.Z += 4;
+                    posBar.Z += 6;
                 else if(direction == 4)
-                    posBar.Z -= 4;
+                    posBar.Z -= 6;
                 else if(direction == 5){
-                    posBar.X += 4;
-                    posBar.Z += 4;
+                    posBar.X += 6;
+                    posBar.Z += 6;
                 }
                 else if(direction == 6){
-                    posBar.X -= 4;
-                    posBar.Z += 4;
+                    posBar.X -= 6;
+                    posBar.Z += 6;
                 }
                 else if(direction == 7){
-                    posBar.X += 4;
-                    posBar.Z -= 4;
+                    posBar.X += 6;
+                    posBar.Z -= 6;
                 }
                 else if(direction == 8){
-                    posBar.X -= 4;
-                    posBar.Z -= 4;
+                    posBar.X -= 6;
+                    posBar.Z -= 6;
                 }
                 // Le añadimos altura, la posición al objeto flecha (arrow) y la textura
                 posBar.Y = posBar.Y - 4;
@@ -1165,7 +2711,7 @@ void Irrlicht_t::run(){
                     object->setName("bomba");
                     irr::core::vector3df pos = smgr->getSceneNodeFromName("cube_player")->getPosition();
                     object->setPosition(pos);
-                    object->setMaterialTexture(0, driver->getTexture("media/color_bomb.jpg"));
+                    object->setMaterialTexture(0, driver->getTexture("media/texturas/color_bomb.jpg"));
                     //object->setScale(irr::core::vector3df(6.0f,6.0f,6.0f));
                     object->setMaterialFlag(irr::video::EMF_LIGHTING, false);
                     bomb = 1; 
@@ -1181,31 +2727,32 @@ void Irrlicht_t::run(){
             if(weapon == 1 && catched == 0 && input.IsLeftClickDown() && died != 2){
                 sound.playEvent("event:/Efectos/ataque/Espada_sin_colision");
                 posPlayer = cubePosition;
+                posPlayer.Y += 1.5f;
 
                 // Comprobamos la dirección para establecer la posición de la espada
                 if(direction == 1)
-                    posPlayer.X += 3;
+                    posPlayer.X += 4;
                 else if(direction == 2)
-                    posPlayer.X -= 3;
+                    posPlayer.X -= 4;
                 else if(direction == 3)
-                    posPlayer.Z += 3;
+                    posPlayer.Z += 4;
                 else if(direction == 4)
-                    posPlayer.Z -= 3;
+                    posPlayer.Z -= 4;
                 else if(direction == 5){
-                    posPlayer.X += 3;
-                    posPlayer.Z += 3;
+                    posPlayer.X += 4;
+                    posPlayer.Z += 4;
                 }
                 else if(direction == 6){
-                    posPlayer.X -= 3;
-                    posPlayer.Z += 3;
+                    posPlayer.X -= 4;
+                    posPlayer.Z += 4;
                 }
                 else if(direction == 7){
-                    posPlayer.X += 3;
-                    posPlayer.Z -= 3;
+                    posPlayer.X += 4;
+                    posPlayer.Z -= 4;
                 }
                 else if(direction == 8){
-                    posPlayer.X -= 3;
-                    posPlayer.Z -= 3;
+                    posPlayer.X -= 4;
+                    posPlayer.Z -= 4;
                 }
 
                 if(!smgr->getSceneNodeFromName("sword")){
@@ -1262,7 +2809,7 @@ void Irrlicht_t::run(){
             if (hit_points == 0){
                 //sound.playEvent("event:/Efectos/colisiones/muerte");
 
-                smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
+                smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/texturas/color_player.jpg"));
                 smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
                 // Borramos el escenario y lo cargamos desde el último checkpoint
@@ -1356,33 +2903,33 @@ void Irrlicht_t::run(){
 
                 // Comprobamos la dirección para establecer la posición inicial de la flecha
                 if(direction == 1)
-                    arrowPosition.X += 2;
+                    arrowPosition.X += 4;
                 else if(direction == 2)
-                    arrowPosition.X -= 2;
+                    arrowPosition.X -= 4;
                 else if(direction == 3)
-                    arrowPosition.Z += 2;
+                    arrowPosition.Z += 4;
                 else if(direction == 4)
-                    arrowPosition.Z -= 2;
+                    arrowPosition.Z -= 4;
                 else if(direction == 5){
-                    arrowPosition.X += 2;
-                    arrowPosition.Z += 2;
+                    arrowPosition.X += 4;
+                    arrowPosition.Z += 4;
                 }
                 else if(direction == 6){
-                    arrowPosition.X -= 2;
-                    arrowPosition.Z += 2;
+                    arrowPosition.X -= 4;
+                    arrowPosition.Z += 4;
                 }
                 else if(direction == 7){
-                    arrowPosition.X += 2;
-                    arrowPosition.Z -= 2;
+                    arrowPosition.X += 4;
+                    arrowPosition.Z -= 4;
                 }
                 else if(direction == 8){
-                    arrowPosition.X -= 2;
-                    arrowPosition.Z -= 2;
+                    arrowPosition.X -= 4;
+                    arrowPosition.Z -= 4;
                 }
                 // Le añadimos altura, la posición al objeto flecha (arrow) y la textura
                 arrowPosition.Y = arrowPosition.Y + 2;
                 object->setPosition(arrowPosition);
-                object->setMaterialTexture(0, driver->getTexture("media/color_arrow.jpg"));
+                object->setMaterialTexture(0, driver->getTexture("media/texturas/color_arrow.jpg"));
                 object->setMaterialFlag(irr::video::EMF_LIGHTING, false);
                 // Cambiamos la dirección de lanzamiento
                 throw_direction = direction;
@@ -1550,6 +3097,9 @@ void Irrlicht_t::run(){
                 //win->setDrawBackground(true);
                 pause = true;
                 died = 2;
+                btn_check = 0; // Lo ponemos a 0
+                change_btn_check = btn_check;
+
                 //win = guienv->addWindow(irr::core::rect<int>(400,200,1500,900), false, 0, 0, 9);
                 //win = guienv->addWindow(irr::core::rect<int>(0,0,0,0), false, 0, 0, 9);      
                 //win->getCloseButton()->setVisible(false);
@@ -1558,7 +3108,7 @@ void Irrlicht_t::run(){
                 if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, treeWindow, -1, L"Pause");
                 
                 resumeButton = guienv->addButton(irr::core::rect<int>(400,200,700,300), treeWindow, 11, L"");
-                img = driver->getTexture("media/btn_resume.png");
+                img = driver->getTexture("media/btn_resume_check.png");
                 if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, resumeButton, -1, L"Resume");
 
                 loadButton = guienv->addButton(irr::core::rect<int>(400,350,700,450), treeWindow, 12, L"");
@@ -1579,7 +3129,7 @@ void Irrlicht_t::run(){
                 // Comprobamos si se ha cambiado btn_check para evitar que pulsando la tecla se pueda cambiar muy rápidamente en el menú
                 if(btn_check != change_btn_check){
                     contFPS++;
-                    if(contFPS == 8){
+                    if(contFPS == 10){
                         contFPS = 0;
                         // Actulizamos la variable auxiliar del cambio de botón
                         change_btn_check = btn_check;
@@ -1596,32 +3146,34 @@ void Irrlicht_t::run(){
                         btn_check--;
                         if(btn_check == -1) btn_check = 2;
                     }
-                }
 
-                // Comprobamos el botón seleccionado para cambiarle el color y reestablecer los colores
-                if(btn_check == 0) {
-                    img = driver->getTexture("media/btn_resume_check.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, resumeButton, -1, L"Resume");
-                    img = driver->getTexture("media/btn_load.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, loadButton, -1, L"Load");
-                    img = driver->getTexture("media/btn_exit.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, exitButton, -1, L"Exit");
-                }
-                else if(btn_check == 1) {
-                    img = driver->getTexture("media/btn_resume.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, resumeButton, -1, L"Resume");
-                    img = driver->getTexture("media/btn_load_check.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, loadButton, -1, L"Load");
-                    img = driver->getTexture("media/btn_exit.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, exitButton, -1, L"Exit");
-                }
-                else if(btn_check == 2) {
-                    img = driver->getTexture("media/btn_resume.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, resumeButton, -1, L"Resume");
-                    img = driver->getTexture("media/btn_load.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, loadButton, -1, L"Load");
-                    img = driver->getTexture("media/btn_exit_check.png");
-                    if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, exitButton, -1, L"Exit");
+                    // Comprobamos el botón seleccionado para cambiarle el color y reestablecer los colores
+                    if(btn_check != change_btn_check){
+                        if(btn_check == 0) {
+                            img = driver->getTexture("media/btn_resume_check.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, resumeButton, -1, L"Resume");
+                            img = driver->getTexture("media/btn_load.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, loadButton, -1, L"Load");
+                            img = driver->getTexture("media/btn_exit.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, exitButton, -1, L"Exit");
+                        }
+                        else if(btn_check == 1) {
+                            img = driver->getTexture("media/btn_resume.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, resumeButton, -1, L"Resume");
+                            img = driver->getTexture("media/btn_load_check.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, loadButton, -1, L"Load");
+                            img = driver->getTexture("media/btn_exit.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, exitButton, -1, L"Exit");
+                        }
+                        else if(btn_check == 2) {
+                            img = driver->getTexture("media/btn_resume.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, resumeButton, -1, L"Resume");
+                            img = driver->getTexture("media/btn_load.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, loadButton, -1, L"Load");
+                            img = driver->getTexture("media/btn_exit_check.png");
+                            if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, exitButton, -1, L"Exit");
+                        }
+                    }
                 }
 
                 // Comprobamos si pulsa enter y en que botón lo hace para realizar esa acción
@@ -1656,7 +3208,7 @@ void Irrlicht_t::run(){
 
             //---------------------------------------------------- Mostrar corazones del jugador -------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            if(updateHearts){   // No haría falta este if ya que no pasa nada porque se actualice la imagen todo el rato
+            if(updateHearts){   // No haría falta este if, pero si no se pone al actualizar todo el rato la imagen se reducen los FPS
                 for (int i = 0; i < max_hp+1; i++){
                     if(i == hit_points){
                         // Guardamos la ruta necesaria de la imagen en un string
@@ -1677,7 +3229,7 @@ void Irrlicht_t::run(){
 
             //-------------------------------------------- Mostrar arma seleccionada del jugador -------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            //if(updateHearts){   // No haría falta este if ya que no pasa nada porque se actualice la imagen todo el rato
+            if(updateWeapon){   // No haría falta este if, pero si no se pone al actualizar todo el rato la imagen se reducen los FPS
                 for (int i = 0; i < 6; i++){
                     if(i == weapon){
                         // Guardamos la ruta necesaria de la imagen en un string
@@ -1687,11 +3239,11 @@ void Irrlicht_t::run(){
                         // Cogemos la imagen y la añadimos
                         img = driver->getTexture(path2char);
                         if(img) guienv->addImage(img, irr::core::position2di(1700, 20), true, 0, -1, L"Weapon");
-                        updateHearts = false;
+                        updateWeapon = false;
                         break;
                     }
                 }
-            //}
+            }
 
             //------------------------------------------------------------------------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1877,14 +3429,26 @@ void Irrlicht_t::fillVectors(){
                     draggables.push_back(object);
                 else if(names[j] == "button_")
                     buttons.push_back(object);
-                else if(names[j] == "zone_")
-                    zones.push_back(object);
+                //else if(names[j] == "zone_")
+                //    zones.push_back(object);
                 else if(names[j] == "npc_")
                     npcs.push_back(object);
                 else if(names[j] == "chest_")
                     chests.push_back(object);
                 
             } 
+        }
+    }
+
+    for (unsigned int i = 1; i < 50; i++){
+        name = "zone_" + std::to_string(i); 
+        nameToChar = name.c_str();
+        object = smgr->getSceneNodeFromName(nameToChar);
+        // Comprobamos si existe el objeto en la escena si no salimos del for
+        if(object){
+            // Añadimos la zona a su vector correspondiente
+            collideables.push_back(object);
+            zones.push_back(object);
         }
     }
 
@@ -2005,7 +3569,7 @@ void Irrlicht_t::comproveHP(irr::core::vector3df cubePosition, bool colBomba){
         smgr->getSceneNodeFromName("cube_player")->setPosition(playerPositionNew);*/
 
         // Cambiamos el color en el choque para que se note la detección de la colisión
-        smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/color_collision.jpg"));
+        smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/texturas/color_collision.jpg"));
         smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
         
     }
@@ -2032,70 +3596,168 @@ void Irrlicht_t::endScene(){
 
 void Irrlicht_t::NodeLoadMaterial(){
 
+    std::string name;
+    const char* nameToChar;
+
     for(unsigned int i = 0; i < collideables.size();i++){
-        collideables[i]->setMaterialTexture(0, driver->getTexture("media/color_pared.jpg"));
+        collideables[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_pared.jpg"));
         collideables[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
-    smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/color_player.jpg"));
+    for(unsigned int i = 1; i < 5;i++){
+        name = "cartel_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/cartel.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+    }
+
+    for(unsigned int i = 1; i < 10;i++){
+        name = "tree_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/tree.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+    }
+
+    for(unsigned int i = 1; i < 6;i++){
+        name = "grass_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/color_grass.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+    }
+
+    for(unsigned int i = 1; i < 10;i++){
+        name = "stone_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/color_arrow.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+
+
+        name = "col_stone_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/color_arrow.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+    }
+
+    for(unsigned int i = 1; i < 10;i++){
+        name = "farolillo_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/farolillo.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+
+
+        name = "col_farolillo_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/farolillo.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+    }
+
+    for(unsigned int i = 1; i < 10;i++){
+        name = "banco_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/banco.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+
+
+        name = "col_banco_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/banco.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+    }
+
+    for(unsigned int i = 1; i < 20;i++){
+        name = "valla_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/valla.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+
+
+        name = "col_valla_" + std::to_string(i);
+        nameToChar = name.c_str();
+        if(smgr->getSceneNodeFromName(nameToChar)){
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialTexture(0, driver->getTexture("media/texturas/valla.jpg"));
+            smgr->getSceneNodeFromName(nameToChar)->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+        }
+    }
+
+    smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/texturas/color_player.jpg"));
     smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     
     for(unsigned int i = 0; i < enemies.size();i++){
-        enemies[i]->setMaterialTexture(0, driver->getTexture("media/color_enemy.jpg"));
+        enemies[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_enemy.jpg"));
         enemies[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < barriles.size();i++){
-        barriles[i]->setMaterialTexture(0, driver->getTexture("media/barril.jpg"));
+        barriles[i]->setMaterialTexture(0, driver->getTexture("media/texturas/barril.jpg"));
         barriles[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < draggables.size();i++){
-        draggables[i]->setMaterialTexture(0, driver->getTexture("media/color_draggable.jpg"));
+        draggables[i]->setMaterialTexture(0, driver->getTexture("media/texturas/caja.jpg"));
         draggables[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < buttons.size();i++){
-        buttons[i]->setMaterialTexture(0, driver->getTexture("media/color_button.jpg"));
+        buttons[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_button.jpg"));
         buttons[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < zones.size();i++){
-        zones[i]->setMaterialTexture(0, driver->getTexture("media/color_zone.jpg"));
+        zones[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_zone.jpg"));
         zones[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < keys.size();i++){
-        keys[i]->setMaterialTexture(0, driver->getTexture("media/color_key.jpg"));
+        keys[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_key.jpg"));
         keys[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < doors.size();i++){
-        doors[i]->setMaterialTexture(0, driver->getTexture("media/color_door.jpg"));
+        doors[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_door.jpg"));
         doors[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < gates.size();i++){
-        gates[i]->setMaterialTexture(0, driver->getTexture("media/color_gate.jpg"));
+        gates[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_gate.jpg"));
         gates[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < potions.size();i++){
-        potions[i]->setMaterialTexture(0, driver->getTexture("media/color_potion.jpg"));
+        potions[i]->setMaterialTexture(0, driver->getTexture("media/texturas/pocion.jpg"));
         potions[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < npcs.size();i++){
-        npcs[i]->setMaterialTexture(0, driver->getTexture("media/color_npc.jpg"));
+        npcs[i]->setMaterialTexture(0, driver->getTexture("media/texturas/color_npc.jpg"));
         npcs[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
     for(unsigned int i = 0; i < chests.size();i++){
-        chests[i]->setMaterialTexture(0, driver->getTexture("media/color_chest.jpg"));
+        chests[i]->setMaterialTexture(0, driver->getTexture("media/texturas/cofre_dorado.jpg"));
         chests[i]->setMaterialFlag(irr::video::EMF_LIGHTING, false);
     }
 
-    smgr->getSceneNodeFromName("suelo")->setMaterialTexture(0, driver->getTexture("media/color_suelo.jpg"));
+    smgr->getSceneNodeFromName("suelo")->setMaterialTexture(0, driver->getTexture("media/texturas/color_suelo.jpg"));
     smgr->getSceneNodeFromName("suelo")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
 }
@@ -2106,8 +3768,8 @@ void Irrlicht_t::addCamera(){
     //ICameraSceneNode *camera = smgr->getActiveCamera();
     irr::core::vector3df camaraPosition;
     camaraPosition.X = smgr->getSceneNodeFromName("cube_player")->getPosition().X;
-    camaraPosition.Y = 40; // 40 default
-    camaraPosition.Z = smgr->getSceneNodeFromName("cube_player")->getPosition().Z - 15;
+    camaraPosition.Y = 50; // 40 default
+    camaraPosition.Z = smgr->getSceneNodeFromName("cube_player")->getPosition().Z - 25; // 20 default
     
     if(!SwitchCam){
         smgr->getActiveCamera()->setPosition(camaraPosition);
@@ -2422,7 +4084,7 @@ bool Input::IsLeftClickDown() const{
 
 irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> collideables, int died, irr::video::IVideoDriver* driver){
     
-    bool colisiona;
+    bool colisiona = false;
     irr::core::vector3df cubePosition = smgr->getSceneNodeFromName("cube_player")->getPosition();
     float posAux = 0.0;
 
@@ -2555,6 +4217,7 @@ irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, ir
 void Input::moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNode* draggable, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables){
     irr::core::vector3df pos = draggable->getPosition();
     bool colisiona;
+    float posAux = 0.0;
 
     irr::core::vector3df posicionActualZ = pos;
     irr::core::vector3df posicionActualX = pos;
@@ -2565,8 +4228,14 @@ void Input::moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNod
         draggable->setPosition(posicionActualZ);
         // Comprobamos la colisión
         colisiona = Irrlicht_t::checkCollisionCollideables(draggable, collideables);
-        if (!colisiona)
-            pos.Z += MOVEMENT_SPEED * frameDeltaTime;   
+        if (!colisiona){
+            posAux = pos.Z; 
+            posAux += MOVEMENT_SPEED * frameDeltaTime;
+            //posAux = round(posAux * 10);
+            posAux = trunc(posAux * 10);
+            posAux = posAux/10;
+            pos.Z = posAux;
+        }
     }
 
     else if(IsKeyDown(irr::KEY_KEY_S)){
@@ -2575,8 +4244,14 @@ void Input::moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNod
         draggable->setPosition(posicionActualZ);
         // Comprobamos la colisión
         colisiona = Irrlicht_t::checkCollisionCollideables(draggable, collideables);
-        if (!colisiona)
-            pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
+        if (!colisiona){
+            posAux = pos.Z; 
+            posAux -= MOVEMENT_SPEED * frameDeltaTime;
+            //posAux = round(posAux * 10);
+            posAux = trunc(posAux * 10);
+            posAux = posAux/10;
+            pos.Z = posAux;
+        }
     }
 
     if(IsKeyDown(irr::KEY_KEY_A)){
@@ -2585,8 +4260,14 @@ void Input::moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNod
         draggable->setPosition(posicionActualX);
         // Comprobamos la colisión
         colisiona = Irrlicht_t::checkCollisionCollideables(draggable, collideables);
-        if (!colisiona)
-            pos.X -= MOVEMENT_SPEED * frameDeltaTime;
+        if (!colisiona){
+            posAux = pos.X; 
+            posAux -= MOVEMENT_SPEED * frameDeltaTime;
+            //posAux = round(posAux * 10);
+            posAux = trunc(posAux * 10);
+            posAux = posAux/10;
+            pos.X = posAux;
+        }
     }
 
     else if(IsKeyDown(irr::KEY_KEY_D)){
@@ -2595,8 +4276,14 @@ void Input::moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNod
         draggable->setPosition(posicionActualX);
         // Comprobamos la colisión
         colisiona = Irrlicht_t::checkCollisionCollideables(draggable, collideables);
-        if (!colisiona)
-            pos.X += MOVEMENT_SPEED * frameDeltaTime;
+        if (!colisiona){
+            posAux = pos.X; 
+            posAux += MOVEMENT_SPEED * frameDeltaTime;
+            //posAux = round(posAux * 10);
+            posAux = trunc(posAux * 10);
+            posAux = posAux/10;
+            pos.X = posAux;
+        }
         //else
         //    std::cout << "Colisiono" << std::endl;
     }
@@ -2606,36 +4293,106 @@ void Input::moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNod
 
 void Input::moveObject (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, int direction){
     irr::core::vector3df pos = object->getPosition();
+    float posAux = 0.0;
     
     //std::cout<<"ha entrado en moveObject solo" <<std::endl;
 
     // Comprobamos la dirección para establecer la posición siguiente del objeto (object)
-    if(direction == 1)
-        pos.X += MOVEMENT_SPEED * frameDeltaTime;
-    else if(direction == 2)
-        pos.X -= MOVEMENT_SPEED * frameDeltaTime;
-    else if(direction == 3)
-        pos.Z += MOVEMENT_SPEED * frameDeltaTime;
-    else if(direction == 4)
-        pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
+    if(direction == 1){
+        posAux = pos.X; 
+        posAux += MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.X = posAux;
+    }
+    else if(direction == 2){
+        posAux = pos.X; 
+        posAux -= MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.X = posAux;
+    }
+    else if(direction == 3){
+        posAux = pos.Z; 
+        posAux += MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.Z = posAux;
+    }
+    else if(direction == 4){
+        posAux = pos.Z; 
+        posAux -= MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.Z = posAux;
+    }
+        
     else if(direction == 5){
-        pos.X += MOVEMENT_SPEED * frameDeltaTime;
-        pos.Z += MOVEMENT_SPEED * frameDeltaTime;
+        posAux = pos.X; 
+        posAux += MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.X = posAux;
+        
+        posAux = pos.Z; 
+        posAux += MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.Z = posAux;
     }
     else if(direction == 6){
-        pos.X -= MOVEMENT_SPEED * frameDeltaTime;
-        pos.Z += MOVEMENT_SPEED * frameDeltaTime;
+        posAux = pos.X; 
+        posAux -= MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.X = posAux;
+        
+        posAux = pos.Z; 
+        posAux += MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.Z = posAux;
     }
     else if(direction == 7){
-        pos.X += MOVEMENT_SPEED * frameDeltaTime;
-        pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
+        posAux = pos.X; 
+        posAux += MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.X = posAux;
+        
+        posAux = pos.Z; 
+        posAux -= MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.Z = posAux;
     }
     else if(direction == 8){
-        pos.X -= MOVEMENT_SPEED * frameDeltaTime;
-        pos.Z -= MOVEMENT_SPEED * frameDeltaTime;
+        posAux = pos.X; 
+        posAux -= MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.X = posAux;
+        
+        posAux = pos.Z; 
+        posAux -= MOVEMENT_SPEED * frameDeltaTime;
+        //posAux = round(posAux * 10);
+        posAux = trunc(posAux * 10);
+        posAux = posAux/10;
+        pos.Z = posAux;
     }
 
-    // Actualizamos la posición de la felcha (arrow)
+    // Actualizamos la posición de la flecha (arrow)
     object->setPosition(pos); 
 }
 //void Input::printXYZ(scene::ISceneNode *cube){
