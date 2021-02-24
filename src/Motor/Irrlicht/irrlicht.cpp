@@ -26,7 +26,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
         //----------- Enemigos -----------
         //--------------------------------
         names.push_back("enemy_");
-        names.push_back("enemy_shoot_");
+        names.push_back("enemy_shot_");
         //--------------------------------
         //--------------------------------
 
@@ -51,7 +51,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
         // Comprobamos si hay un archivo de guardado
         if(loadGame()){
-            //died = 0;       // Estado normal
+            //status = 0;       // Estado normal
             catched = 0;   // Sin coger
             bomb = 0;   // Bomba sin poner
             isPressed = false; // Tecla sin presionar
@@ -155,7 +155,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node->setName("tree_2");
             node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/obj/z1_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z1_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
             node->setPosition(irr::core::vector3df(0,0,0));
@@ -163,7 +163,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             mesh = smgr->getMesh("media/obj/z1_z2_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_2");
-            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setPosition(irr::core::vector3df(0,0,0));*/
 
             mesh = smgr->getMesh("media/obj/z1_z2_change.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -323,7 +323,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node->setName("stone_1");
             node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/obj/z2_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z2_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
 
@@ -341,7 +341,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
             mesh = smgr->getMesh("media/obj/z2_z9_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_5");
+            node->setName("grass_5");*/
 
             mesh = smgr->getMesh("media/obj/z2_bancos.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -409,7 +409,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
             mesh = smgr->getMesh("media/obj/player.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("enemy_1");
+            node->setName("enemy_shot_1");
             node->setPosition(irr::core::vector3df(-4.1,0,244.7));
             
             object = smgr->addCubeSceneNode(4);
@@ -529,7 +529,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node->setName("tree_3");
             node->setPosition(irr::core::vector3df(0,0,0));
 
-            mesh = smgr->getMesh("media/obj/z3_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z3_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
             node->setPosition(irr::core::vector3df(0,0,0));
@@ -542,7 +542,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             mesh = smgr->getMesh("media/obj/z3_z4_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_3");
-            node->setPosition(irr::core::vector3df(0,0,0));
+            node->setPosition(irr::core::vector3df(0,0,0));*/
 
             mesh = smgr->getMesh("media/obj/z3_z4_stones.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -763,7 +763,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("col_valla_2");
 
-            mesh = smgr->getMesh("media/obj/z4_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z4_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
             node->setPosition(irr::core::vector3df(0,0,0));
@@ -778,7 +778,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
             mesh = smgr->getMesh("media/obj/z3_z4_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_4");
+            node->setName("grass_4");*/
 
             mesh = smgr->getMesh("media/obj/z4_farolillos.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -907,13 +907,13 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("tree_2");
 
-            mesh = smgr->getMesh("media/obj/z5_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z5_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
 
             mesh = smgr->getMesh("media/obj/z4_z5_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_2");
+            node->setName("grass_2");*/
 
             mesh = smgr->getMesh("media/obj/z4_z5_stones.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -988,9 +988,14 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("farolillo_1");
 
-            mesh = smgr->getMesh("media/obj/z6_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z6_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
+
+            mesh = smgr->getMesh("media/obj/z4_z6_grass.obj");
+            node = smgr->addAnimatedMeshSceneNode( mesh );
+            node->setName("grass_2");
+            node->setPosition(irr::core::vector3df(0,0,0));*/
 
             mesh = smgr->getMesh("media/obj/z6_trees.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -1066,11 +1071,6 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             mesh = smgr->getMesh("media/obj/z4_z6_farolillos.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("farolillo_2");
-            node->setPosition(irr::core::vector3df(0,0,0));
-
-            mesh = smgr->getMesh("media/obj/z4_z6_grass.obj");
-            node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_2");
             node->setPosition(irr::core::vector3df(0,0,0));
 
             mesh = smgr->getMesh("media/obj/z4_z6_trees.obj");
@@ -1159,7 +1159,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("pared_13");
 
-            mesh = smgr->getMesh("media/obj/z2_z7_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z2_z7_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
 
@@ -1169,7 +1169,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
             mesh = smgr->getMesh("media/obj/z7_z8_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_3");
+            node->setName("grass_3");*/
 
             mesh = smgr->getMesh("media/obj/z2_z7_farolillos.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -1277,13 +1277,13 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("tree_2");
 
-            mesh = smgr->getMesh("media/obj/z8_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z8_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
 
             mesh = smgr->getMesh("media/obj/z7_z8_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_2");
+            node->setName("grass_2");*/
 
             mesh = smgr->getMesh("media/obj/z8_vallas_1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -1438,7 +1438,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("suelo");  
 
-            mesh = smgr->getMesh("media/obj/z9_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z9_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
 
@@ -1452,7 +1452,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
 
             mesh = smgr->getMesh("media/obj/z10_z11_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_4");
+            node->setName("grass_4");*/
             
             mesh = smgr->getMesh("media/obj/z2_z9_farolillos.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -1462,7 +1462,7 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("farolillo_2");
 
-            mesh = smgr->getMesh("media/obj/z10_z11_farolillos.obj");
+            mesh = smgr->getMesh("media/obj/z9_z11_farolillos.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("farolillo_3");
 
@@ -1607,13 +1607,13 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("tree_2");
 
-            mesh = smgr->getMesh("media/obj/z9_z10_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z9_z10_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
 
             mesh = smgr->getMesh("media/obj/z10_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_2");
+            node->setName("grass_2");*/
 
             mesh = smgr->getMesh("media/obj/z10_vallas1.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -1748,13 +1748,13 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node->setName("zone_9");
             node->setVisible(false);
 
-            mesh = smgr->getMesh("media/obj/z11_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z11_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("grass_1");
 
             mesh = smgr->getMesh("media/obj/z10_z11_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_2");
+            node->setName("grass_2");*/
 
             mesh = smgr->getMesh("media/obj/z10_z11_trees.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -1859,9 +1859,9 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             node = smgr->addAnimatedMeshSceneNode( mesh );
             node->setName("final");
 
-            mesh = smgr->getMesh("media/obj/z12_grass.obj");
+            /*mesh = smgr->getMesh("media/obj/z12_grass.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
-            node->setName("grass_1");
+            node->setName("grass_1");*/
 
             mesh = smgr->getMesh("media/obj/barril.obj");
             node = smgr->addAnimatedMeshSceneNode( mesh );
@@ -1905,9 +1905,9 @@ void Irrlicht_t::createWindow(uint32_t w, uint32_t h){
             //colisiona = false;
             weapon = 1;     // Espada
             shield = 0;     // No se protege
-            died = 0;       // Estado normal
-            hit_points = 3;
-            max_hp = 3;     // Puntos de salud (HP) máximos
+            status = 0;       // Estado normal
+            hit_points = 50;
+            max_hp = 50;     // Puntos de salud (HP) máximos
             direction = 3; // Dirección hacia arriba
             throw_direction = 3;    // Dirección hacia arriba
             catched = 0;   // Sin coger
@@ -1982,12 +1982,16 @@ void Irrlicht_t::renderInit(){
 
 void Irrlicht_t::run(){
 
+    std::string name; // Variable para crear Strings
+    const char* nameToChar; // Variable para pasar la variable name (String) a tipo char
 	bool checkSoundBanda = true; // Variable para comprobar si se ha iniciado la banda sonora
     bool checkSoundPasos = true; // Variable para comprobar si ha empezado a caminar
     int btn_check = 0; // Botón seleccionado en el menú; 0 --> resume; 1 --> load; 2 --> exit 
     int change_btn_check = btn_check; // Variable auxiliar para comprobar si en el menú se cambia de botón
     bool updateHearts = true; // Variable para saber si hay que actualizar los corazones
     bool updateWeapon = true; // Variable para saber si hay que actualizar las armas
+    double pi = M_PI; //  Valor del número pi
+    int countShot = 0; // Valor que aumenta cada vez qeue se añade un disparo a la escena
     //float speed_check = 0.0; // Variable para comprobar si se ha cambiado de velocidad
 
     //Aqui irá el bucle en el main
@@ -2000,7 +2004,7 @@ void Irrlicht_t::run(){
         if(menu == 0){
 
             menu = 1;
-            died = 2;
+            status = 2;
             
             treeWindow = guienv->addTreeView(irr::core::rect<int>(0,0,1920,1080), 0, -1, false, false, false);
             img = driver->getTexture("media/start_screen/start_screen_0.png");
@@ -2084,7 +2088,7 @@ void Irrlicht_t::run(){
                 if(btn_check == 0 && input.IsKeyDown(irr::KEY_RETURN)){
                     treeWindow->remove();
                     menu = 4;
-                    died = 0;
+                    status = 0;
                 }
                 else if(btn_check == 1 && input.IsKeyDown(irr::KEY_RETURN)){
                     menu = 2;
@@ -2232,7 +2236,7 @@ void Irrlicht_t::run(){
 
             // Comprobamos el movimiento del jugador y lo movemos
             irr::core::vector3df cubePosition = irr::core::vector3df(0);
-            cubePosition = input.comproveMovement(smgr, MOVEMENT_SPEED, frameDeltaTime, smgr->getSceneNodeFromName("cube_player"), collideables, died, driver);
+            cubePosition = input.comproveMovement(smgr, MOVEMENT_SPEED, frameDeltaTime, smgr->getSceneNodeFromName("cube_player"), collideables, status, driver);
             smgr->getSceneNodeFromName("cube_player")->setPosition(cubePosition);
             //std::cout << "X = " << cubePosition.X << "; Y = " << cubePosition.Y << "; Z = " << cubePosition.Z << std::endl;
 
@@ -2266,25 +2270,25 @@ void Irrlicht_t::run(){
 
             addCamera();
 
-            //---------------------------------------------------- Comprobar estados died --------------------------------------------------------------------
+            //---------------------------------------------------- Comprobar estados status --------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
             //Comprobamos si el cube_player (jugador) es golpeado para volver a ponerle su textura original
-            if (died == 1){
+            if (status == 1){
                 contFPS++;
                 if(contFPS == 50){
                     contFPS = 0;
-                    died = 0;
+                    status = 0;
                     smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/texturas/color_player.jpg"));
                     smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
                 }
             }
 
             //Comprobamos si el cube_player (jugador) está bebiendo una poción para que pueda volver a moverse tras pasar 30 frames (0,5 s)
-            if (died == 3){
+            if (status == 3){
                 contFPS++;
                 if(contFPS == 30){
                     contFPS = 0;
-                    died = 0;
+                    status = 0;
                 }
             }
 
@@ -2331,7 +2335,7 @@ void Irrlicht_t::run(){
             if(smgr->getSceneNodeFromName("final")){
                 if(!fin && Irrlicht_t::checkCollisionObject(smgr->getSceneNodeFromName("cube_player"), smgr->getSceneNodeFromName("final"))){
                     fin = true;
-                    died = 2; // Para que no se pueda mover hasta que se cierre el mensaje
+                    status = 2; // Para que no se pueda mover hasta que se cierre el mensaje
                     //win = guienv->addWindow(irr::core::rect<int>(200,90,490,290), true, L"Final", 0, 5);
                     //win->getCloseButton()->setVisible(false);
                     //guienv->addStaticText(L"To be continued...",irr::core::rect<int>(20,40,250,120), true, true, win);
@@ -2347,7 +2351,7 @@ void Irrlicht_t::run(){
                 if(input.IsKeyDown(irr::KEY_RETURN)){
                     treeWindow->remove();
                     fin = false;
-                    died = 0; 
+                    status = 0; 
                     device->closeDevice();
                 }
             }
@@ -2392,7 +2396,11 @@ void Irrlicht_t::run(){
 
             //---------------------------------------------------------- IA ENEMIGOS -------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            std::string name;
+            float enemyAngleB = 0.0;
+            float ab = 0.0;
+            float ac = 0.0;
+            float bc = 0.0;
+            // Comprobamos los diferentes tipos de enemigos y si colisiona con el rango de cada uno
             for(unsigned int i=0; i<ranges.size(); i++){
                 // Enemigos normales
                 name = "enemy_" + std::to_string(i+1);
@@ -2400,101 +2408,277 @@ void Irrlicht_t::run(){
                     if(Irrlicht_t::checkCollisionEnemiesPlayer(ranges[i], smgr->getSceneNodeFromName("cube_player"))){
                         posPlayer = smgr->getSceneNodeFromName("cube_player")->getPosition();
                         //std::cout << "Entro colision" << std::endl;
-                        input.moveEnemy(died, enemies[i], posPlayer, MOVEMENT_SPEED_ENEMY, frameDeltaTime, collideables);
+                        input.moveEnemy(status, enemies[i], posPlayer, MOVEMENT_SPEED_ENEMY, frameDeltaTime, collideables);
+                        // Si tenemos la misma posición X no se formará un triángulo, sino una línea por tanto el ángulo será o 0º o 180º
+                        /*if(cubePosition.X == enemyFirstLook[i].X)
+                        {
+                            if(cubePosition.Z > enemies[i]->getPosition().Z)
+                                enemyAngleB = 180.0;
+                            else
+                                enemyAngleB = 0.0;
+                        }
+
+                        else
+                        {
+                            // Calculamos el ańgulo del triángulo que se forma con los 3 vértices: posición enemigo, posición cubo y posición inicial marcada.
+                            ab = sqrt(pow((cubePosition.X - enemies[i]->getPosition().X), 2.0) + pow((cubePosition.Z - enemies[i]->getPosition().Z), 2.0));
+                            ac = sqrt(pow((enemyFirstLook[i].X - enemies[i]->getPosition().X), 2.0) + pow((enemyFirstLook[i].Z - enemies[i]->getPosition().Z), 2.0));
+                            bc = sqrt(pow((enemyFirstLook[i].X - cubePosition.X), 2.0) + pow((enemyFirstLook[i].Z - cubePosition.Z), 2.0));
+                            
+                            // Calculamos el ángulo B del triángulo
+                            enemyAngleB = acos(-(((bc*bc)-(ab*ab)-(ac*ac))/(2*ab*ac))) * 180.0/pi;
+
+                            // Comprobamos si tenemos que cambiar de signo el ángulo ya que la suma de los ángulos de un triángulo es 180º entonces
+                            // el rango es de 0º - 180º por lo que necesitamos también los ángulos negativos para llegar a 360º.
+                            if(cubePosition.X > enemyFirstLook[i].X)
+                                enemyAngleB = -enemyAngleB;
+                            
+                        }
+
+                        // Cambiamos la rotación del enemigo
+                        smgr->getSceneNodeFromName(enemies[i]->getName())->setRotation(irr::core::vector3df(0,enemyAngleB,0));*/
                     }
                     else if (posIniEnemies[i] != enemies[i]->getAbsolutePosition()){
                         // Lo movemos a la posición inicial
-                        input.moveEnemy(died, enemies[i], posIniEnemies[i], MOVEMENT_SPEED_ENEMY, frameDeltaTime, collideables);
+                        input.moveEnemy(status, enemies[i], posIniEnemies[i], MOVEMENT_SPEED_ENEMY, frameDeltaTime, collideables);
+                        // Si tenemos la misma posición X no se formará un triángulo, sino una línea por tanto el ángulo será o 0º o 180º
+                        /*if(cubePosition.X == enemyFirstLook[i].X)
+                        {
+                            if(cubePosition.Z > enemies[i]->getPosition().Z)
+                                enemyAngleB = 180.0;
+                            else
+                                enemyAngleB = 0.0;
+                        }
+
+                        else
+                        {
+                            // Calculamos el ańgulo del triángulo que se forma con los 3 vértices: posición enemigo, posición cubo y posición inicial marcada.
+                            ab = sqrt(pow((cubePosition.X - enemies[i]->getPosition().X), 2.0) + pow((cubePosition.Z - enemies[i]->getPosition().Z), 2.0));
+                            ac = sqrt(pow((enemyFirstLook[i].X - enemies[i]->getPosition().X), 2.0) + pow((enemyFirstLook[i].Z - enemies[i]->getPosition().Z), 2.0));
+                            bc = sqrt(pow((enemyFirstLook[i].X - cubePosition.X), 2.0) + pow((enemyFirstLook[i].Z - cubePosition.Z), 2.0));
+                            
+                            // Calculamos el ángulo B del triángulo
+                            enemyAngleB = acos(-(((bc*bc)-(ab*ab)-(ac*ac))/(2*ab*ac))) * 180.0/pi;
+
+                            // Comprobamos si tenemos que cambiar de signo el ángulo ya que la suma de los ángulos de un triángulo es 180º entonces
+                            // el rango es de 0º - 180º por lo que necesitamos también los ángulos negativos para llegar a 360º.
+                            if(cubePosition.X > enemyFirstLook[i].X)
+                                enemyAngleB = -enemyAngleB;
+                            
+                        }
+
+                        // Cambiamos la rotación del enemigo
+                        smgr->getSceneNodeFromName(enemies[i]->getName())->setRotation(irr::core::vector3df(0,enemyAngleB,0));*/
                     }
                 }
 
                 // Enemigos shooters
-                name = "enemy_shoot_" + std::to_string(i+1);
+                name = "enemy_shot_" + std::to_string(i+1);
                 if(enemies[i]->getName() == name){
-                    if(Irrlicht_t::checkCollisionEnemiesPlayer(ranges[i], smgr->getSceneNodeFromName("cube_player"))){
-                        
+                    if(Irrlicht_t::checkCollisionEnemiesPlayer(ranges[i], smgr->getSceneNodeFromName("cube_player")))
+                    {
+                        // Comprobamos si existe el disparo
+                        if(enemyStatus[i] == 0)
+                        {
+                            // Si tenemos la misma posición X no se formará un triángulo, sino una línea por tanto el ángulo será o 0º o 180º
+                            if(cubePosition.X == enemyFirstLook[i].X)
+                            {
+                                if(cubePosition.Z > enemies[i]->getPosition().Z)
+                                    enemyAngleB = 180.0;
+                                else
+                                    enemyAngleB = 0.0;
+                            }
+
+                            else
+                            {
+                                // Calculamos el ańgulo del triángulo que se forma con los 3 vértices: posición enemigo, posición cubo y posición inicial marcada.
+                                ab = sqrt(pow((cubePosition.X - enemies[i]->getPosition().X), 2.0) + pow((cubePosition.Z - enemies[i]->getPosition().Z), 2.0));
+                                ac = sqrt(pow((enemyFirstLook[i].X - enemies[i]->getPosition().X), 2.0) + pow((enemyFirstLook[i].Z - enemies[i]->getPosition().Z), 2.0));
+                                bc = sqrt(pow((enemyFirstLook[i].X - cubePosition.X), 2.0) + pow((enemyFirstLook[i].Z - cubePosition.Z), 2.0));
+                                
+                                // Calculamos el ángulo B del triángulo
+
+                                //float enemyAngleA = acos(-(((ab*ab)-(bc*bc)-(ac*ac))/(2*bc*ac))) * 180.0/pi;
+                                enemyAngleB = acos(-(((bc*bc)-(ab*ab)-(ac*ac))/(2*ab*ac))) * 180.0/pi;
+                                //float enemyAngleC = acos(-(((ac*ac)-(ab*ab)-(bc*bc))/(2*ab*bc))) * 180.0/pi;
+
+                                // Comprobamos si tenemos que cambiar de signo el ángulo ya que la suma de los ángulos de un triángulo es 180º entonces
+                                // el rango es de 0º - 180º por lo que necesitamos también los ángulos negativos para llegar a 360º.
+                                if(cubePosition.X > enemyFirstLook[i].X)
+                                    enemyAngleB = -enemyAngleB;
+                                
+                            }
+
+                            //std::cout << "ab = " << ab << "; ac = " << ac << "; bc = " << bc << std::endl;
+                            //std::cout << "Nuevo ángulo A = " << enemyAngleA << "; Nuevo ángulo B = " << enemyAngleB << "; Nuevo ángulo C = " << enemyAngleC << std::endl;
+                            //std::cout << "Nuevo ángulo B = " << enemyAngleB << std::endl;
+
+
+                            /*if(isnanf(enemyAngleB))
+                                smgr->getSceneNodeFromName(enemies[i]->getName())->setRotation(irr::core::vector3df(0,0,0));
+                            else
+                                smgr->getSceneNodeFromName(enemies[i]->getName())->setRotation(irr::core::vector3df(0,enemyAngleB,0));*/
+
+                            // Cambiamos la rotación del enemigo
+                            smgr->getSceneNodeFromName(enemies[i]->getName())->setRotation(irr::core::vector3df(0,enemyAngleB,0));
+                        }
+
+                        if(enemyStatus[i] == 0){
+                            object = smgr->addSphereSceneNode(0.8);
+                            name = "shot" + countShot;
+                            nameToChar = name.c_str();
+                            object->setName(nameToChar);
+                            
+                            // Aumentamos el contador de disparos
+                            countShot++;
+                            // Actualizamos el estado del enemigo
+                            enemyStatus[i] = 1;
+
+                            shots.push_back(object);
+                            shotsAngle.push_back(enemies[i]->getRotation().Y);
+
+                            // Le añadimos altura, la posición al objeto disparo (shot) y la textura
+                            irr::core::vector3df shotPosition = smgr->getSceneNodeFromName(enemies[i]->getName())->getPosition();
+                            shotPosition.Y = shotPosition.Y + 3.5f;
+
+                            object->setPosition(shotPosition);
+                            object->setMaterialTexture(0, driver->getTexture("media/texturas/color_potion.jpg"));
+                            object->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+                        }
                     }
                 }
             }
 
-            //----------------------------------------------------------------------------------------------------------------------
-            //----------------------------------------------------------------------------------------------------------------------
+            //---------------------------------------------------------- MOVER DISPAROS ----------------------------------------------------------------------
+            int shot_col = 0;
+            for(unsigned int i = 0; i < shots.size(); i++){
+
+                // Comprobamos si el estado del jugador es normal, bebiendo una poción o golpeado
+                if(status == 0 || status == 1 || status == 3)
+                {
+                    // Movemos los disparos según la rotación del enemigo
+                    input.moveEnemyShot(shots[i], 40.f, frameDeltaTime, shotsAngle[i]);
+                    // Comprobamos si colisiona con algún objeto o con el jugador
+                    shot_col = checkCollisionShotCollideables(shots[i], collideables);
+
+                    // Colisiona con un objeto (o pared)
+                    if(shot_col == 1)
+                    {
+                        // Si colisiona borramos el disparo de la escena y del vector
+                        shots[i]->remove();
+                        shots.erase(shots.begin() + i);
+                        // Si colisiona borramos el ángulo del disparo del vector
+                        shotsAngle.erase(shotsAngle.begin() + i);
+                    }
+                    // Colisiona con el jugador
+                    else if (shot_col == 2)
+                    {
+                        // Si colisiona borramos el disparo de la escena y del vector
+                        shots[i]->remove();
+                        shots.erase(shots.begin() + i);
+                        // Si colisiona borramos el ángulo del disparo del vector
+                        shotsAngle.erase(shotsAngle.begin() + i);
+
+                        if(status != 1)
+                        {
+                            sound.playEvent("event:/Efectos/colisiones/herida");
+                            hit_points -= 5;
+                            updateHearts = true;
+                            comproveHP(cubePosition, true);
+                        }
+                    }
+                }
+
+            }
+
+            //---------------------------------------------------------- ACTUALIZAR ESTADOS ------------------------------------------------------------------
+            for(unsigned int i = 0; i < enemies.size(); i++)
+            {
+                // Enemigos shooters
+                name = "enemy_shot_" + std::to_string(i+1);
+                if(enemies[i]->getName() == name)
+                {
+                    // Si el estado del enemigo es de haber disparado (1) lo cambiamos a los 60 frames = 1 segundo
+                    if(enemyStatus[i] == 1)
+                    {
+                        // Aumentamos el número de frames
+                        enemyTime[i]++;
+
+                        // Comprobamos si han pasado 60 frames (1s)
+                        if(enemyTime[i] >= 60){
+                            // Cambiamos el estado para que pueda volver a disparar
+                            enemyStatus[i] = 0;
+                            // Reestablecemos a 0 el número de frames
+                            enemyTime[i] = 0;
+                        }
+
+                    }
+                }
+
+            }
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------------------------------------------
 
             //---------------------------------------------------- Protegerse con el escudo-------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            if(weapon == 2 && catched == 0 && input.IsLeftClickDown() && died != 2){
+            float shieldRotY = 0.0;
+            if(weapon == 2 && catched == 0 && input.IsLeftClickDown() && status != 2){
                 shield = 1;
 
                 posPlayer = cubePosition;
-                posPlayer.Y += 5.f;
-                scale.X = 1.f;
-                scale.Y = 5.f;
-                scale.Z = 1.f;
-                rotation.X = 0.f;
-                rotation.Y = 0.f;
-                rotation.Z = 0.f;
 
                 // Comprobamos la dirección para establecer la posición del escudo
                 if(direction == 1){
                     posPlayer.X += 3.6f;
-                    scale.X = 1.f;
-                    scale.Z = 4.5f;
+                    shieldRotY = 90.0;
                 }
                 else if(direction == 2){
                     posPlayer.X -= 3.6f;
-                    scale.X = 1.f;
-                    scale.Z = 4.5f;
+                    shieldRotY = -90.0;
                 }
-                else if(direction == 3 || direction == 5 || direction == 6){
+                else if(direction == 3){
                     posPlayer.Z += 3.6f;
-                    scale.X = 4.5f;
-                    scale.Z = 1.f;
+                    shieldRotY = 0.0;
                 }
-                else if(direction == 4 || direction == 7 || direction == 8){
+                else if(direction == 4){
                     posPlayer.Z -= 3.6f;
-                    scale.X = 4.5f;
-                    scale.Z = 1.f;
+                    shieldRotY = 180.0; // o -180.0
                 }
                 else if(direction == 5){
-                    posPlayer.X += 4.5f;
-                    posPlayer.Z += 4.5f;
-                    scale.X = 1.f;
-                    scale.Z = 4.5f;
-                    rotation.Y = -45.f;
+                    posPlayer.X += 4.9f;
+                    posPlayer.Z += 4.9f;
+                    shieldRotY = 45.0;
                 }
                 else if(direction == 6){
-                    posPlayer.X -= 4.5f;
-                    posPlayer.Z += 4.5f;
-                    scale.X = 1.f;
-                    scale.Z = 4.5f;
-                    rotation.Y = 45.f;
+                    posPlayer.X -= 4.9f;
+                    posPlayer.Z += 4.9f;
+                    shieldRotY = -45.0;
                 }
                 else if(direction == 7){
-                    posPlayer.X += 4.5f;
-                    posPlayer.Z -= 4.5f;
-                    scale.X = 1.f;
-                    scale.Z = 4.5f;
-                    rotation.Y = 45.f;
+                    posPlayer.X += 4.9f;
+                    posPlayer.Z -= 4.9f;
+                    shieldRotY = 135.0;
                 }
                 else if(direction == 8){
-                    posPlayer.X -= 4.5f;
-                    posPlayer.Z -= 4.5f;
-                    scale.X = 1.f;
-                    scale.Z = 4.5f;
-                    rotation.Y = -45.f;
+                    posPlayer.X -= 4.9f;
+                    posPlayer.Z -= 4.9f;
+                    shieldRotY = -135.0;
                 }
 
                 if(!smgr->getSceneNodeFromName("shield")){
-                    object = smgr->addCubeSceneNode(1);
+                    mesh = smgr->getMesh("media/obj/escudo.obj");
+                    object = smgr->addAnimatedMeshSceneNode( mesh );
                     object->setName("shield");
                     //object->setVisible(false);
+                    object->setMaterialTexture(0, driver->getTexture("media/texturas/escudo/escudo_DefaultMaterial_BaseColor.1001.png"));
+                    object->setMaterialFlag(irr::video::EMF_LIGHTING, false);
                     collideables.push_back(object);
                 }
 
                 irr::core::vector3df oldPos = smgr->getSceneNodeFromName("shield")->getPosition();
                 smgr->getSceneNodeFromName("shield")->setPosition(posPlayer);
-                smgr->getSceneNodeFromName("shield")->setScale(scale);
-                smgr->getSceneNodeFromName("shield")->setRotation(rotation);
+                smgr->getSceneNodeFromName("shield")->setRotation(irr::core::vector3df(0,shieldRotY,0));
 
                 if(Irrlicht_t::checkCollisionCollideables(smgr->getSceneNodeFromName("shield"), collideables))
                     smgr->getSceneNodeFromName("shield")->setPosition(oldPos);
@@ -2599,16 +2783,25 @@ void Irrlicht_t::run(){
                         // Borramos el enemigo de la escena y del array de enemigos (enemies)
                         enemies[i]->remove();
                         ranges[i]->remove();
-                        for(unsigned int j = 0; j < collideables.size();j++){
-                            if(collideables[j] == enemies[i]){
+                        for(unsigned int j = 0; j < collideables.size();j++)
+                        {
+                            if(collideables[j] == enemies[i])
+                            {
                                 collideables.erase(collideables.begin() + j);
                                 break;
                             }
                         }
+
+                        // Borramos todos los vectores que utilizan los enemigos
                         enemies.erase(enemies.begin() + i);
+                        enemyFirstLook.erase(enemyFirstLook.begin() + i);
+                        enemyStatus.erase(enemyStatus.begin() + i);
+                        enemyTime.erase(enemyTime.begin() + i);
                         ranges.erase(ranges.begin() + i);
                         posIniEnemies.erase(posIniEnemies.begin() + i);
+
                         catched = 0;
+
                         break;
                     }
                 }
@@ -2673,32 +2866,44 @@ void Irrlicht_t::run(){
 
             //-----------------------------------PONER Y EXPLOTAR BOMBA REMOTA--------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            if(weapon == 4 && catched == 0 && input.IsLeftClickDown() && isPressed == false && died != 2){
-                if(bomb ==1){
+            if(weapon == 4 && catched == 0 && input.IsLeftClickDown() && isPressed == false && status != 2)
+            {
+                if(bomb == 1)
+                {
                     bomb = 0;
                     sound.playEvent("event:/Efectos/ataque/explosion");
-                    for(unsigned int i=0; i<enemies.size() && !colBomba; i++){
+                    for(unsigned int i = 0; i < enemies.size() && !colBomba; i++)
+                    {
                         colBomba = Irrlicht_t::checkCollisionBomba(smgr->getSceneNodeFromName("bomba"), enemies[i]);
                         //std::cout << "colBomb: " << colBomba << std::endl;
                         if(colBomba){
                             enemies[i]->remove();
                             ranges[i]->remove();
-                            for(unsigned int j = 0; j < collideables.size();j++){
-                                if(collideables[j] == enemies[i]){
+                            for(unsigned int j = 0; j < collideables.size();j++)
+                            {
+                                if(collideables[j] == enemies[i])
+                                {
                                     collideables.erase(collideables.begin() + j);
                                     break;
                                 }
                             }
+
+                            // Borramos todos los vectores que utilizan los enemigos
                             enemies.erase(enemies.begin() + i);
+                            enemyFirstLook.erase(enemyFirstLook.begin() + i);
+                            enemyStatus.erase(enemyStatus.begin() + i);
+                            enemyTime.erase(enemyTime.begin() + i);
                             ranges.erase(ranges.begin() + i);
                             posIniEnemies.erase(posIniEnemies.begin() + i);
                         }
                     }
-                    if(Irrlicht_t::checkCollisionPlayerBomb(smgr->getSceneNodeFromName("bomba"), smgr->getSceneNodeFromName("cube_player"))){
-                        if(shield == 0){
+                    if(status != 1 && status != 2 && Irrlicht_t::checkCollisionPlayerBomb(smgr->getSceneNodeFromName("bomba"), smgr->getSceneNodeFromName("cube_player")))
+                    {
+                        if(shield == 0)
+                        {
                             sound.playEvent("event:/Efectos/colisiones/herida");
 
-                            hit_points -= 1;
+                            hit_points -= 5;
                             updateHearts = true;
                             comproveHP(cubePosition, true);
                         }
@@ -2706,13 +2911,16 @@ void Irrlicht_t::run(){
                     }
                     smgr->getSceneNodeFromName("bomba")->remove();
                     colBomba = false;
-                }else if(bomb == 0){
-                    object = smgr->addCubeSceneNode(2);
+                }
+
+                else if(bomb == 0)
+                {
+                    mesh = smgr->getMesh("media/obj/bomba.obj");
+                    object = smgr->addAnimatedMeshSceneNode( mesh );
                     object->setName("bomba");
-                    irr::core::vector3df pos = smgr->getSceneNodeFromName("cube_player")->getPosition();
-                    object->setPosition(pos);
-                    object->setMaterialTexture(0, driver->getTexture("media/texturas/color_bomb.jpg"));
-                    //object->setScale(irr::core::vector3df(6.0f,6.0f,6.0f));
+                    //irr::core::vector3df pos = smgr->getSceneNodeFromName("cube_player")->getPosition();
+                    object->setPosition(smgr->getSceneNodeFromName("cube_player")->getPosition());
+                    object->setMaterialTexture(0, driver->getTexture("media/texturas/bomba/bomba_wire_140088225_BaseColor.1001.png"));
                     object->setMaterialFlag(irr::video::EMF_LIGHTING, false);
                     bomb = 1; 
                 }
@@ -2723,57 +2931,95 @@ void Irrlicht_t::run(){
             //---------------------------------------------------- Colisión enemigo-espada -------------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
             
+            float swordRotY = 0.0;
             // Comprobamos si el cube_player (jugador) usa la espada y si colisiona con el enemigo lo mata
-            if(weapon == 1 && catched == 0 && input.IsLeftClickDown() && died != 2){
+            if(weapon == 1 && catched == 0 && input.IsLeftClickDown() && status != 2){
                 sound.playEvent("event:/Efectos/ataque/Espada_sin_colision");
                 posPlayer = cubePosition;
                 posPlayer.Y += 1.5f;
 
                 // Comprobamos la dirección para establecer la posición de la espada
                 if(direction == 1)
-                    posPlayer.X += 4;
+                {
+                    posPlayer.X += 5;
+                    swordRotY = 90.0;
+                }
                 else if(direction == 2)
-                    posPlayer.X -= 4;
+                {
+                    posPlayer.X -= 5;
+                    swordRotY = -90.0;
+                }
                 else if(direction == 3)
-                    posPlayer.Z += 4;
+                {
+                    posPlayer.Z += 5;
+                    swordRotY = 0.0;
+                }
                 else if(direction == 4)
-                    posPlayer.Z -= 4;
-                else if(direction == 5){
-                    posPlayer.X += 4;
-                    posPlayer.Z += 4;
+                {
+                    posPlayer.Z -= 5;
+                    swordRotY = 180.0; // o -180.0
+
                 }
-                else if(direction == 6){
-                    posPlayer.X -= 4;
-                    posPlayer.Z += 4;
+                else if(direction == 5)
+                {
+                    posPlayer.X += 5;
+                    posPlayer.Z += 5;
+                    swordRotY = 45.0;
+
                 }
-                else if(direction == 7){
-                    posPlayer.X += 4;
-                    posPlayer.Z -= 4;
+                else if(direction == 6)
+                {
+                    posPlayer.X -= 5;
+                    posPlayer.Z += 5;
+                    swordRotY = -45.0;
+
                 }
-                else if(direction == 8){
-                    posPlayer.X -= 4;
-                    posPlayer.Z -= 4;
+                else if(direction == 7)
+                {
+                    posPlayer.X += 5;
+                    posPlayer.Z -= 5;
+                    swordRotY = 135.0;
+
+                }
+                else if(direction == 8)
+                {
+                    posPlayer.X -= 5;
+                    posPlayer.Z -= 5;
+                    swordRotY = -135.0;
                 }
 
                 if(!smgr->getSceneNodeFromName("sword")){
-                    object = smgr->addCubeSceneNode(3);
+                    mesh = smgr->getMesh("media/obj/espada.obj");
+                    object = smgr->addAnimatedMeshSceneNode( mesh );
                     object->setName("sword");
+                    object->setMaterialTexture(0, driver->getTexture("media/texturas/espada/espada_DefaultMaterial_BaseColor.1001.png"));
+                    object->setMaterialFlag(irr::video::EMF_LIGHTING, false);
                 }
 
+                // Cambiamos la posición y la rotación según la dirección
                 smgr->getSceneNodeFromName("sword")->setPosition(posPlayer);
+                smgr->getSceneNodeFromName("sword")->setRotation(irr::core::vector3df(0,swordRotY,0));
+
                 // Comprobamos si la espada (sword) colisiona con algún enemigo en el vector enemies, si colisiona morirá
                 for(unsigned int i = 0; i < enemies.size();i++){
                     if(smgr->getSceneNodeFromName("sword") && Irrlicht_t::checkCollisionEspada(object, enemies[i], direction)){
                         sound.playEvent("event:/Efectos/colisiones/corte");
                         enemies[i]->remove();
                         ranges[i]->remove();
-                        for(unsigned int j = 0; j < collideables.size();j++){
-                            if(collideables[j] == enemies[i]){
+                        for(unsigned int j = 0; j < collideables.size();j++)
+                        {
+                            if(collideables[j] == enemies[i])
+                            {
                                 collideables.erase(collideables.begin() + j);
                                 break;
                             }
                         }
+
+                        // Borramos todos los vectores que utilizan los enemigos
                         enemies.erase(enemies.begin() + i);
+                        enemyFirstLook.erase(enemyFirstLook.begin() + i);
+                        enemyStatus.erase(enemyStatus.begin() + i);
+                        enemyTime.erase(enemyTime.begin() + i);
                         ranges.erase(ranges.begin() + i);
                         posIniEnemies.erase(posIniEnemies.begin() + i);
                     }
@@ -2793,10 +3039,10 @@ void Irrlicht_t::run(){
             //------------------------------------------------------------------------------------------------------------------------------------------------
             // Comprobamos si el cube_player (jugador) colisiona con algún enemigo en el vector enemies, si colisiona morirá
             for(unsigned int i = 0; i < enemies.size();i++){
-                if(died != 1 && Irrlicht_t::checkCollisionObject(smgr->getSceneNodeFromName("cube_player"), enemies[i])){
+                if(status != 1 && Irrlicht_t::checkCollisionObject(smgr->getSceneNodeFromName("cube_player"), enemies[i])){
                     //Colisionan
                     if(shield == 0){
-                        hit_points -= 1;
+                        hit_points -= 10;
                         updateHearts = true;
                         sound.playEvent("event:/Efectos/colisiones/herida");
 
@@ -2809,22 +3055,33 @@ void Irrlicht_t::run(){
             if (hit_points == 0){
                 //sound.playEvent("event:/Efectos/colisiones/muerte");
 
-                smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/texturas/color_player.jpg"));
-                smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+                // Si el contador de FPS está a cero actualizamos la textura y el mapa
+                if(contFPS == 0){
+                    smgr->getSceneNodeFromName("cube_player")->setMaterialTexture(0, driver->getTexture("media/texturas/color_player.jpg"));
+                    smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 
-                // Borramos el escenario y lo cargamos desde el último checkpoint
-                smgr->clear();
-                smgr->loadScene(zoneToChange);
-                fillVectors();
+                    // Borramos el escenario y lo cargamos desde el último checkpoint
+                    smgr->clear();
+                    smgr->loadScene(zoneToChange);
+                    fillVectors();
+
+                    contFPS ++;
+                }
                 
+                // Comprobamos si se pulsa el enter para cerrar el mensaje y cargar el juego
                 if (input.IsKeyDown(irr::KEY_RETURN)){
-                    died = 0;
+                    //status = 0;
                     //hit_points = 3;
+                    std::cout << "Entro" << std::endl;
                     loadGame();
                     updateHearts = true;
+                    updateWeapon = true;
                     catched = 0;   // Sin coger
                     bomb = 0;   // Bomba sin poner
                     treeWindow->remove();
+
+                    // Reestablecemos el contador de FPS a 0
+                    contFPS = 0;
                 }
             }
 
@@ -2843,7 +3100,7 @@ void Irrlicht_t::run(){
                         const irr::core::rect<int> rect(100,140,170, 180);
                         btn = guienv->addButton( rect, win, 1, L"Press Enter", L"Continue");*/
 
-                        died = 2; // Para que no se pueda mover hasta que se cierre el mensaje
+                        status = 2; // Para que no se pueda mover hasta que se cierre el mensaje
                         open=true;
 
                         treeWindow = guienv->addTreeView(irr::core::rect<int>(20,760,1900,1060), 0, -1, false, false, false);
@@ -2862,7 +3119,7 @@ void Irrlicht_t::run(){
                         const irr::core::rect<int> rect(100,140,170, 180);
                         btn = guienv->addButton( rect, win, 1, L"Press Enter", L"Continue");*/
 
-                        died = 2; // Para que no se pueda mover hasta que se cierre el mensaje
+                        status = 2; // Para que no se pueda mover hasta que se cierre el mensaje
                         open=true;
 
                         treeWindow = guienv->addTreeView(irr::core::rect<int>(20,760,1900,1060), 0, -1, false, false, false);
@@ -2880,7 +3137,7 @@ void Irrlicht_t::run(){
             if(open){
                 if(input.IsKeyDown(irr::KEY_RETURN)){
                     open = false;
-                    died = 0;  
+                    status = 0;  
                     //win->remove();
                     treeWindow->remove();
                 }
@@ -2892,7 +3149,7 @@ void Irrlicht_t::run(){
             //--------------------------------------------------------- Disparo de una flecha ----------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
             // Comprobamos si el jugador (cube_player) tiene flechas y si pulsa el espacio para dispararla y la creamos
-            if (weapon == 3 && catched == 0 && arrows != 0 && input.IsLeftClickDown() && !smgr->getSceneNodeFromName("arrow") && died != 2){
+            if (weapon == 3 && catched == 0 && arrows != 0 && input.IsLeftClickDown() && !smgr->getSceneNodeFromName("arrow") && status != 2){
                 //std::cout << arrows << std::endl;
                 sound.playEvent("event:/Efectos/ataque/soltar_flecha");
                 arrows--;
@@ -2950,15 +3207,22 @@ void Irrlicht_t::run(){
                         // Borramos el enemigo de la escena y del array de enemigos (enemies)
                         enemies[i]->remove();
                         ranges[i]->remove();
-                        for(unsigned int j = 0; j < collideables.size();j++){
-                            if(collideables[j] == enemies[i]){
+                        for(unsigned int j = 0; j < collideables.size();j++)
+                        {
+                            if(collideables[j] == enemies[i])
+                            {
                                 collideables.erase(collideables.begin() + j);
                                 break;
                             }
                         }
+                        // Borramos todos los vectores que utilizan los enemigos
                         enemies.erase(enemies.begin() + i);
+                        enemyFirstLook.erase(enemyFirstLook.begin() + i);
+                        enemyStatus.erase(enemyStatus.begin() + i);
+                        enemyTime.erase(enemyTime.begin() + i);
                         ranges.erase(ranges.begin() + i);
                         posIniEnemies.erase(posIniEnemies.begin() + i);
+
                         break;
                     }
                 }
@@ -3001,18 +3265,18 @@ void Irrlicht_t::run(){
             //--------------------------------------------------------------------------------------------------------------------------------------------------
 
             // Si se está abriendo un cofre contamos frames para que no se pueda mover al instante
-            if(died == 4){
+            if(status == 4){
                 contFPS++;
                 if(contFPS == 15){
                     contFPS = 0;
-                    died = 0;
+                    status = 0;
                 }
             }
 
             //Comprobamos si el cube_player (jugador) colisiona con algún cofre (chest) y así poder cogerlo si colisiona
             for(unsigned int i = 0; i < chests.size();i++){
                 if(catched == 0 && Irrlicht_t::checkCollisionObject(smgr->getSceneNodeFromName("cube_player"), chests[i]) && input.IsKeyDown(irr::KEY_SPACE)){
-                    died = 4; // Cambiamos al estado a abriendo un cofre
+                    status = 4; // Cambiamos al estado a abriendo un cofre
                     chests[i]->remove();
                     for(unsigned int j = 0; j < collideables.size();j++){
                         if(collideables[j] == chests[i]){
@@ -3047,12 +3311,17 @@ void Irrlicht_t::run(){
             }
 
             //Beber pocion
-            if(catched == 0 && weapon == 5 && potion_gotcha != 0 && input.IsLeftClickDown() && died != 4 && pause == false){
+            if(catched == 0 && weapon == 5 && potion_gotcha != 0 && input.IsLeftClickDown() && status != 4 && pause == false){
                 if(hit_points < max_hp){
-                    hit_points ++;
+                    hit_points += 10;
+                    if (hit_points > max_hp)
+                    {
+                        // Si nos pasamos del los máximos puntos de salud al curarme ponemos los máximos puntos de salud como los actuales
+                        hit_points = max_hp;
+                    }
                     potion_gotcha--;
                     updateHearts = true; // Lo ponemos a true para actualizar el número de corazones
-                    died = 3; // Para que no se mueva y no pueda beber las pociones seguidas
+                    status = 3; // Para que no se mueva y no pueda beber las pociones seguidas
                 }
             }
 
@@ -3083,20 +3352,22 @@ void Irrlicht_t::run(){
 
             // Comprobamos si sigue pulsada la L para controlar la bomba
             isPressed = input.IsLeftClickDown();
+
+            // Actualizamos el sonido
             sound.studioUpdate();
 
             //-----------------------------------------------------------------------------------------------
             //-----------------------------------------MENU-PAUSE----------------------------------------------
             //-----------------------------------------------------------------------------------------------
 
-            //std::cout << "died = ";
-            //std::cout << died << std::endl;
+            //std::cout << "status = ";
+            //std::cout << status << std::endl;
             
-            if(input.IsKeyDown(irr::KEY_ESCAPE) && !pause && died == 0){
+            if(input.IsKeyDown(irr::KEY_ESCAPE) && !pause && status == 0){
                 //win = guienv->addWindow(core::rect<int>(200,90,490,290), true, L"Menu", 0, 8);
                 //win->setDrawBackground(true);
                 pause = true;
-                died = 2;
+                status = 2;
                 btn_check = 0; // Lo ponemos a 0
                 change_btn_check = btn_check;
 
@@ -3180,26 +3451,27 @@ void Irrlicht_t::run(){
                 if(btn_check == 0 && input.IsKeyDown(irr::KEY_RETURN)){
                     treeWindow->remove();
                     pause = false;
-                    died = 0;
+                    status = 0;
                 }
                 /*else if(saveButton->isPressed()){
                     win->remove();
                     pause = false;
-                    died = 0;
+                    status = 0;
                     saveGame();
                 }*/
                 else if(btn_check == 1 && input.IsKeyDown(irr::KEY_RETURN)){
                     treeWindow->remove();
                     pause = false;
-                    died = 0;
+                    status = 0;
                     if(loadGame()) loadZone();
                     updateHearts = true;
+                    updateWeapon = true;
                 }
                 else if(btn_check == 2 && input.IsKeyDown(irr::KEY_RETURN)){
                     treeWindow->remove();
                     device->closeDevice();
                     pause = false;
-                    died = 0;
+                    status = 0;
                 }
             }
 
@@ -3208,19 +3480,47 @@ void Irrlicht_t::run(){
 
             //---------------------------------------------------- Mostrar corazones del jugador -------------------------------------------------------------
             //------------------------------------------------------------------------------------------------------------------------------------------------
-            if(updateHearts){   // No haría falta este if, pero si no se pone al actualizar todo el rato la imagen se reducen los FPS
-                for (int i = 0; i < max_hp+1; i++){
-                    if(i == hit_points){
-                        // Guardamos la ruta necesaria de la imagen en un string
-                        std::string path = "media/salud/hp_" + std::to_string(i) + "_" + std::to_string(max_hp) + ".png";
-                        const char* path2char = path.c_str();
+            if(updateHearts) // No haría falta este if, pero si no se pone al actualizar todo el rato la imagen se reducen los FPS
+            {   
+                // Si la salud es igual al máximo ponemos todas las barras
+                if (hit_points == max_hp)
+                {
+                    std::string path = "media/HUD/salud/hp_" + std::to_string(max_hp/5) + "_" + std::to_string(max_hp/5) + ".png";
+                    const char* path2char = path.c_str();
+                    // Cogemos la imagen y la añadimos
+                    img = driver->getTexture(path2char);
+                    if(img) guienv->addImage(img, irr::core::position2di(20, 20), true, 0, -1, L"HP");
+                    updateHearts = false;
+                }
 
-                        // Cogemos la imagen y la añadimos
-                        img = driver->getTexture(path2char);
-                        if(img) guienv->addImage(img, irr::core::position2di(20, 20), true, 0, -1, L"HP");
-                        updateHearts = false;
-                        break;
-                    }
+                // Si los puntos de salud son 0 pondremos la imagen en la que no hay barras de salud
+                else if (hit_points == 0)
+                {
+                    std::string path = "media/HUD/salud/hp_" + std::to_string(hit_points) + "_" + std::to_string(max_hp/5) + ".png";
+                    const char* path2char = path.c_str();
+                    // Cogemos la imagen y la añadimos
+                    img = driver->getTexture(path2char);
+                    if(img) guienv->addImage(img, irr::core::position2di(20, 20), true, 0, -1, L"HP");
+                    updateHearts = false;
+                }
+
+                // Cada barra de salud son 5 de vida por tanto dividimos los puntos de salud entre 5
+                else
+                {
+                    // Creamos una variable para comprobar cuando los puntos de salud son múltiplos de 5
+                    //int numImagenHP = 0;
+
+                    /*if(hit_points%5 == 0)
+                        numImagenHP = hit_points/5;
+                    else
+                        numImagenHP = (hit_points/5)+1;*/
+
+                    std::string path = "media/HUD/salud/hp_" + std::to_string(hit_points/5) + "_" + std::to_string(max_hp/5) + ".png";
+                    const char* path2char = path.c_str();
+                    // Cogemos la imagen y la añadimos
+                    img = driver->getTexture(path2char);
+                    if(img) guienv->addImage(img, irr::core::position2di(20, 20), true, 0, -1, L"HP");
+                    updateHearts = false;
                 }
             }
 
@@ -3233,7 +3533,7 @@ void Irrlicht_t::run(){
                 for (int i = 0; i < 6; i++){
                     if(i == weapon){
                         // Guardamos la ruta necesaria de la imagen en un string
-                        std::string path = "media/weapons/weapon_" + std::to_string(i) + ".png";
+                        std::string path = "media/HUD/weapons/weapon_" + std::to_string(i) + ".png";
                         const char* path2char = path.c_str();
 
                         // Cogemos la imagen y la añadimos
@@ -3283,7 +3583,7 @@ void Irrlicht_t::saveGame(){
         myfile << potion_gotcha << '\n';
         myfile << key_gotcha << '\n';
         myfile << zone << '\n';
-        myfile << died << '\n';
+        myfile << status << '\n';
 
         /*std::string name = "zone_" + std::to_string(zone) + ".irr";
         const char* nameToChar = name.c_str();
@@ -3303,7 +3603,7 @@ bool Irrlicht_t::loadGame(){
     std::ifstream myfile ("soulMirror.dat");
     if (myfile.is_open()){
         while (getline (myfile,line) ){
-            std::cout << line << '\n';
+            //std::cout << line << '\n';
 
             if(aux == 0) weapon = stoi(line);
             else if (aux == 1) hit_points = stoi(line);
@@ -3314,7 +3614,7 @@ bool Irrlicht_t::loadGame(){
             else if (aux == 6) potion_gotcha = stoi(line);
             else if (aux == 7) key_gotcha = stoi(line);
             else if (aux == 8) zone = stoi(line);
-            else if (aux == 9) died = stoi(line);
+            else if (aux == 9) status = stoi(line);
 
             aux++;
         }
@@ -3354,6 +3654,15 @@ void Irrlicht_t::loadZone(){
         barriles.erase(barriles.begin() + pos_object);
     }
 
+    // Borramos los disparos que queden sueltos
+    for (unsigned int i = 0; i < shots.size(); i++)
+    {
+        // Borramos los disparos
+        shots[i]->remove();
+        // (No los borramos del vector porque se borran en la función fillVectors)
+    }
+    
+
     // Ponemos a 0 la variable de coger para decir que no tiene ningún objeto cogido
     catched = 0;
     // Ponemos a 0 la variable del escudo para desprotegerlo
@@ -3377,6 +3686,9 @@ void Irrlicht_t::fillVectors(){
     // Primero vaciamos los vectores
     collideables.clear();
     enemies.clear();
+    enemyFirstLook.clear();
+    enemyStatus.clear();
+    enemyTime.clear();
     ranges.clear();
     posIniEnemies.clear();
     keys.clear();
@@ -3389,6 +3701,7 @@ void Irrlicht_t::fillVectors(){
     zones.clear();
     npcs.clear();
     chests.clear();
+    shots.clear();
 
 
     // Metemos al jugador (cube_player) en el vector de collideables
@@ -3409,7 +3722,7 @@ void Irrlicht_t::fillVectors(){
                 // Añadimos el objeto a su vector correspondiente
                 if(!(names[j] == "button_") && names[j] != "range_")
                     collideables.push_back(object);
-                if(names[j] == "enemy_" || names[j] == "enemy_shoot_"){
+                if(names[j] == "enemy_" || names[j] == "enemy_shot_"){
                     enemies.push_back(object);
                     posIniEnemies.push_back(object->getPosition());
                 }
@@ -3463,6 +3776,24 @@ void Irrlicht_t::fillVectors(){
         collideables.push_back(object);
     }
     
+    float firsLookZ = 0.0;
+    irr::core::vector3df firsLook = irr::core::vector3df(0,0,0);
+    for (unsigned int i = 0; i < enemies.size(); i++)
+    {
+        // Calculamos usando el rango y la posición del enemigo el punto al que mira cuando su rotación es 0º
+        firsLookZ = enemies[i]->getPosition().Z;
+        firsLookZ = firsLookZ - ranges[i]->getScale().Z;
+        firsLook = irr::core::vector3df(enemies[i]->getPosition().X, 0, firsLookZ);
+        enemyFirstLook.push_back(firsLook);
+
+        // Rellenamos de ceros el vector de estados de los enemigos
+        enemyStatus.push_back(0);
+
+        // Rellenamos de ceros el vector de tiempos de los enemigos
+        enemyTime.push_back(0);
+    }
+    
+
 }
 
 void Irrlicht_t::drawZone(const char* z, int pos_object){
@@ -3491,6 +3822,9 @@ void Irrlicht_t::drawZone(const char* z, int pos_object){
         barriles[pos_object]->remove();
         barriles.erase(barriles.begin() + pos_object);
     }
+
+    if (smgr->getSceneNodeFromName("shot"))
+        smgr->getSceneNodeFromName("shot")->remove();
 
     // Ponemos a 0 la variable de coger para decir que no tiene ningún objeto cogido
     catched = 0;
@@ -3529,8 +3863,9 @@ void Irrlicht_t::drawZone(const char* z, int pos_object){
 void Irrlicht_t::comproveHP(irr::core::vector3df cubePosition, bool colBomba){
     irr::core::vector3df playerPositionNew;
 
-    if(hit_points!=0){
-        died = 1; // Estado golpeado
+    if(hit_points > 0)
+    {
+        status = 1; // Estado golpeado
         
         /*playerPositionNew = cubePosition;
 
@@ -3573,8 +3908,13 @@ void Irrlicht_t::comproveHP(irr::core::vector3df cubePosition, bool colBomba){
         smgr->getSceneNodeFromName("cube_player")->setMaterialFlag(irr::video::EMF_LIGHTING, false);
         
     }
-    else{
-        died = 2; // Estado muerto
+    else
+    {
+        // Si los puntos de salud son negativos los igualamos a 0
+        if(hit_points < 0)
+            hit_points = 0;
+
+        status = 2; // Estado muerto
         //smgr->getSceneNodeFromName("cube_player")->setPosition(posInicio);
         //win = guienv->addWindow(irr::core::rect<int>(200,90,490,290), true, L"Game Over", 0, 5);
         //win->getCloseButton()->setVisible(false);
@@ -3583,7 +3923,7 @@ void Irrlicht_t::comproveHP(irr::core::vector3df cubePosition, bool colBomba){
         img = driver->getTexture("media/game_over.png");
         if(img) guienv->addImage(img, irr::core::position2di(0, 0), true, treeWindow, -1, L"Game over");
         
-        //guienv->addStaticText(L"You died. \n Press enter to continue.",irr::core::rect<int>(20,40,250,120), true, true, win);
+        //guienv->addStaticText(L"You status. \n Press enter to continue.",irr::core::rect<int>(20,40,250,120), true, true, win);
         
         //const irr::core::rect<int> rect(100,140,170, 180);
         //btn = guienv->addButton( rect, win, 1, L"Press Enter", L"Continue");
@@ -4029,6 +4369,43 @@ bool Irrlicht_t::checkCollisionEnemiesPlayer(irr::scene::ISceneNode* range, irr:
    return col;
 }
 
+int Irrlicht_t::checkCollisionShotCollideables(irr::scene::ISceneNode* shot, std::vector<irr::scene::ISceneNode*> collideables){
+   
+    int col = 0;
+    std::string namePlayer = "cube_player";
+    std::string nameEnemy = "enemy";
+    std::string nameCollideable = "";
+    irr::core::vector3df pos;
+    irr::core::aabbox3d<irr::f32> b1, b2;
+
+    pos = shot->getPosition();
+
+    b1 = shot->getBoundingBox ();
+
+    shot->getRelativeTransformation().transformBoxEx( b1 );
+    
+    for(unsigned int i = 0; i < collideables.size();i++){
+        b2 = collideables[i]->getBoundingBox ();
+        collideables[i]->getRelativeTransformation().transformBoxEx( b2 );
+        if(b1.intersectsWithBox(b2)){
+            // Comprobamos si la colisión es con el jugador 
+            if(collideables[i]->getName() == namePlayer){
+                col = 2;
+                break;
+            }
+            // Si la colisión no es con el jugador será con algún obstáculo (descontando enemigos)
+            nameCollideable = collideables[i]->getName();
+            nameCollideable = nameCollideable.substr(0, nameCollideable.find("_"));
+            //std::cout<< nameCollideable <<std::endl;
+            if (nameCollideable != nameEnemy){
+                col = 1;
+                break;
+            }
+        }
+    }
+    return col;
+}
+
 
 void Irrlicht_t::render(){
     smgr->drawAll();
@@ -4082,13 +4459,13 @@ bool Input::IsLeftClickDown() const{
     return LeftClickDown;
 }
 
-irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> collideables, int died, irr::video::IVideoDriver* driver){
+irr::core::vector3df Input::comproveMovement(irr::scene::ISceneManager* smgr, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime,irr::scene::ISceneNode* one, std::vector<irr::scene::ISceneNode*> collideables, int status, irr::video::IVideoDriver* driver){
     
     bool colisiona = false;
     irr::core::vector3df cubePosition = smgr->getSceneNodeFromName("cube_player")->getPosition();
     float posAux = 0.0;
 
-    if (died == 0 || died == 1){
+    if (status == 0 || status == 1){
         irr::core::vector3df posicionActualX = irr::core::vector3df(cubePosition.X+0.5,cubePosition.Y,cubePosition.Z);
         one->setPosition(posicionActualX);
         
@@ -4404,13 +4781,13 @@ void Input::moveObject (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED,
 //    }
 //    std::cout<<"COOR X = " << x << "COOR Y = " << y << "COOR Z = " << z<<std::endl;
 //}
-void Input::moveEnemy(int died, irr::scene::ISceneNode* enemy, irr::core::vector3df pos, irr::f32 MOVEMENT_SPEED_ENEMY, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables){
+void Input::moveEnemy(int status, irr::scene::ISceneNode* enemy, irr::core::vector3df pos, irr::f32 MOVEMENT_SPEED_ENEMY, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables){
     irr::core::vector3df posEnemy = enemy->getPosition();
     irr::core::vector3df posicionActualX;
     irr::core::vector3df posicionActualZ;
     float posAux = 0.0;
 
-    if (died == 0){
+    if (status == 0){
         posicionActualX = irr::core::vector3df(posEnemy.X-0.5,posEnemy.Y,posEnemy.Z);
         enemy->setPosition(posicionActualX);
         bool colisionaX1 = Irrlicht_t::checkCollisionCollideables(enemy, collideables);
@@ -4483,11 +4860,23 @@ void Input::moveEnemy(int died, irr::scene::ISceneNode* enemy, irr::core::vector
     enemy->setPosition(posEnemy);
 }
 
-/*void Input::moveEnemyPosIni(int died, irr::scene::ISceneNode* enemy, irr::core::vector3df posIni, irr::f32 MOVEMENT_SPEED_ENEMY, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables){
+void Input::moveEnemyShot (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, float shotRotation){
+    //std::cout<< "Entro en moveEnemyShot" <<std::endl;
+    //std::cout<< "Y = " << shotRotation << std::endl;
+    irr::core::vector3df pos = object->getPosition();
+    double pi = M_PI;
+    //pos.X += MOVEMENT_SPEED * frameDeltaTime * cos(shotRotation * pi / 180);
+    //pos.Z -= MOVEMENT_SPEED * frameDeltaTime * sin(shotRotation * pi / 180);
+    pos.X -= MOVEMENT_SPEED * frameDeltaTime * sin(shotRotation * pi / 180);
+    pos.Z -= MOVEMENT_SPEED * frameDeltaTime * cos(shotRotation * pi / 180);
+    object->setPosition(pos);
+}
+
+/*void Input::moveEnemyPosIni(int status, irr::scene::ISceneNode* enemy, irr::core::vector3df posIni, irr::f32 MOVEMENT_SPEED_ENEMY, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables){
     
     irr::core::vector3df posEnemy = enemy->getPosition();
 
-    if(died == 0){
+    if(status == 0){
         if(!Irrlicht_t::checkCollisionCollideables(enemy, collideables)){
             if(posIni.X != posEnemy.X){
                 if(posIni.X < posEnemy.X){

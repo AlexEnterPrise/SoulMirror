@@ -39,13 +39,15 @@ SRC 		:= src
 OBJ 		:= obj
 LIBDIR 		:= lib
 IrrlichtHome	:= lib/irrlicht/src
+openGLHome 	:= openGL
 Core		:= core
 Studio		:= studio
 FMODHome 	:= lib/apiFMOD
-LOWLEVEL_LIB 	:= lib/apiFMOD/core/lib/${CPU}/libfmod${SUFFIX}.so
-STUDIO_LIB 	:= lib/apiFMOD/studio/lib/${CPU}/libfmodstudio${SUFFIX}.so
-LIBS 		:= lib/irrlicht/irrlicht.a -lX11 -lXext -lIrrlicht -Wl,-rpath=\$$ORIGIN/$(dir ${LOWLEVEL_LIB}),-rpath=\$$ORIGIN/$(dir ${STUDIO_LIB}) ${LOWLEVEL_LIB} ${STUDIO_LIB}
-INCDIRS		:= -I$(SRC) -I$(LIBDIR) -I$(IrrlichtHome)/include -L$(IrrlichtHome)/lib/$(SYSTEM) -lIrrlicht -I$(FMODHome)/$(Core)/inc -I$(FMODHome)/$(Studio)/inc -I$(FMODHome)/$(Core)/inc 
+LOWLEVEL_LIB 	:= lib/Linux/apiFMOD/core/lib/${CPU}/libfmod${SUFFIX}.so
+STUDIO_LIB 	:= lib/Linux/apiFMOD/studio/lib/${CPU}/libfmodstudio${SUFFIX}.so
+IRRLICHT_LIB 	:= lib/Linux/irrlicht/libIrrlicht.so.1.8.4
+LIBS 		:= -lX11 -lXext -Wl,-rpath=\$$ORIGIN/$(dir ${LOWLEVEL_LIB}),-rpath=\$$ORIGIN/$(dir ${STUDIO_LIB}) ${LOWLEVEL_LIB} ${STUDIO_LIB} -Wl,-rpath=\$$ORIGIN/$(dir ${IRRLICHT_LIB}) ${IRRLICHT_LIB}
+INCDIRS		:= -I$(SRC) -I$(LIBDIR) -I./include/irrlicht/include -I./include/fmod/core/inc -I./include/fmod/studio/inc -I./include/openGL/glm/ -I./include/openGL/GLFW -I./include/openGL/assimp -I./include/fmod/core/inc -I./include/JSON/include 
 
 ifdef DEBUG
 	CCFLAGS += -g

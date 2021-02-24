@@ -32,6 +32,7 @@ public:
 	//bool moveCam(bool cam, irr::scene::ISceneNode *map);
     void moveDraggable(irr::scene::ISceneManager* smgr, irr::scene::ISceneNode* draggable, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, std::vector<irr::scene::ISceneNode*> collideables);
     void moveObject (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, int direction);
+	void moveEnemyShot (irr::scene::ISceneNode* object, irr::f32 MOVEMENT_SPEED, irr::f32 frameDeltaTime, float shotRotation);
     //void printXYZ(scene::ISceneNode *);
 
 
@@ -57,14 +58,19 @@ private:
 	// Vectores de objetos
 	std::vector<irr::scene::ISceneNode*> collideables; // Array para toos los objetos con colisión
 
-	// Vector para los enemigos
+	// Vectores para los enemigos
 	std::vector<irr::scene::ISceneNode*> enemies;
+	std::vector<irr::core::vector3df> enemyFirstLook; // Vector para guardar la posición a la que mira inicialmente el enemigo
+	std::vector<int> enemyStatus; // Vector para guardar el estado de los enemigos (disparar, esperar, atacar...)
+	std::vector<int> enemyTime; // Vector para controlar el estado de un enemigo con el paso del tiempo
+
 	// Vector para el rango de los enemigos
 	std::vector<irr::scene::ISceneNode*> ranges;
 	// Vector para las posiciones iniciales de los enemigos
 	std::vector<irr::core::vector3df> posIniEnemies;
-	// Vector para los disparos de los enemigos
-	std::vector<irr::scene::ISceneNode*> shoots;
+	// Vector para los disparos de los enemigos y otro para el ángulo de avance de los disparos
+	std::vector<irr::scene::ISceneNode*> shots;
+	std::vector<float> shotsAngle;
 
 	// Vector para las llaves
 	std::vector<irr::scene::ISceneNode*> keys;
@@ -103,14 +109,14 @@ private:
 	int  hit_points;	// Puntos de salud (HP) del jugador
 	int  max_hp;		// Puntos de salud (HP) máximos del jugador
 	// ---------------------------------------------------------
-	int  direction;		// 1 --> derecha; 2 --> izquierda; 3 --> arriba; 4 --> abajo; 
-	int throw_direction;// 5 --> derecha-arriba; 6 --> izquierda-arribs; 7 --> derecha-abajo; 8 --> izquierda-abajo;
+	int  direction;		// 1 --> derecha; 2 --> izquierda; 3 --> arriba; 4 --> abajo; 5 --> derecha-arriba; 6 --> izquierda-arriba; 7 --> derecha-abajo; 8 --> izquierda-abajo;
+	int throw_direction;// 1 --> derecha; 2 --> izquierda; 3 --> arriba; 4 --> abajo; 5 --> derecha-arriba; 6 --> izquierda-arriba; 7 --> derecha-abajo; 8 --> izquierda-abajo;
 	// --------------------------------------------------------- 
 	int weapon;			// 0 --> Sin arma; 1 --> espada; 2 --> escudo; 3 --> arco; 4 --> bomba; 5 --> pociones;
 	// ---------------------------------------------------------
 	int shield;			// 0 --> Sin proteger; 1 --> Proteger;
 	// ---------------------------------------------------------
-	int  died; 			// 0 --> normal; 1 --> golpeado; 2 --> muerto o parado; 3 --> Bebiendo poción; 4 --> Abriendo cofre
+	int  status; 		// 0 --> normal; 1 --> golpeado; 2 --> muerto o parado; 3 --> Bebiendo poción; 4 --> Abriendo cofre
 	// ---------------------------------------------------------
 	int catched;		// 0 --> Sin coger; 1 --> Cogido; 2 --> Lanzado; 3 --> Arrastrable cogido; 4 --> Flecha disparada
 	// ---------------------------------------------------------
@@ -187,6 +193,7 @@ public:
     static bool checkCollisionBomba(irr::scene::ISceneNode* bomba, irr::scene::ISceneNode* enemy);
     static bool checkCollisionPlayerBomb(irr::scene::ISceneNode* bomba, irr::scene::ISceneNode* cube_player);
 	static bool checkCollisionEnemiesPlayer(irr::scene::ISceneNode* range, irr::scene::ISceneNode* cube_player);
+	static int checkCollisionShotCollideables(irr::scene::ISceneNode* shot, std::vector<irr::scene::ISceneNode*> collideables);
     //Funciones render
     void render();
 
